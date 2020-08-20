@@ -1,0 +1,41 @@
+<!--
+ * @Author: Farton_Fang
+ * @Date: 2020-08-18 11:04:14
+ * @LastEditors: Farton_Fang
+ * @LastEditTime: 2020-08-20 15:32:51
+-->
+<ng-container>
+    <div class="fc-util-nav">
+        <div class="nav-main">
+            <div class="nav-list">
+                <div *ngFor="let item of navItemList" 
+                class="nav-item" 
+                [ngClass]="item.classList"
+                [ngStyle]="{'background-color': (item.isActive ? cssStyle.activeBgc : item.isHover? cssStyle.unactiveHoverBgc : (cssStyle.mainBgc?cssStyle.mainBgc:cssStyle.navBgc)),
+                    'border-top': (item.isActive || (!item.isActive && item.isHover))? cssStyle.activeBgc+' solid 2px': (cssStyle.mainBgc?cssStyle.mainBgc:cssStyle.navBgc)+' solid 2px'}"
+                (click)="navChangeActive(item.itemKey)"
+                (mouseover)="item.isHover = true;"
+                (mouseleave)="item.isHover = false;">
+                    <a class="item-type item-font" id="{{item.itemKey}}" *ngIf="'font'== item.type" href="{{item.url}}" [ngStyle]="contentStyle">
+                        {{item.title}}
+                    </a>
+                    <a class="item-type item-img" *ngIf="'img'== item.type" href="{{item.url}}">
+                        <img  id="{{item.itemKey}}" src="{{item.imgUrl}}" [ngStyle]="{width: item.imgWidth}">
+                    </a>
+                    <a class="item-type item-img-font" *ngIf="'img-font' ==  item.type" [ngStyle]="contentStyle" href="{{item.url}}">
+                        <div  id="{{item.itemKey}}" >
+                            <img src="{{item.imgUrl}}" [ngStyle]="{width: item.imgWidth}">
+                            {{item.title}}
+                        </div>
+                    </a>
+                    <a class="item-type item-font-img" *ngIf="'font-img' ==  item.type" [ngStyle]="contentStyle" href="{{item.url}}">
+                        <div  id="{{item.itemKey}}" >
+                            {{item.title}}
+                            <img src="{{item.imgUrl}}" [ngStyle]="{width: item.imgWidth}">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

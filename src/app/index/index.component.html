@@ -1,0 +1,20 @@
+<!--
+ * @Author: Farton_Fang
+ * @Date: 2020-08-18 10:36:47
+ * @LastEditors: Farton_Fang
+ * @LastEditTime: 2020-08-20 15:31:16
+-->
+<div class="fc-util">
+    <div class="fc-top">
+        <app-nav-single-button [cssStyle]="navCssStyle" [navItemList]="navItemList"></app-nav-single-button>
+    </div>
+    <div class="fc-bottom">
+        <app-ranking-list 
+            [rankItemList]="rankItemList" 
+            (rankListRightNote)="changeItemList($event)" 
+            [rankInfo]="rankInfo" 
+            [ifMore]="true" 
+            [ifTitleRight]="true">
+        </app-ranking-list>
+    </div>
+</div>
