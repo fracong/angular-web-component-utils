@@ -1,8 +1,8 @@
 /*
- * @Author: Farton_Fang
+ * @Author: fracong
  * @Date: 2020-08-18 11:43:03
- * @LastEditors: Farton_Fang
- * @LastEditTime: 2020-08-19 15:21:39
+ * @LastEditors: fracong
+ * @LastEditTime: 2020-08-20 17:44:14
  */
 export class CssStyle{
     navBgc:string;
@@ -25,4 +25,17 @@ export class NavItem{
     isHover: boolean;
     classList: Array<string>;
     leftRightSpacing: number;
+}
+
+export class NavCategoryInfo{
+    height: string;
+    fontSzie:string;
+    fontFamily:string;
+    activeNum: number;
+    activeColor: string;
+}
+
+export class NavCategoryItem{
+    navKeyNum: number;
+    title: string;
 }

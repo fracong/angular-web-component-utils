@@ -1,14 +1,14 @@
 /*
- * @Author: Farton_Fang
+ * @Author: fracong
  * @Date: 2020-08-18 11:04:14
- * @LastEditors: Farton_Fang
- * @LastEditTime: 2020-08-19 16:01:48
+ * @LastEditors: fracong
+ * @LastEditTime: 2020-08-20 17:47:05
  */
 import { Component, OnInit, Input } from '@angular/core';
-import { CssStyle, NavItem } from 'src/app/model/nav-style/css-style.model';
+import { CssStyle, NavItem } from 'src/app/model/nav-style/nav-style.model';
 
 @Component({
-  selector: 'app-nav-single-button',
+  selector: 'app-nav-single-button', 
   templateUrl: './nav-single-button.component.html',
   styleUrls: ['./nav-single-button.component.scss']
 })

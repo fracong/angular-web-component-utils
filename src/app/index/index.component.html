@@ -1,12 +1,13 @@
 <!--
- * @Author: Farton_Fang
+ * @Author: fracong
  * @Date: 2020-08-18 10:36:47
- * @LastEditors: Farton_Fang
- * @LastEditTime: 2020-08-20 15:31:16
+ * @LastEditors: fracong
+ * @LastEditTime: 2020-08-20 17:48:24
 -->
 <div class="fc-util">
     <div class="fc-top">
         <app-nav-single-button [cssStyle]="navCssStyle" [navItemList]="navItemList"></app-nav-single-button>
+        <app-nav-category [navItemList]="categoryNavList" [navInfo]="categoryNavInfo" (categoryNavNode)="changeCategoryNavList($event)"></app-nav-category>
     </div>
     <div class="fc-bottom">
         <app-ranking-list 

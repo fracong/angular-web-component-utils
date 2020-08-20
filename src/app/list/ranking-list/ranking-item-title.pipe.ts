@@ -1,8 +1,8 @@
 /*
- * @Author: Farton_Fang
+ * @Author: fracong
  * @Date: 2020-08-20 09:56:24
- * @LastEditors: Farton_Fang
- * @LastEditTime: 2020-08-20 13:40:11
+ * @LastEditors: fracong
+ * @LastEditTime: 2020-08-20 17:48:03
  */
 import { Pipe, PipeTransform } from '@angular/core';
 

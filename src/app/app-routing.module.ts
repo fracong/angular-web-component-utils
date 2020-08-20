@@ -1,8 +1,8 @@
 /*
- * @Author: Farton_Fang
+ * @Author: fracong
  * @Date: 2020-08-18 09:22:50
- * @LastEditors: Farton_Fang
- * @LastEditTime: 2020-08-18 11:06:35
+ * @LastEditors: fracong
+ * @LastEditTime: 2020-08-20 17:49:24
  */
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

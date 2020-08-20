@@ -1,7 +1,7 @@
 /*
- * @Author: Farton_Fang
+ * @Author: fracong
  * @Date: 2020-08-18 09:22:50
- * @LastEditors: Farton_Fang
+ * @LastEditors: fracong
  * @LastEditTime: 2020-08-20 09:56:48
  */
 import { BrowserModule } from '@angular/platform-browser';

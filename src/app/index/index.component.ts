@@ -1,8 +1,8 @@
 /*
- * @Author: Farton_Fang
+ * @Author: fracong
  * @Date: 2020-08-18 10:36:47
- * @LastEditors: Farton_Fang
- * @LastEditTime: 2020-08-20 15:59:11
+ * @LastEditors: fracong
+ * @LastEditTime: 2020-08-20 17:37:36
  */
 import { Component, OnInit } from '@angular/core';
 
@@ -16,6 +16,8 @@ export class IndexComponent implements OnInit {
   navItemList: any;
   rankItemList: any;
   rankInfo: any;
+  categoryNavInfo:any;
+  categoryNavList: any;
 
   constructor() { }
 
@@ -151,9 +153,36 @@ export class IndexComponent implements OnInit {
         rightTitle: '12312'
       }
     ]
+
+    this.categoryNavInfo={
+      height: '50px',
+      fontSzie:'12px',
+      fontFamily:'\'Microsoft YaHei\',sans-serif',
+      activeNum:1,
+      activeColor:'#ed4259'
+    }
+
+    this.categoryNavList = [
+      {
+        navKeyNum:1,
+        title:'全部',
+      },
+      {
+        navKeyNum:2,
+        title:'分类1',
+      },
+      {
+        navKeyNum:3,
+        title:'分类2',
+      }
+    ]
   }
   
   changeItemList(e: any) {
+    console.info(e)
+  }
+
+  changeCategoryNavList(e: any){
     console.info(e)
   }
 }

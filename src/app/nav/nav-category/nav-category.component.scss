@@ -1,0 +1,16 @@
+:host::ng-deep .fc-util-category-nav{
+    width: 100%;
+    display: flex;
+    padding-left: 12px;
+    .nav-item{
+        color: #a6a6a6;
+        .nav-point{
+            font: 12px/50px Arial;
+            margin: 0 8px;
+        }
+    }
+    a{
+        text-decoration: none;
+        cursor: pointer;
+    }
+}

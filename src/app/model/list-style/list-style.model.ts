@@ -1,7 +1,7 @@
 /*
- * @Author: Farton_Fang
+ * @Author: fracong
  * @Date: 2020-08-20 09:15:31
- * @LastEditors: Farton_Fang
+ * @LastEditors: fracong
  * @LastEditTime: 2020-08-20 15:59:22
  */
 export class RankInfo{

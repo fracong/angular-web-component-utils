@@ -1,7 +1,7 @@
 /*
- * @Author: Farton_Fang
+ * @Author: fracong
  * @Date: 2020-08-19 16:21:30
- * @LastEditors: Farton_Fang
+ * @LastEditors: fracong
  * @LastEditTime: 2020-08-20 15:48:20
  */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';

@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+/*
+ * @Author: fracong
+ * @Date: 2020-08-20 13:45:45
+ * @LastEditors: fracong
+ * @LastEditTime: 2020-08-20 17:47:21
+ */
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NavCategoryItem, NavCategoryInfo } from 'src/app/model/nav-style/nav-style.model';
 
 @Component({
   selector: 'app-nav-category',
@@ -6,10 +13,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-category.component.scss']
 })
 export class NavCategoryComponent implements OnInit {
+  @Input('navInfo') navInfo: NavCategoryInfo;
+  @Input('navItemList') navItemList: Array<NavCategoryItem>;
+  @Output('categoryNavNode') categoryNavNode = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  changeNav(navKeyNum: number) {
+    if (this.navInfo.activeNum == navKeyNum) return;
+    this.navInfo.activeNum = navKeyNum;
+    this.categoryNavNode.emit(navKeyNum);
   }
 
 }
