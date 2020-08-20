@@ -23,7 +23,7 @@
                         [ngStyle]="{'color':item.ifActive ? rankInfo.rightActiveColor : '#a6a6a6'}">
                         {{item.title}}
                     </a>
-                    <span *ngIf="index != (rankInfo.rightList.length - 1)" class="right-point">·</span>
+                    <span *ngIf="index != (rankInfo.rightList.length - 1)" class="right-point">{{rankInfo.rightSplitSymbol}}</span>
                 </span>
             </span>
         </div>

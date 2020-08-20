@@ -12,7 +12,7 @@
                     {{item.title}}
                 </span>
             </a>
-            <span class="nav-point" *ngIf="index != (navItemList.length - 1)">·</span>
+            <span class="nav-point" *ngIf="index != (navItemList.length - 1)">{{navInfo.splitSymbol}}</span>
         </div>
     </div>
 </ng-container>

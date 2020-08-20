@@ -6,14 +6,15 @@
  */
 export class RankInfo{
     title: string;
-      width: string;
-      langZh: boolean;
-      itemTitleSize: number;
-      moreTitle:string;
-      moreUrl: string;
-      moreColor:string;
-      rightActiveColor: string;
-      rightList: any;
+    width: string;
+    langZh: boolean;
+    itemTitleSize: number;
+    moreTitle:string;
+    moreUrl: string;
+    moreColor:string;
+    rightActiveColor: string;
+    rightList: any;
+    rightSplitSymbol:string;
 }
 
 export class ListItem{

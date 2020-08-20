@@ -33,6 +33,7 @@ export class NavCategoryInfo{
     fontFamily:string;
     activeNum: number;
     activeColor: string;
+    splitSymbol: string;
 }
 
 export class NavCategoryItem{

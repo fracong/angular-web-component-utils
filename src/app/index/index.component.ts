@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-20 17:37:36
+ * @LastEditTime: 2020-08-20 17:57:59
  */
 import { Component, OnInit } from '@angular/core';
 
@@ -117,7 +117,8 @@ export class IndexComponent implements OnInit {
           type:'all',
           ifActive: false
         },
-      ]
+      ],
+      rightSplitSymbol:'·'
     };
     this.rankItemList = [
       {
@@ -159,7 +160,8 @@ export class IndexComponent implements OnInit {
       fontSzie:'12px',
       fontFamily:'\'Microsoft YaHei\',sans-serif',
       activeNum:1,
-      activeColor:'#ed4259'
+      activeColor:'#ed4259',
+      splitSymbol:'|'
     }
 
     this.categoryNavList = [
