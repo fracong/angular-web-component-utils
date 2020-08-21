@@ -2,10 +2,10 @@
  * @Author: fracong
  * @Date: 2020-08-18 11:04:14
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-20 17:47:05
+ * @LastEditTime: 2020-08-21 12:48:39
  */
-import { Component, OnInit, Input } from '@angular/core';
-import { CssStyle, NavItem } from 'src/app/model/nav-style/nav-style.model';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NavInfo, NavItem } from 'src/app/model/nav-style/nav-style.model';
 
 @Component({
   selector: 'app-nav-single-button', 
@@ -20,8 +20,9 @@ export class NavSingleButtonComponent implements OnInit {
   itemList: NodeListOf<Element>;
   activeBgc: string;
   contentStyle: any;
-  @Input('cssStyle') cssStyle: CssStyle;
+  @Input('navInfo') navInfo: NavInfo;
   @Input('navItemList') navItemList: Array<NavItem>;
+  @Output('navSingleButtonNode') navSingleButtonNode = new EventEmitter<any>();
 
   constructor() {
   }
@@ -35,7 +36,7 @@ export class NavSingleButtonComponent implements OnInit {
 
   ngAfterViewInit() {
     this.itemList = this.main.querySelectorAll('.fc-util-nav .nav-list .nav-item');
-    let mainHeight = this.cssStyle.mainHeight.replace('px', '');
+    let mainHeight = this.navInfo.mainHeight.replace('px', '');
     this.main.style.height = mainHeight + 'px';
     this.contentList = this.main.querySelectorAll('.fc-util-nav .nav-list .nav-item .item-type');
     this.contentList.forEach(element => {
@@ -55,29 +56,35 @@ export class NavSingleButtonComponent implements OnInit {
     });
   }
 
-  navChangeActive(itemKey: number) {
-    this.navItemList.forEach(element => {
-      if (element.itemKey === itemKey) {
-        element.isActive = true;
-      } else {
-        element.isActive = false;
-      }
-    });
+  navChangeActive(clickType: string, url: string, itemKey: number) {
+    if (this.navInfo.activeKey == itemKey) return;
+    this.navInfo.activeKey = itemKey;
+    if (clickType == 'open') {
+      window.open(url);
+    } else if (clickType == 'reload') {
+      window.location.href= url;
+    } else {
+      let backInfo = {
+        navType: this.navInfo.navType,
+        itemKey:itemKey
+      };
+      this.navSingleButtonNode.emit(backInfo);
+    }
   }
 
   setStyle() {
-    if (this.cssStyle.activeBgc) this.activeBgc = this.cssStyle.activeBgc;
-    if (this.cssStyle.navBgc) this.nav.style.backgroundColor = this.cssStyle.navBgc;
-    if (this.cssStyle.mainBgc) this.main.style.backgroundColor = this.cssStyle.mainBgc;
-    if (this.cssStyle.mainWidth && this.cssStyle.mainHeight) {
-      if (this.cssStyle.mainWidth.indexOf('%') != -1) {
-        this.main.style.width = this.cssStyle.mainWidth;
-      } if (/^\d+$/.test(this.cssStyle.mainWidth) || this.cssStyle.mainWidth.indexOf('px') != -1) {
-        this.main.style.width = this.cssStyle.mainWidth.replace('px', '') + 'px';
+    if (this.navInfo.activeBgc) this.activeBgc = this.navInfo.activeBgc;
+    if (this.navInfo.navBgc) this.nav.style.backgroundColor = this.navInfo.navBgc;
+    if (this.navInfo.mainBgc) this.main.style.backgroundColor = this.navInfo.mainBgc;
+    if (this.navInfo.mainWidth && this.navInfo.mainHeight) {
+      if (this.navInfo.mainWidth.indexOf('%') != -1) {
+        this.main.style.width = this.navInfo.mainWidth;
+      } if (/^\d+$/.test(this.navInfo.mainWidth) || this.navInfo.mainWidth.indexOf('px') != -1) {
+        this.main.style.width = this.navInfo.mainWidth.replace('px', '') + 'px';
       }
       this.contentStyle = {
-        'color': this.cssStyle.fontColor ? this.cssStyle.fontColor : '#fff',
-        'font': '16px/' + (Number(this.cssStyle.mainHeight) - 3) + 'px PingFangSC-Regular,HelveticaNeue-Light,\'Helvetica Neue Light\',\'Microsoft YaHei\',sans-serif'
+        'color': this.navInfo.fontColor ? this.navInfo.fontColor : '#fff',
+        'font': '16px/' + (Number(this.navInfo.mainHeight) - 3) + 'px PingFangSC-Regular,HelveticaNeue-Light,\'Helvetica Neue Light\',\'Microsoft YaHei\',sans-serif'
       }
     }
   }

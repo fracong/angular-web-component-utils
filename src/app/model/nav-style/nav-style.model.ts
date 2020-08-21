@@ -2,9 +2,10 @@
  * @Author: fracong
  * @Date: 2020-08-18 11:43:03
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-21 12:18:59
+ * @LastEditTime: 2020-08-21 13:50:28
  */
-export class CssStyle{
+export class NavInfo{
+    navType:string;
     navBgc:string;
     mainBgc:string;
     mainWidth: string;
@@ -12,6 +13,7 @@ export class CssStyle{
     activeBgc: string;
     unactiveHoverBgc: string;
     fontColor: string;
+    activeKey:number;
 }
 
 export class NavItem{
@@ -19,9 +21,9 @@ export class NavItem{
     type: string;
     title: string;
     url: string;
+    clickType: string;
     imgUrl:string;
     imgWidth: string;
-    isActive: boolean;
     isHover: boolean;
     classList: Array<string>;
     leftRightSpacing: number;
@@ -48,6 +50,7 @@ export class NavVerticalInfo{
     title: string;
     titleFontSize:string;
     width: string;
+    bgColor:string;
     activeColor: string;
     hoverColor:string;
     activeType: string;

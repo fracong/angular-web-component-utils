@@ -27,7 +27,7 @@ export class NavCategoryComponent implements OnInit {
     this.navInfo.activeNum = navKeyNum;
     let backInfo = {
       navType: this.navInfo.navType,
-      keyNum:navKeyNum
+      itemKey:navKeyNum
     };
     this.categoryNavNode.emit(backInfo);
   }

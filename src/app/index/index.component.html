@@ -2,11 +2,11 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-21 09:41:58
+ * @LastEditTime: 2020-08-21 12:44:29
 -->
 <div class="fc-util">
     <div class="fc-top">
-        <app-nav-single-button [cssStyle]="navCssStyle" [navItemList]="navItemList"></app-nav-single-button>
+        <app-nav-single-button [navInfo]="navInfo" [navItemList]="navItemList" (navSingleButtonNode)="changeNavList($event)"></app-nav-single-button>
         <app-nav-category [navItemList]="categoryNavList" [navInfo]="categoryNavInfo" (categoryNavNode)="changeCategoryNavList($event)"></app-nav-category>
     </div>
     <div class="fc-bottom">

@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-21 09:18:49
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-21 12:19:37
+ * @LastEditTime: 2020-08-21 12:49:44
  */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NavVerticalInfo, NavVerticalItem } from 'src/app/model/nav-style/nav-style.model';
@@ -32,7 +32,7 @@ export class NavVerticalComponent implements OnInit {
     this.navInfo.activeType = type;
     let backInfo = {
       navType: this.navInfo.navType,
-      type:type
+      itemKey:type
     };
     this.verticalNavNode.emit(backInfo);
   }

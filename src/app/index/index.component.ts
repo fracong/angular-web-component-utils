@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-21 12:22:29
+ * @LastEditTime: 2020-08-21 12:46:48
  */
 import { Component, OnInit } from '@angular/core';
 
@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
-  navCssStyle: any;
+  navInfo: any;
   navItemList: any;
   rankItemList: any;
   rankInfo: any;
@@ -24,13 +24,15 @@ export class IndexComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.navCssStyle = {
+    this.navInfo = {
+      navType: 'index',
       navBgc: '#3e3d43',
       mainWidth: '1200',
       mainHeight: '50',
       activeBgc: 'red',
       unactiveHoverBgc: 'rgb(78, 79, 80)',
-      fontColor: '#fff'
+      fontColor: '#fff',
+      activeKey: 1
     }
     this.navItemList = [
       {
@@ -38,7 +40,6 @@ export class IndexComponent implements OnInit {
         type: 'font',
         title:'111',
         url:'#1',
-        isActive: true,
         classList: ['nav-item-one'],
         leftRightSpacing: 32
       },
@@ -47,18 +48,18 @@ export class IndexComponent implements OnInit {
         type: 'font',
         title:'222222',
         url:'#2',
-        isActive: false,
         classList: ['nav-item-two'],
-        leftRightSpacing: 32
+        leftRightSpacing: 32,
+        clickType:'open'
       },
       {
         itemKey: 3,
         type: 'font',
         title:'333',
         url:'#3',
-        isActive: false,
         classList: ['nav-item-three'],
-        leftRightSpacing: 32
+        leftRightSpacing: 32,
+        clickType:'reload'
       },
       {
         itemKey: 4,
@@ -67,7 +68,6 @@ export class IndexComponent implements OnInit {
         url:'#4',
         imgUrl: 'assets/imags/setting.png',
         imgWidth: '14px',
-        isActive: false,
         classList: ['nav-item-four'],
         leftRightSpacing: 20
       },
@@ -78,7 +78,6 @@ export class IndexComponent implements OnInit {
         url:'#5',
         imgUrl: 'assets/imags/setting.png',
         imgWidth: '14px',
-        isActive: false,
         classList: ['nav-item-five'],
         leftRightSpacing: 20
       },
@@ -89,7 +88,6 @@ export class IndexComponent implements OnInit {
         url:'#6',
         imgUrl: 'assets/imags/setting.png',
         imgWidth: '14px',
-        isActive: false,
         classList: ['nav-item-six'],
         leftRightSpacing: 20
       }
@@ -130,7 +128,7 @@ export class IndexComponent implements OnInit {
         numColor:'#fff',
         numBgc:'#bf2c24',
         langZh: false,
-        rightTitle: '13312'
+        rightTitle: '13312',
       },
       {
         rankNum:'2',
@@ -206,6 +204,9 @@ export class IndexComponent implements OnInit {
         type:'viewRanking'
       }
     ]
+  }
+  changeNavList(e: any) {
+    console.info(e)
   }
   
   changeItemList(e: any) {
