@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-21 12:46:48
+ * @LastEditTime: 2020-08-21 15:52:14
  */
 import { Component, OnInit } from '@angular/core';
 
@@ -97,7 +97,7 @@ export class IndexComponent implements OnInit {
       rankingType:'popularityRanking',
       width: '250px',
       langZh: true,
-      itemTitleSize:11,
+      itemTitleSize:8,
       moreTitle:'更多',
       moreUrl:'#8',
       moreColor:'#3f5a93',
@@ -118,41 +118,50 @@ export class IndexComponent implements OnInit {
         },
       ],
       rightSplitSymbol:'·',
-      ifDisplayNum: true,
-      itemFlagDisplay:true
+      leftDisplayType: 'num',
+      leftFontSize: 2,
+      itemRightDisplay:true,
+      rightFontSize: 4
     };
     this.rankItemList = [
       {
         rankNum:'1',
+        leftFont:'图集',
         title: '12312312312',
         numColor:'#fff',
         numBgc:'#bf2c24',
         langZh: false,
         rightTitle: '13312',
+        rightLangZh:false
       },
       {
         rankNum:'2',
+        leftFont:'图文',
         title: '我的世界我的世界我的世界',
         numColor:'#fff',
         numBgc:'#e67225',
         langZh: true,
-        rightTitle: '12312'
+        rightTitle: '12312',
+        rightLangZh:false
       },
       {
         rankNum:'3',
+        leftFont:'图片',
         title: '我的世界我的世界我的世界',
         numColor:'#fff',
         numBgc:'#e6bf25',
         langZh: true,
-        rightTitle: '12312'
+        rightTitle: '12312',
+        rightLangZh:false
       },
       {
         rankNum:'4',
+        leftFont:'视频',
         title: '我的世界我的世界',
         numColor:'#666',
         numBgc:'#ededed',
         langZh: true,
-        rightTitle: '12312'
+        rightTitle: '乘风御剑'
       }
     ]
 

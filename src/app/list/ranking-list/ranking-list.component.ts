@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-19 16:21:30
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-21 11:39:47
+ * @LastEditTime: 2020-08-21 15:51:04
  */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ListItem, RankInfo } from 'src/app/model/list-style/list-style.model';
@@ -33,5 +33,9 @@ export class RangkListComponent implements OnInit {
       type:type
     };
     this.rankListRightNote.emit(backInfo);
+  }
+
+  setMinWidth(size: number){
+    return this.rankInfo.langZh? (28+ 14*size+'px'):(28+ 7*size+'px');
   }
 }

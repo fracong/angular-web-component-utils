@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-20 09:15:31
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-21 11:36:34
+ * @LastEditTime: 2020-08-21 15:28:27
  */
 export class RankInfo{
     rankingType:string;
@@ -17,12 +17,15 @@ export class RankInfo{
     rightActiveType:string;
     rightList: any;
     rightSplitSymbol:string;
-    ifDisplayNum:boolean;
-    itemFlagDisplay:boolean;
+    rightFontSize: number;
+    leftDisplayType: string;// num or font
+    leftFontSize: number;
+    itemRightDisplay: boolean;
 }
 
 export class ListItem{
     rankNum: string;
+    leftFont:string;
     title: string;
     url: string;
     numColor: string;
