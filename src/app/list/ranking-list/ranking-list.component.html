@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-19 16:21:30
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-20 16:18:54
+ * @LastEditTime: 2020-08-21 09:09:30
 -->
 <ng-container>
     <div class="fc-util-rank-list"[ngStyle]="{'width':rankInfo.width}">
@@ -19,8 +19,8 @@
             <span class="rank-list-top-right" *ngIf="ifTitleRight">
                 <span *ngFor="let item of rankInfo.rightList; let index = index;" class="top-right-list">
                     <a class="right-item" 
-                        (click)="changeRight(item.ifActive, item.type);"
-                        [ngStyle]="{'color':item.ifActive ? rankInfo.rightActiveColor : '#a6a6a6'}">
+                        (click)="changeRight(item.type);"
+                        [ngStyle]="{'color': (item.type ==  rankInfo.rightActiveType)? rankInfo.rightActiveColor : '#a6a6a6'}">
                         {{item.title}}
                     </a>
                     <span *ngIf="index != (rankInfo.rightList.length - 1)" class="right-point">{{rankInfo.rightSplitSymbol}}</span>
@@ -29,15 +29,17 @@
         </div>
         <ul>
             <li *ngFor="let item of rankItemList;let index = index" [ngClass]="{'unfrist-item': index != 0, 'first-item': index == 0}">
-                <div class="item-num" [ngClass]="{'lang-zh': item.langZh != 'undefined' ? item.langZh : rankInfo.langZh}">
+                <div class="item-num" *ngIf="rankInfo.ifDisplayNum" [ngClass]="{'lang-zh': item.langZh != 'undefined' ? item.langZh : rankInfo.langZh}">
                     <span [ngStyle]="{'color': item.numColor,'background': item.numBgc}">{{item.rankNum}}</span>
                 </div>
-                <a href="#7" class="item-title" [ngClass]="{'lang-zh': item.langZh != 'undefined' ? item.langZh : rankInfo.langZh}">
-                    <span *ngIf="true">
+                <a href="#7" class="item-title" 
+                    [ngClass]="{'lang-zh': item.langZh != 'undefined' ? item.langZh : rankInfo.langZh}" 
+                    [ngStyle]="{'padding-left': rankInfo.ifDisplayNum? '9px' : '0px'}">
+                    <span>
                         {{item.title | rankingItemTitle:rankInfo.itemTitleSize:item.langZh:rankInfo.langZh}}
                     </span>
                 </a>
-                <div class="item-flag" [ngClass]="{'lang-zh': item.langZh != 'undefined' ? item.langZh : rankInfo.langZh}">
+                <div class="item-flag" *ngIf="rankInfo.itemFlagDisplay" [ngClass]="{'lang-zh': item.langZh != 'undefined' ? item.langZh : rankInfo.langZh}">
                     <span>
                         {{item.rightTitle}}
                     </span>

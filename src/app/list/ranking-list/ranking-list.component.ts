@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-19 16:21:30
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-20 15:48:20
+ * @LastEditTime: 2020-08-21 09:11:45
  */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ListItem, RankInfo } from 'src/app/model/list-style/list-style.model';
@@ -25,15 +25,9 @@ export class RangkListComponent implements OnInit {
   ngOnInit() {
   }
   
-  changeRight(active:boolean, type: string) {
-    if(active) return;
-    this.rankInfo.rightList.forEach(element => {
-      if (element.type == type) {
-        element.ifActive = true;
-      } else {
-        element.ifActive = false;
-      }
-    });
+  changeRight(type: string) {
+    if(this.rankInfo.rightActiveType == type) return;
+    this.rankInfo.rightActiveType = type;
     this.rankListRightNote.emit(type);
   }
 }

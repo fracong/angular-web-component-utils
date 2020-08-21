@@ -29,6 +29,7 @@ export class NavItem{
 
 export class NavCategoryInfo{
     height: string;
+    background:string;
     fontSzie:string;
     fontFamily:string;
     activeNum: number;

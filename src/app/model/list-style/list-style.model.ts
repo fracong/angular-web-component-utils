@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-20 09:15:31
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-20 15:59:22
+ * @LastEditTime: 2020-08-21 09:11:12
  */
 export class RankInfo{
     title: string;
@@ -13,8 +13,11 @@ export class RankInfo{
     moreUrl: string;
     moreColor:string;
     rightActiveColor: string;
+    rightActiveType:string;
     rightList: any;
     rightSplitSymbol:string;
+    ifDisplayNum:boolean;
+    itemFlagDisplay:boolean;
 }
 
 export class ListItem{

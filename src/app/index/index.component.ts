@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-20 17:57:59
+ * @LastEditTime: 2020-08-21 09:07:51
  */
 import { Component, OnInit } from '@angular/core';
 
@@ -101,24 +101,24 @@ export class IndexComponent implements OnInit {
       moreUrl:'#8',
       moreColor:'#3f5a93',
       rightActiveColor: '#ed4259',
+      rightActiveType:'week',
       rightList:[
         {
           title:'周',
           type:'week',
-          ifActive: true
         },
         {
           title:'月',
           type:'month',
-          ifActive: false
         },
         {
           title:'总',
           type:'all',
-          ifActive: false
         },
       ],
-      rightSplitSymbol:'·'
+      rightSplitSymbol:'·',
+      ifDisplayNum: true,
+      itemFlagDisplay:true
     };
     this.rankItemList = [
       {
@@ -157,6 +157,7 @@ export class IndexComponent implements OnInit {
 
     this.categoryNavInfo={
       height: '50px',
+      background:'#f7f6f2',
       fontSzie:'12px',
       fontFamily:'\'Microsoft YaHei\',sans-serif',
       activeNum:1,
