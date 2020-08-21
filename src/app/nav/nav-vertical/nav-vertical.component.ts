@@ -2,9 +2,10 @@
  * @Author: fracong
  * @Date: 2020-08-21 09:18:49
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-21 11:32:47
+ * @LastEditTime: 2020-08-21 12:19:37
  */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NavVerticalInfo, NavVerticalItem } from 'src/app/model/nav-style/nav-style.model';
 
 @Component({
   selector: 'app-nav-vertical',
@@ -12,8 +13,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./nav-vertical.component.scss']
 })
 export class NavVerticalComponent implements OnInit {
-  @Input('navInfo') navInfo: any;
-  @Input('navItemList')  navItemList: any;
+  @Input('navInfo') navInfo: NavVerticalInfo;
+  @Input('navItemList')  navItemList: Array<NavVerticalItem>;
   @Output('verticalNavNode') verticalNavNode = new EventEmitter<any>();
 
   constructor() { }

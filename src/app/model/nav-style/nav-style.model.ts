@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 11:43:03
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-21 11:34:09
+ * @LastEditTime: 2020-08-21 12:18:59
  */
 export class CssStyle{
     navBgc:string;
@@ -41,4 +41,21 @@ export class NavCategoryInfo{
 export class NavCategoryItem{
     navKeyNum: number;
     title: string;
+}
+
+export class NavVerticalInfo{
+    navType: string;
+    title: string;
+    titleFontSize:string;
+    width: string;
+    activeColor: string;
+    hoverColor:string;
+    activeType: string;
+    itemFontSize: string;
+}
+
+export class NavVerticalItem{
+    title: string;
+    type: string;
+    margin: string;
 }

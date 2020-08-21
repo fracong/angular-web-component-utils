@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-21 11:38:55
+ * @LastEditTime: 2020-08-21 12:22:29
  */
 import { Component, OnInit } from '@angular/core';
 
@@ -193,17 +193,16 @@ export class IndexComponent implements OnInit {
       hoverColor:'#a6a6a6',
       activeType:'payRanking',
       itemFontSize:'14px',
+      itemMargin:'15px',
     }
 
     this.verticalNavList=[
       {
         title:'支付榜',
-        margin:'15px',
         type:'payRanking'
       },
       {
         title:'视频榜',
-        margin:'15px',
         type:'viewRanking'
       }
     ]
