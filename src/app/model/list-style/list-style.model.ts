@@ -2,9 +2,10 @@
  * @Author: fracong
  * @Date: 2020-08-20 09:15:31
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-21 09:11:12
+ * @LastEditTime: 2020-08-21 11:36:34
  */
 export class RankInfo{
+    rankingType:string;
     title: string;
     width: string;
     langZh: boolean;

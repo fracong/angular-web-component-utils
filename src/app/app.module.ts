@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 09:22:50
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-20 09:56:48
+ * @LastEditTime: 2020-08-21 09:20:33
  */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,6 +14,7 @@ import { NavSingleButtonComponent } from './nav/nav-single-button/nav-single-but
 import { RangkListComponent } from './list/ranking-list/ranking-list.component';
 import { RankingItemTitlePipe } from './list/ranking-list/ranking-item-title.pipe';
 import { NavCategoryComponent } from './nav/nav-category/nav-category.component';
+import { NavVerticalComponent } from './nav/nav-vertical/nav-vertical.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NavCategoryComponent } from './nav/nav-category/nav-category.component'
     NavSingleButtonComponent,
     RangkListComponent,
     RankingItemTitlePipe,
-    NavCategoryComponent
+    NavCategoryComponent,
+    NavVerticalComponent
   ],
   imports: [
     BrowserModule,

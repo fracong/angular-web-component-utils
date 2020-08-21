@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-20 17:48:24
+ * @LastEditTime: 2020-08-21 09:41:58
 -->
 <div class="fc-util">
     <div class="fc-top">
@@ -17,5 +17,6 @@
             [ifMore]="true" 
             [ifTitleRight]="true">
         </app-ranking-list>
+        <app-nav-vertical [navInfo]="verticalNavInfo" [navItemList]="verticalNavList" (verticalNavNode)="changeVerticalNavList($event)"></app-nav-vertical>
     </div>
 </div>

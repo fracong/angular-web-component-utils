@@ -1,0 +1,22 @@
+<!--
+ * @Author: fracong
+ * @Date: 2020-08-21 09:18:49
+ * @LastEditors: fracong
+ * @LastEditTime: 2020-08-21 11:23:13
+-->
+<ng-container>
+    <div class="fc-util-nav-vertical" [ngStyle]="{'width':navInfo.width,'background-color': navInfo.backgroundColor}">
+        <div class="nav-title">
+            <span [ngStyle]="{'font-size':navInfo.titleFontSize}">{{navInfo.title}}</span>
+        </div>
+        <ul class="nav-list">
+            <li *ngFor="let item of navItemList" class="nav-item" [ngStyle]="{'margin-bottom':item.margin}">
+                <a (mouseover)="item.isHover = true;" (mouseleave)="item.isHover = false;" (click)="changeItem(item.type)"
+                [ngStyle]="{'color': setItemColor(item.isHover, item.type)}">
+                    <span [ngStyle]="{'font-weight':(navInfo.activeType == item.type) ? 700 :400,'font-size':navInfo.itemFontSize}">{{item.title}}</span>
+                </a>
+                <span class="right-triangle" *ngIf="navInfo.activeType == item.type"></span>
+            </li>
+        </ul>
+    </div>
+</ng-container>

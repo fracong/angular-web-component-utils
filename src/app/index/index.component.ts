@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-21 09:07:51
+ * @LastEditTime: 2020-08-21 11:38:55
  */
 import { Component, OnInit } from '@angular/core';
 
@@ -18,6 +18,8 @@ export class IndexComponent implements OnInit {
   rankInfo: any;
   categoryNavInfo:any;
   categoryNavList: any;
+  verticalNavInfo:any;
+  verticalNavList:any;
 
   constructor() { }
 
@@ -94,6 +96,7 @@ export class IndexComponent implements OnInit {
     ];
     this.rankInfo = {
       title:'人气榜单',
+      rankingType:'popularityRanking',
       width: '250px',
       langZh: true,
       itemTitleSize:11,
@@ -156,6 +159,7 @@ export class IndexComponent implements OnInit {
     ]
 
     this.categoryNavInfo={
+      navType:'note',
       height: '50px',
       background:'#f7f6f2',
       fontSzie:'12px',
@@ -179,6 +183,30 @@ export class IndexComponent implements OnInit {
         title:'分类2',
       }
     ]
+
+    this.verticalNavInfo={
+      navType:'app',
+      title:'热门应用排名',
+      titleFontSize:'16px',
+      width:'250px',
+      activeColor: '#ed4259',
+      hoverColor:'#a6a6a6',
+      activeType:'payRanking',
+      itemFontSize:'14px',
+    }
+
+    this.verticalNavList=[
+      {
+        title:'支付榜',
+        margin:'15px',
+        type:'payRanking'
+      },
+      {
+        title:'视频榜',
+        margin:'15px',
+        type:'viewRanking'
+      }
+    ]
   }
   
   changeItemList(e: any) {
@@ -186,6 +214,9 @@ export class IndexComponent implements OnInit {
   }
 
   changeCategoryNavList(e: any){
+    console.info(e)
+  }
+  changeVerticalNavList(e: any){
     console.info(e)
   }
 }

@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-20 13:45:45
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-20 17:47:21
+ * @LastEditTime: 2020-08-21 11:34:34
  */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NavCategoryItem, NavCategoryInfo } from 'src/app/model/nav-style/nav-style.model';
@@ -25,7 +25,11 @@ export class NavCategoryComponent implements OnInit {
   changeNav(navKeyNum: number) {
     if (this.navInfo.activeNum == navKeyNum) return;
     this.navInfo.activeNum = navKeyNum;
-    this.categoryNavNode.emit(navKeyNum);
+    let backInfo = {
+      navType: this.navInfo.navType,
+      keyNum:navKeyNum
+    };
+    this.categoryNavNode.emit(backInfo);
   }
 
 }

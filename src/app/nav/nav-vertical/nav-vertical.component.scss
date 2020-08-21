@@ -1,0 +1,31 @@
+:host::ng-deep .fc-util-nav-vertical{
+    border-top: #e6e6e6 solid 1px;
+    // background-color: lightyellow;
+    padding-left: 10px;
+    font-family: PingFangSC-Regular,'-apple-system',Simsun;
+    .nav-title{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .nav-list{
+        .nav-item{
+            font: 14px/1 PingFangSC-Regular,'-apple-system',Simsun;
+            a{
+                width: 100%;
+            }
+        }
+    }
+    a{
+        text-decoration: none;
+        cursor: pointer;
+    }
+    ul{
+        margin: 0;
+        padding: 0;
+    }
+    li{
+        list-style: none outside none;
+    }
+}

@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 11:43:03
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-20 17:44:14
+ * @LastEditTime: 2020-08-21 11:34:09
  */
 export class CssStyle{
     navBgc:string;
@@ -28,6 +28,7 @@ export class NavItem{
 }
 
 export class NavCategoryInfo{
+    navType:string;
     height: string;
     background:string;
     fontSzie:string;
