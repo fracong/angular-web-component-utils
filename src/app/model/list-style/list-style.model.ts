@@ -17,10 +17,10 @@ export class RankInfo{
     rightActiveType:string;
     rightList: any;
     rightSplitSymbol:string;
-    rightFontSize: number;
-    leftDisplayType: string;// num or font
-    leftFontSize: number;
+    itemLeftDisplayType: string;// num or font
+    itemLeftFontSize: number;
     itemRightDisplay: boolean;
+    itemRightFontSize: number;
 }
 
 export class ListItem{

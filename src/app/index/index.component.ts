@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-21 15:52:14
+ * @LastEditTime: 2020-08-21 16:11:08
  */
 import { Component, OnInit } from '@angular/core';
 
@@ -118,10 +118,10 @@ export class IndexComponent implements OnInit {
         },
       ],
       rightSplitSymbol:'·',
-      leftDisplayType: 'num',
-      leftFontSize: 2,
+      itemLeftDisplayType: 'num',
+      itemLeftFontSize: 2,
       itemRightDisplay:true,
-      rightFontSize: 4
+      itemRightFontSize: 4
     };
     this.rankItemList = [
       {

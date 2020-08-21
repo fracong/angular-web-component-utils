@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-19 16:21:30
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-21 15:53:28
+ * @LastEditTime: 2020-08-21 16:10:36
 -->
 <ng-container>
     <div class="fc-util-rank-list"[ngStyle]="{'width':rankInfo.width}">
@@ -29,20 +29,20 @@
         </div>
         <ul>
             <li *ngFor="let item of rankItemList;let index = index" [ngClass]="{'unfrist-item': index != 0, 'first-item': index == 0}">
-                <div class="item-num" *ngIf="rankInfo.leftDisplayType == 'num'" [ngClass]="{'lang-zh': item.langZh != 'undefined' ? item.langZh : rankInfo.langZh}">
+                <div class="item-num" *ngIf="rankInfo.itemLeftDisplayType == 'num'" [ngClass]="{'lang-zh': item.langZh != 'undefined' ? item.langZh : rankInfo.langZh}">
                     <span [ngStyle]="{'color': item.numColor,'background': item.numBgc}">{{item.rankNum}}</span>
                 </div>
-                <div class="item-font" *ngIf="rankInfo.leftDisplayType == 'font'" [ngClass]="{'lang-zh': item.langZh != 'undefined' ? item.langZh : rankInfo.langZh}">
-                    <div class="item-font-name" [ngStyle]="{'min-width': setMinWidth(this.rankInfo.leftFontSize)}">「{{item.leftFont}}」</div>
+                <div class="item-font" *ngIf="rankInfo.itemLeftDisplayType == 'font'" [ngClass]="{'lang-zh': item.langZh != 'undefined' ? item.langZh : rankInfo.langZh}">
+                    <div class="item-font-name" [ngStyle]="{'min-width': setMinWidth(this.rankInfo.itemLeftFontSize)}">「{{item.leftFont}}」</div>
                 </div>
                 <a href="#7" class="item-title" 
                     [ngClass]="{'lang-zh': item.langZh != 'undefined' ? item.langZh : rankInfo.langZh}" 
-                    [ngStyle]="{'padding-left': (rankInfo.leftDisplayType == 'num') ? '9px' : '0px'}">
+                    [ngStyle]="{'padding-left': (rankInfo.itemLeftDisplayType == 'num') ? '9px' : '0px'}">
                     <span>
                         {{item.title | rankingItemTitle:rankInfo.itemTitleSize:item.langZh:rankInfo.langZh}}
                     </span>
                 </a>
-                <div class="item-flag" *ngIf="rankInfo.itemRightDisplay" [ngStyle]="{'margin-top': (!item.rightLangZh  || !rankInfo.langZh) ? '4px' : 0,'min-width': setMinWidth(this.rankInfo.rightFontSize)}">
+                <div class="item-flag" *ngIf="rankInfo.itemRightDisplay" [ngStyle]="{'margin-top': (!item.rightLangZh  || !rankInfo.langZh) ? '4px' : 0,'min-width': setMinWidth(this.rankInfo.itemRightFontSize)}">
                     <span>
                         {{item.rightTitle}}
                     </span>
