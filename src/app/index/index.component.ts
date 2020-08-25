@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-21 16:11:08
+ * @LastEditTime: 2020-08-25 16:44:44
  */
 import { Component, OnInit } from '@angular/core';
 
@@ -20,6 +20,8 @@ export class IndexComponent implements OnInit {
   categoryNavList: any;
   verticalNavInfo:any;
   verticalNavList:any;
+  carouselInfo:any;
+  carouselItemList: any;
 
   constructor() { }
 
@@ -212,7 +214,40 @@ export class IndexComponent implements OnInit {
         title:'视频榜',
         type:'viewRanking'
       }
-    ]
+    ];
+    this.carouselInfo={
+      // clickType: 'open',
+      leftInterval: '12.5%',
+      centerWidth: '25%',
+      widthInterval: '3%',
+      topInterval: '6%',
+
+    }
+    this.carouselItemList = [
+      {
+        imgUrl: '/assets/imags/carousel_1.png',
+        openUrl: '#10'
+      },
+      {
+        imgUrl: '/assets/imags/carousel_2.png'
+      },
+      {
+        imgUrl: '/assets/imags/carousel_3.png'
+      },
+      {
+        imgUrl: '/assets/imags/carousel_4.png'
+      },
+      {
+        imgUrl: '/assets/imags/carousel_5.png'
+      },
+      {
+        imgUrl: '/assets/imags/carousel_6.png'
+      },
+      {
+        imgUrl: '/assets/imags/carousel_7.png'
+      },
+    ];
+
   }
   changeNavList(e: any) {
     console.info(e)

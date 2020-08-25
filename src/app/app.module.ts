@@ -15,6 +15,7 @@ import { RangkListComponent } from './list/ranking-list/ranking-list.component';
 import { RankingItemTitlePipe } from './list/ranking-list/ranking-item-title.pipe';
 import { NavCategoryComponent } from './nav/nav-category/nav-category.component';
 import { NavVerticalComponent } from './nav/nav-vertical/nav-vertical.component';
+import { CarouselNomalComponent } from './carousel/carousel-nomal/carousel-nomal.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NavVerticalComponent } from './nav/nav-vertical/nav-vertical.component'
     RangkListComponent,
     RankingItemTitlePipe,
     NavCategoryComponent,
-    NavVerticalComponent
+    NavVerticalComponent,
+    CarouselNomalComponent
   ],
   imports: [
     BrowserModule,
