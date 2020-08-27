@@ -1,0 +1,45 @@
+<!--
+ * @Author: fracong
+ * @Date: 2020-08-21 16:26:40
+ * @LastEditors: fracong
+ * @LastEditTime: 2020-08-27 17:46:17
+-->
+<ng-container>
+    <div class="fc-util-carousel" [ngStyle]= "{'width': carouselInfo.carouselWidth}" >
+        <app-carousel-normal-info 
+            *ngIf="carouselInfo.position == 'right'"
+            #carouselInfoLeft 
+            [carouselInfo]="carouselInfo" 
+            [carouselItemList] = "carouselItemList">
+        </app-carousel-normal-info>
+        <div class="carousel" [ngStyle]= "{'width':carouselInfo.carouselLeftWidth}">
+            <div class="carousel-top" [ngStyle]="{'height':carouselInfo.topHeight}">
+                <div class="top-btn carousel-top-left" *ngIf="carouselInfo.isDisplayImgButton == undefined || carouselInfo.isDisplayImgButton" (click)="moveRightOneStep()">
+                    <button  *ngIf="carouselInfo.imgButtons.type=='button'" [ngStyle]="carouselInfo.imgButtons.buttonStyle">{{carouselInfo.imgButtons.buttonLeftName}}</button> 
+                    <div class="icon" *ngIf="carouselInfo.imgButtons.type=='icon'" [ngStyle]="carouselInfo.imgButtons.leftIconStyle"></div>
+                 </div>
+                 <a *ngFor="let item of carouselItemList; let index = index" [ngClass]="['item'+(index+1)]">
+                    <img src="{{item.imgUrl}}" title="{{item.title}}" (click)="clickImg(false,index+1, item.openUrl);">
+                </a>
+                <div class="top-btn carousel-top-right" *ngIf="carouselInfo.isDisplayImgButton == undefined || carouselInfo.isDisplayImgButton" (click)="moveLeftOneStep()">
+                    <button  *ngIf="carouselInfo.imgButtons.type=='button'" [ngStyle]="carouselInfo.imgButtons.buttonStyle">{{carouselInfo.imgButtons.buttonRightName}}</button> 
+                    <div class="icon" *ngIf="carouselInfo.imgButtons.type=='icon'" [ngStyle]="carouselInfo.imgButtons.rightIconStyle"></div>
+                 </div>
+            </div>
+            <div class="carousel-bottom" >
+                <div class="bottom-list" [ngClass]="{'circle': carouselInfo.bottomInfo.type == 'circle'}">
+                    <div *ngFor="let item of carouselItemList; let index = index;"
+                        [ngClass]="['circle'+(index+1)]"
+                     [ngStyle]="carouselInfo.bottomInfo.circle.style"
+                      class="bottom" (click)="clickImg(true,index+1, item.openUrl);"></div>
+                </div>
+            </div>
+        </div>
+        <app-carousel-normal-info 
+            *ngIf="carouselInfo.position != 'right'"
+            #carouselInfoRight 
+            [carouselInfo]="carouselInfo" 
+            [carouselItemList] = "carouselItemList">
+        </app-carousel-normal-info>
+    </div>
+</ng-container>

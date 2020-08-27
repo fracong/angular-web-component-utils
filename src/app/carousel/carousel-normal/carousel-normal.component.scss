@@ -1,0 +1,51 @@
+:host::ng-deep .fc-util-carousel{
+    display: flex;
+    flex-direction: row;
+    .carousel{
+        .carousel-top{
+            position: relative;
+            img{
+                box-shadow: 0 1px 3px #999;
+                width:100%;
+            }
+            a{
+                position: absolute;
+                text-decoration: none;
+            }
+            .top-btn{
+                position: absolute;
+                overflow:hidden;
+                cursor: pointer;
+                .icon{
+                    width:30px;
+                    height:38px;
+                    background-size: 30px 38px;
+                    filter: drop-shadow(#a6a6a6 80px 0);
+                    transform: translateX(-80px);
+                    opacity: 0;
+                }
+                .icon.icon-arrow-left{
+                    background-image: url(/assets/fonts/icons/arrow-ios-left.svg);
+                }
+                .icon.icon-arrow-right{
+                    background-image: url(/assets/fonts/icons/arrow-ios-right.svg);
+                }
+            }
+        }
+        .carousel-top:hover  .top-btn .icon{
+            opacity: 1;
+        }
+        .carousel-bottom{
+            margin-left: auto;
+            margin-right: auto;
+            .bottom-list .bottom{
+                cursor: pointer;
+            }
+            .bottom-list.circle .bottom{
+                float: left;
+                border-radius: 100%;
+                margin: 0 7px 0 0;
+            }
+        }
+    }
+}

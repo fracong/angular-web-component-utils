@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-25 16:44:44
+ * @LastEditTime: 2020-08-27 17:28:52
  */
 import { Component, OnInit } from '@angular/core';
 
@@ -215,36 +215,112 @@ export class IndexComponent implements OnInit {
         type:'viewRanking'
       }
     ];
-    this.carouselInfo={
-      // clickType: 'open',
-      leftInterval: '12.5%',
-      centerWidth: '25%',
-      widthInterval: '3%',
-      topInterval: '6%',
 
+    this.carouselInfo={
+      // beginAuto: true,
+      // beginAutoInterval: 2,
+      // beginAutoDirection: false,
+      // isDisplayImgButton: true,
+      // position: 'right',
+      imgButtons:{
+        type: 'icon',
+        topBtnsTop:'42%',
+        topBtnsLeftRightPadding:'6%',
+        buttonLeftName: 'Left',
+        buttonRightName: 'Right',
+        buttonStyle: {
+            'font-size': '14px',
+            'font-weight': 700,
+            width: '50px',
+            height: '25px',
+        },
+        rightIconStyle:{
+          'background-image': 'url(/assets/fonts/icons/arrow-ios-right.svg)'
+        },
+        leftIconStyle:{
+          'background-image': 'url(/assets/fonts/icons/arrow-ios-left.svg)'
+        },
+      },
+      carouselWidth:'1000px',
+      carouselLeftWidth:'700px',
+      topHeight: '233.33px',
+      imgArray: {
+        // clickType: 'open',
+        leftInterval: '12.5%',
+        centerWidth: '25%',
+        widthInterval: '3%',
+        topInterval: '6%',
+        animationTime: 0.5,
+        animationTimes:100,
+      },
+      bottomInfo:{
+        type:'circle',
+        circle: {
+          style: {
+            width:'9px',
+            height: '9px',
+            background: '#ddd',
+            'margin-top': '11px',
+          },
+          activeStyle: {
+            border:'2px solid #ed4259'
+          }
+        }
+      },
+      leftItemInfo: {
+        width: '420px',
+        bgColor:'#d81d14',
+        activegColor: '#961e17',
+        actionItemWidth: '100px',
+      },
     }
+    
     this.carouselItemList = [
       {
         imgUrl: '/assets/imags/carousel_1.png',
-        openUrl: '#10'
+        openUrl: '#10',
+        title:'我的世界我的世界1',
+        introduction:'简介1：我的世界我的世界我的世界我的世界我的世界我的世界我1111111111111111111111世界我的世界',
+        actionDisplay: false,
+        actionName:'详情1',
       },
       {
-        imgUrl: '/assets/imags/carousel_2.png'
+        imgUrl: '/assets/imags/carousel_2.png',
+        title:'我的世界我的世界2',
+        introduction:'简介2：我的世界我的世界我的世界我的世界我的世界我的世界我222222222222世界我的世界',
+        actionName:'详情2',
+        actionOpenType: 'reload',
+        actionOpenUrl:'#20'
       },
       {
-        imgUrl: '/assets/imags/carousel_3.png'
+        imgUrl: '/assets/imags/carousel_3.png',
+        title:'我的世界我的世界3',
+        introduction:'简介3：我的世界我的世界我的世界我的世界我的世界我的世界我3333333333333333333世界我的世界',
+        actionName:'详情3'
       },
       {
-        imgUrl: '/assets/imags/carousel_4.png'
+        imgUrl: '/assets/imags/carousel_4.png',
+        title:'我的世界我的世界4',
+        introduction:'简介4：我的世界我的世界我的世界我的世界我的世界我的世界我444444444444444444444世界我的世界我的',
+        actionName:'详情4'
       },
       {
-        imgUrl: '/assets/imags/carousel_5.png'
+        imgUrl: '/assets/imags/carousel_5.png',
+        title:'我的世界我的世界5',
+        introduction:'简介5：我的世界我的世界我的世界我的世界我的世界我的世界我555555555555555555555555世界我的世界',
+        actionName:'详情5'
       },
       {
-        imgUrl: '/assets/imags/carousel_6.png'
+        imgUrl: '/assets/imags/carousel_6.png',
+        title:'我的世界我的世界6',
+        introduction:'简介6：我的世6界我的6世界我66的世界我的世界我的世界我的世界我66666666世界我的世界',
+        actionName:'详情6'
       },
       {
-        imgUrl: '/assets/imags/carousel_7.png'
+        imgUrl: '/assets/imags/carousel_7.png',
+        title:'我的世界我的世界7',
+        introduction:'简介7：我的世7777界我的世界7我的77世界我的世界我的世777界我的世界我77777世界我的世界',
+        actionName:'详情7'
       },
     ];
 

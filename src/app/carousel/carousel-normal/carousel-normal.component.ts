@@ -2,23 +2,24 @@
  * @Author: fracong
  * @Date: 2020-08-21 16:26:40
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-25 17:21:45
+ * @LastEditTime: 2020-08-27 17:47:14
  */
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { CarouselItem, CarouselInfo } from 'src/app/model/carousel/carousel.model';
+import { CarouselNormalInfoComponent } from './carousel-nomal-info/carousel-normal-info.component';
 
 @Component({
-  selector: 'app-carousel-nomal',
-  templateUrl: './carousel-nomal.component.html',
-  styleUrls: ['./carousel-nomal.component.scss']
+  selector: 'app-carousel-normal',
+  templateUrl: './carousel-normal.component.html',
+  styleUrls: ['./carousel-normal.component.scss']
 })
-export class CarouselNomalComponent implements OnInit {
+export class CarouselNormalComponent implements OnInit {
+  @ViewChild('carouselInfoLeft', { static: false }) carouselInfoLeft: CarouselNormalInfoComponent;
+  @ViewChild('carouselInfoRight', { static: false }) carouselInfoRight: CarouselNormalInfoComponent;
   ItemIndexArray: Array<number> = new Array<number>();
   itemHtmlArray: Array<HTMLElement> = new Array<HTMLElement>();
   leftBtnItem: HTMLElement;
   rightBtnItem: HTMLElement;
-  animationTime: number = 0.5;
-  animationTimes: number = 100;
   btnDisabled:boolean = false;
   itemsLeft: Array<string> = new Array<string>();
   itemsTop: Array<string> = new Array<string>();
@@ -27,40 +28,39 @@ export class CarouselNomalComponent implements OnInit {
   maxZIndex: number;
   @Input('carouselItemList') carouselItemList: Array<CarouselItem>;
   @Input('carouselInfo') carouselInfo: CarouselInfo;
+  beginAutoTimer: any;
+  activeBtnHove: boolean;
   constructor() { }
 
   ngOnInit() {
-    this.leftBtnItem = document.querySelector('.fc-util-carousel .carousel-top .carousel-top-left');
-    this.leftBtnItem.style.top = '42%';
-    this.leftBtnItem.style.left = '1%';
-    this.rightBtnItem = document.querySelector('.fc-util-carousel .carousel-top .carousel-top-right');
-    this.rightBtnItem.style.top = '42%';
-    this.rightBtnItem.style.right = '1%';
     if(this.carouselItemList.length%2 == 0) throw new Error("The length of the carouselItemList must be odd number.");
-    
+    this.carouselInfo.imgArray.animationTimes = (this.carouselInfo.imgArray.animationTimes) ? this.carouselInfo.imgArray.animationTimes : 100;
     this.maxZIndex = this.getMaxZIndex();
+    
+    // add item style into array
     for (let index = 1; index <= this.carouselItemList.length; index++) {
       let intervalNum = (index <= this.maxZIndex) ? this.maxZIndex - index : index - this.maxZIndex;
 
       let zIndex = (index <= this.maxZIndex) ? index : (this.maxZIndex - (index - this.maxZIndex));
       this.itemsZIndex.push(zIndex);
-      let widthNumber = this.toNumber(this.carouselInfo.centerWidth) - this.toNumber(this.carouselInfo.widthInterval) * intervalNum;
+      let widthNumber = this.toNumber(this.carouselInfo.imgArray.centerWidth) - this.toNumber(this.carouselInfo.imgArray.widthInterval) * intervalNum;
       let width = String(widthNumber).concat('%');
       this.itemsWidth.push(width);
-      let top = String(this.toNumber(this.carouselInfo.topInterval) * intervalNum).concat('%');
+      let top = String(this.toNumber(this.carouselInfo.imgArray.topInterval) * intervalNum).concat('%');
       this.itemsTop.push(top);
       
       let left: string;
       if (index <= this.maxZIndex) {
-        left = String(this.toNumber(this.carouselInfo.leftInterval)*(index -1)).concat('%');
+        left = String(this.toNumber(this.carouselInfo.imgArray.leftInterval)*(index -1)).concat('%');
       } else {
-        left = String(100 - (this.toNumber(this.carouselInfo.leftInterval)*(this.carouselItemList.length-index) + widthNumber)).concat('%');
+        left = String(100 - (this.toNumber(this.carouselInfo.imgArray.leftInterval)*(this.carouselItemList.length-index) + widthNumber)).concat('%');
       }
       this.itemsLeft.push(left);
     }
   }
 
   ngAfterViewInit() {
+    if (this.carouselInfo.isDisplayImgButton == undefined || this.carouselInfo.isDisplayImgButton) this.initButton();
     for (let index = 1; index <= this.carouselItemList.length; index++) {
       this.ItemIndexArray.push(index);
       let item = document.querySelector('.fc-util-carousel .carousel-top a.item'+(index)) as HTMLElement;
@@ -74,15 +74,50 @@ export class CarouselNomalComponent implements OnInit {
         item.style.opacity = '0';
       }
     }
+    this.changeBottomStyleAndRightInfo(this.ItemIndexArray[this.maxZIndex-1]);
+    
+    let bottom = document.querySelector('.fc-util-carousel .carousel-bottom') as HTMLElement;
+    if(this.carouselInfo.bottomInfo.type == 'circle' && this.carouselInfo.bottomInfo.circle.style.width){
+      bottom.style.width = this.carouselItemList.length * (7+Number(this.carouselInfo.bottomInfo.circle.style.width.replace('px', '')))+4+ 'px';
+    }
+
+    if (this.carouselInfo.beginAuto == undefined || this.carouselInfo.beginAuto) {
+      this.beginAutoTimer = setInterval(() => {
+        if (this.carouselInfo.beginAuto == undefined || this.carouselInfo.beginAuto) {
+          if (this.carouselInfo.beginAutoDirection == undefined || this.carouselInfo.beginAutoDirection) {
+            this.moveRightOneStep(true);
+          } else {
+            this.moveLeftOneStep(true);
+          }
+        } else {
+          clearInterval(this.beginAutoTimer);
+        }
+      }, 1000 * (this.carouselInfo.beginAutoInterval ? this.carouselInfo.beginAutoInterval : 2));
+    }
   }
 
-  moveRightOneItem(){
+  initButton() {
+    this.leftBtnItem = document.querySelector('.fc-util-carousel .carousel-top .carousel-top-left');
+    this.leftBtnItem.style.top = this.carouselInfo.imgButtons.topBtnsTop;
+    this.leftBtnItem.style.left = this.carouselInfo.imgButtons.topBtnsLeftRightPadding;
+    this.rightBtnItem = document.querySelector('.fc-util-carousel .carousel-top .carousel-top-right');
+    this.rightBtnItem.style.top = this.carouselInfo.imgButtons.topBtnsTop;
+    this.rightBtnItem.style.right = this.carouselInfo.imgButtons.topBtnsLeftRightPadding;
+    let topBtns = document.querySelectorAll('.fc-util-carousel .carousel-top .top-btn');
+    topBtns.forEach((element)=>{
+      let elementHtml = element as HTMLElement;
+      elementHtml.style.zIndex = String(this.maxZIndex+1);
+    });
+  }
+
+  moveRightOneStep(ifAuto:boolean){
+    if(!ifAuto) this.carouselInfo.beginAuto = false;
     if(this.btnDisabled) return;
     this.btnDisabled = true;
     this.moveRightItems();
     setTimeout(()=>{
       this.btnDisabled = false;
-    }, this.animationTime*1000);
+    }, this.carouselInfo.imgArray.animationTime*1000);
   }
 
   moveRightItems() {
@@ -103,9 +138,9 @@ export class CarouselNomalComponent implements OnInit {
       let left2 = this.toNumber(this.itemsLeft[dest]);
       let height2 = -this.toNumber(this.itemsTop[dest]);
       
-      let oneX  = (left1 -left2)/this.animationTimes;
-      let oneW = (this.toNumber(this.itemsWidth[source])-this.toNumber(this.itemsWidth[dest]))/this.animationTimes;
-      for (let times = 1; times <= this.animationTimes; times++) {
+      let oneX  = (left1 -left2)/this.carouselInfo.imgArray.animationTimes;
+      let oneW = (this.toNumber(this.itemsWidth[source])-this.toNumber(this.itemsWidth[dest]))/this.carouselInfo.imgArray.animationTimes;
+      for (let times = 1; times <= this.carouselInfo.imgArray.animationTimes; times++) {
         let x = left1 - oneX * times;
         let y = this.getHeight(x,left1,left2,height1,height2);
         let w = this.toNumber(this.itemsWidth[source]) - oneW*times;
@@ -114,24 +149,25 @@ export class CarouselNomalComponent implements OnInit {
           this.itemHtmlArray[itemIndex].style.top = String(y).replace('-','').concat('%');
           this.itemHtmlArray[itemIndex].style.width = String(w).replace('-','').concat('%');
           if(index == 0) {
-            this.itemHtmlArray[itemIndex].style.opacity = String((1/this.animationTimes) * times);
+            this.itemHtmlArray[itemIndex].style.opacity = String((1/this.carouselInfo.imgArray.animationTimes) * times);
           } else if(index == this.carouselItemList.length-2){
-            this.itemHtmlArray[itemIndex].style.opacity = String(1-((1/this.animationTimes) * times));
+            this.itemHtmlArray[itemIndex].style.opacity = String(1-((1/this.carouselInfo.imgArray.animationTimes) * times));
           }
-        }, (this.animationTime*1000/this.animationTimes) * times);
+        }, (this.carouselInfo.imgArray.animationTime*1000/this.carouselInfo.imgArray.animationTimes) * times);
       }
       this.itemHtmlArray[itemIndex].style.zIndex = String(this.itemsZIndex[dest]);
     }
-    
+    this.changeBottomStyleAndRightInfo(this.ItemIndexArray[this.maxZIndex-1]);
   }
 
-  moveLeftOneItem(){
+  moveLeftOneStep(ifAuto: boolean){
+    if(!ifAuto) this.carouselInfo.beginAuto = false;
     if(this.btnDisabled) return;
     this.btnDisabled = true;
     this.moveLeftItems();
     setTimeout(()=>{
       this.btnDisabled = false;
-    }, this.animationTime*1000);
+    }, this.carouselInfo.imgArray.animationTime*1000);
   }
 
   moveLeftItems() {
@@ -152,9 +188,9 @@ export class CarouselNomalComponent implements OnInit {
       let left2 = this.toNumber(this.itemsLeft[dest]);
       let height2 = -this.toNumber(this.itemsTop[dest]);
       
-      let oneX  = (left1 -left2)/this.animationTimes;
-      let oneW = (this.toNumber(this.itemsWidth[source])-this.toNumber(this.itemsWidth[dest]))/this.animationTimes;
-      for (let times = 1; times <= this.animationTimes; times++) {
+      let oneX  = (left1 -left2)/this.carouselInfo.imgArray.animationTimes;
+      let oneW = (this.toNumber(this.itemsWidth[source])-this.toNumber(this.itemsWidth[dest]))/this.carouselInfo.imgArray.animationTimes;
+      for (let times = 1; times <= this.carouselInfo.imgArray.animationTimes; times++) {
         let x = left1 - oneX * times;
         let y = this.getHeight(x,left1,left2,height1,height2);
         let w = this.toNumber(this.itemsWidth[source]) - oneW*times;
@@ -163,23 +199,48 @@ export class CarouselNomalComponent implements OnInit {
           this.itemHtmlArray[itemIndex].style.top = String(y).replace('-','').concat('%');
           this.itemHtmlArray[itemIndex].style.width = String(w).replace('-','').concat('%');
           if(index == 1) {
-            this.itemHtmlArray[itemIndex].style.opacity = String(1-((1/this.animationTimes) * times));
+            this.itemHtmlArray[itemIndex].style.opacity = String(1-((1/this.carouselInfo.imgArray.animationTimes) * times));
           } else if(index == (this.carouselItemList.length-1)){
-            this.itemHtmlArray[itemIndex].style.opacity = String((1/this.animationTimes) * times);
+            this.itemHtmlArray[itemIndex].style.opacity = String((1/this.carouselInfo.imgArray.animationTimes) * times);
           }
-        }, (this.animationTime*1000/this.animationTimes) * times);
+        }, (this.carouselInfo.imgArray.animationTime*1000/this.carouselInfo.imgArray.animationTimes) * times);
       }
       this.itemHtmlArray[itemIndex].style.zIndex = String(this.itemsZIndex[dest]);
     }
+    this.changeBottomStyleAndRightInfo(this.ItemIndexArray[this.maxZIndex-1]);
   }
 
-  clickImg(imgIndex: number, imgUrl: string) {
-    if(this.carouselInfo.clickType == 'open') {
+  clickImg(flag: boolean, imgIndex: number, imgUrl: string) {
+    if(this.carouselInfo.beginAuto == undefined || this.carouselInfo.beginAuto) this.carouselInfo.beginAuto = false;
+    let item = document.querySelector('.fc-util-carousel .carousel-top a.item'+(imgIndex)) as HTMLElement;
+    let zIndex = Number(item.style.zIndex);
+    if(!(flag || zIndex != 1) || zIndex == this.maxZIndex) return;
+    if(this.carouselInfo.imgArray.clickType == 'open') {
       window.open(imgUrl);
     } else {
-      let item = document.querySelector('.fc-util-carousel .carousel-top a.item'+(imgIndex)) as HTMLElement;
-      let zIndex = Number(item.style.zIndex);
       this.skipItems(zIndex, imgIndex);
+    }
+  }
+  
+  changeBottomStyleAndRightInfo(imgIndex: number) {
+    let bottoms = document.querySelectorAll('.fc-util-carousel .carousel-bottom .bottom-list.circle .bottom');
+    bottoms.forEach((element)=>{
+      let htmlElement = element as HTMLElement;
+      if (htmlElement.classList.contains('circle'+imgIndex)){
+        htmlElement.style.border = this.carouselInfo.bottomInfo.circle.activeStyle.border;
+        htmlElement.style.marginTop = Number(this.carouselInfo.bottomInfo.circle.style['margin-top'].replace('px','')) -2+'px';
+        htmlElement.style.removeProperty('background');
+      } else {
+        htmlElement.style.removeProperty('border');
+        htmlElement.style.marginTop = this.carouselInfo.bottomInfo.circle.style['margin-top'];
+        htmlElement.style.background = this.carouselInfo.bottomInfo.circle.style.background;
+      }
+    });
+
+    if(this.carouselInfo.position == 'right'){
+      this.carouselInfoLeft.changeInfo(imgIndex);
+    } else {
+      this.carouselInfoRight.changeInfo(imgIndex);
     }
   }
 
@@ -195,11 +256,11 @@ export class CarouselNomalComponent implements OnInit {
         } else {
           this.moveLeftItems();
         }
-      }, this.animationTime*1000*index);
+      }, this.carouselInfo.imgArray.animationTime*1000*index);
     }
     setTimeout(()=>{
       this.btnDisabled = false;
-    }, this.animationTime*1000*num);
+    }, this.carouselInfo.imgArray.animationTime*1000*num);
   }
 
   getMaxZIndex() {
