@@ -13,14 +13,20 @@ export class RankInfo{
     moreTitle:string;
     moreUrl: string;
     moreColor:string;
-    rightActiveColor: string;
-    rightActiveType:string;
-    rightList: any;
-    rightSplitSymbol:string;
+    titleRight:TitleRight;
     itemLeftDisplayType: string;// num or font
     itemLeftFontSize: number;
     itemRightDisplay: boolean;
     itemRightFontSize: number;
+}
+
+export class TitleRight{
+    display: boolean;// defualt is false
+    type: string; // nav or img
+    navActiveColor: string;
+    navActiveType:string;
+    navItemList: any;
+    navSplitSymbol:string;
 }
 
 export class ListItem{

@@ -103,23 +103,27 @@ export class IndexComponent implements OnInit {
       moreTitle:'更多',
       moreUrl:'#8',
       moreColor:'#3f5a93',
-      rightActiveColor: '#ed4259',
-      rightActiveType:'week',
-      rightList:[
-        {
-          title:'周',
-          type:'week',
-        },
-        {
-          title:'月',
-          type:'month',
-        },
-        {
-          title:'总',
-          type:'all',
-        },
-      ],
-      rightSplitSymbol:'·',
+      titleRight: {
+        display: true,
+        type: 'nav',
+        navActiveColor: '#ed4259',
+        navActiveType:'week',
+        navItemList: [
+          {
+            title:'周',
+            type:'week',
+          },
+          {
+            title:'月',
+            type:'month',
+          },
+          {
+            title:'总',
+            type:'all',
+          },
+        ],
+        navSplitSymbol: '·',
+      },
       itemLeftDisplayType: 'num',
       itemLeftFontSize: 2,
       itemRightDisplay:true,

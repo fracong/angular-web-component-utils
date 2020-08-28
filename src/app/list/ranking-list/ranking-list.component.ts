@@ -14,7 +14,6 @@ import { ListItem, RankInfo } from 'src/app/model/list-style/list-style.model';
 })
 export class RangkListComponent implements OnInit {
   @Input('ifMore') ifMore: boolean = false;
-  @Input('ifTitleRight') ifTitleRight: boolean = false;
   @Input('rankInfo') rankInfo: RankInfo;
   @Input('rankItemList')  rankItemList: Array<ListItem>;
   @Output('rankListRightNote') rankListRightNote = new EventEmitter<any>();
@@ -26,8 +25,8 @@ export class RangkListComponent implements OnInit {
   }
   
   changeRight(type: string) {
-    if(this.rankInfo.rightActiveType == type) return;
-    this.rankInfo.rightActiveType = type;
+    if(this.rankInfo.titleRight.navActiveType == type) return;
+    this.rankInfo.titleRight.navActiveType = type;
     let backInfo = {
       rankingType: this.rankInfo.rankingType,
       type:type

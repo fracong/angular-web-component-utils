@@ -16,15 +16,17 @@
                     </span>
                 </a>
             </span>
-            <span class="rank-list-top-right" *ngIf="ifTitleRight">
-                <span *ngFor="let item of rankInfo.rightList; let index = index;" class="top-right-list">
-                    <a class="right-item" 
-                        (click)="changeRight(item.type);"
-                        [ngStyle]="{'color': (item.type ==  rankInfo.rightActiveType)? rankInfo.rightActiveColor : '#a6a6a6'}">
-                        {{item.title}}
-                    </a>
-                    <span *ngIf="index != (rankInfo.rightList.length - 1)" class="right-point">{{rankInfo.rightSplitSymbol}}</span>
-                </span>
+            <span class="rank-list-top-right" *ngIf="rankInfo.titleRight.display">
+                <div *ngIf="rankInfo.titleRight.type == 'nav'">
+                    <span *ngFor="let item of rankInfo.titleRight.navItemList; let index = index;" class="top-right-list">
+                        <a class="right-item" 
+                            (click)="changeRight(item.type);"
+                            [ngStyle]="{'color': (item.type ==  rankInfo.titleRight.navActiveType)? rankInfo.titleRight.navActiveColor : '#a6a6a6'}">
+                            {{item.title}}
+                        </a>
+                        <span *ngIf="index != (rankInfo.titleRight.navItemList.length - 1)" class="right-point">{{rankInfo.titleRight.navSplitSymbol}}</span>
+                    </span>
+                </div>
             </span>
         </div>
         <ul>
