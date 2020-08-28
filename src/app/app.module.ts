@@ -17,6 +17,8 @@ import { NavCategoryComponent } from './nav/nav-category/nav-category.component'
 import { NavVerticalComponent } from './nav/nav-vertical/nav-vertical.component';
 import { CarouselNormalComponent } from './carousel/carousel-normal/carousel-normal.component';
 import { CarouselNormalInfoComponent } from './carousel/carousel-normal/carousel-nomal-info/carousel-normal-info.component';
+import { NormalListComponent } from './list/normal-list/normal-list.component';
+import { NormalTableComponent } from './table/normal-table/normal-table.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { CarouselNormalInfoComponent } from './carousel/carousel-normal/carousel
     NavCategoryComponent,
     NavVerticalComponent,
     CarouselNormalComponent,
-    CarouselNormalInfoComponent
+    CarouselNormalInfoComponent,
+    NormalListComponent,
+    NormalTableComponent
   ],
   imports: [
     BrowserModule,

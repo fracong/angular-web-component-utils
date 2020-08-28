@@ -124,7 +124,7 @@ export class IndexComponent implements OnInit {
         ],
         navSplitSymbol: '·',
       },
-      itemLeftDisplayType: 'num',
+      itemLeftDisplayType: 'font',
       itemLeftFontSize: 2,
       itemRightDisplay:true,
       itemRightFontSize: 4
