@@ -36,6 +36,7 @@ export class CarouselNormalComponent implements OnInit {
     if(this.carouselItemList.length%2 == 0) throw new Error("The length of the carouselItemList must be odd number.");
     this.carouselInfo.imgArray.animationTimes = (this.carouselInfo.imgArray.animationTimes) ? this.carouselInfo.imgArray.animationTimes : 100;
     this.maxZIndex = this.getMaxZIndex();
+    if(this.carouselInfo.clickNotStopAuto == undefined) this.carouselInfo.clickNotStopAuto = true;
     
     // add item style into array
     for (let index = 1; index <= this.carouselItemList.length; index++) {
@@ -111,7 +112,7 @@ export class CarouselNormalComponent implements OnInit {
   }
 
   moveRightOneStep(ifAuto:boolean){
-    if(!ifAuto) this.carouselInfo.beginAuto = false;
+    if(!ifAuto && !this.carouselInfo.clickNotStopAuto) this.carouselInfo.beginAuto = false;
     if(this.btnDisabled) return;
     this.btnDisabled = true;
     this.moveRightItems();
@@ -161,7 +162,7 @@ export class CarouselNormalComponent implements OnInit {
   }
 
   moveLeftOneStep(ifAuto: boolean){
-    if(!ifAuto) this.carouselInfo.beginAuto = false;
+    if(!ifAuto && !this.carouselInfo.clickNotStopAuto) this.carouselInfo.beginAuto = false;
     if(this.btnDisabled) return;
     this.btnDisabled = true;
     this.moveLeftItems();
@@ -211,7 +212,10 @@ export class CarouselNormalComponent implements OnInit {
   }
 
   clickImg(flag: boolean, imgIndex: number, imgUrl: string) {
-    if(this.carouselInfo.beginAuto == undefined || this.carouselInfo.beginAuto) this.carouselInfo.beginAuto = false;
+    if((this.carouselInfo.beginAuto == undefined || this.carouselInfo.beginAuto) 
+      && !this.carouselInfo.clickNotStopAuto) {
+      this.carouselInfo.beginAuto = false;
+    }
     let item = document.querySelector('.fc-util-carousel .carousel-top a.item'+(imgIndex)) as HTMLElement;
     let zIndex = Number(item.style.zIndex);
     if(!(flag || zIndex != 1) || zIndex == this.maxZIndex) return;

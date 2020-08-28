@@ -222,6 +222,7 @@ export class IndexComponent implements OnInit {
       // beginAutoDirection: false,
       // isDisplayImgButton: true,
       // position: 'right',
+      // clickNotStopAuto: false,
       imgButtons:{
         type: 'icon',
         topBtnsTop:'42%',

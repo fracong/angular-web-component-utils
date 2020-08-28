@@ -8,6 +8,7 @@ export class CarouselInfo{
     beginAuto: boolean; // true is auto, false is unauto
     beginAutoDirection:boolean; // true is right, false is left
     beginAutoInterval: number; //unit second, defualt is 3s.
+    clickNotStopAuto:boolean; // if click button, when true, the auto will not stop; when false, the auto will stop. and defualt is true.
     isDisplayImgButton: boolean; // true is display, false is undispalay, and defualt is display.
     position: string;
     imgButtons: ImgButton;
