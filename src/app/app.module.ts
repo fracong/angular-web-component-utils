@@ -19,6 +19,7 @@ import { CarouselNormalComponent } from './carousel/carousel-normal/carousel-nor
 import { CarouselNormalInfoComponent } from './carousel/carousel-normal/carousel-nomal-info/carousel-normal-info.component';
 import { NormalListComponent } from './list/normal-list/normal-list.component';
 import { NormalTableComponent } from './table/normal-table/normal-table.component';
+import { TransformHtmlPipe } from './pipe/transform-html.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NormalTableComponent } from './table/normal-table/normal-table.componen
     CarouselNormalComponent,
     CarouselNormalInfoComponent,
     NormalListComponent,
-    NormalTableComponent
+    NormalTableComponent,
+    TransformHtmlPipe
   ],
   imports: [
     BrowserModule,
