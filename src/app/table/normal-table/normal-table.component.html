@@ -1,55 +1,51 @@
+<!--
+ * @Author: fracong
+ * @Date: 2020-08-28 17:46:40
+ * @LastEditors: fracong
+ * @LastEditTime: 2020-08-29 20:47:47
+-->
 <ng-container>
-    <table class="table-list" width="100%" style="padding-left:10px;">
+    <table class="table-list" width="100%">
         <thead>
             <tr>
-                <td style="width: 5%;">类型</td>
-                <td style="width: 5%;">名称</td>
-                <td style="width: 25%;">简介</td>
-                <td style="width: 5%;">大小</td>
-                <td style="width: 8%;">所属人</td>
-                <td style="width: 5%;text-align: right;">时间</td>
+                <th *ngFor="let field of fieldList;let index = index" [ngStyle]="{'width': field.width}">
+                    <div *ngIf="index != (fieldList.length - 1)">{{ field.name }}</div>
+                    <div *ngIf="index == (fieldList.length - 1)" style="text-align: right;">{{ field.name }}</div>
+                </th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td style="font: 14px/40px '-apple-system',Simsun;color: grey;">
-                    <div class="item-type" >「视频」</div>
+        <tbody [ngClass]="{'show-border':tableInfo.isShowTableBorder}">
+            <tr *ngFor="let item of tableList; let index = index;"
+                [ngStyle]="{'background-color': isTrHover && index == hoverIndex? '#f7f6f2' : ''}"
+                (mouseover)="isTrHoverFunc(true, index)" 
+                (mouseleave)="isTrHoverFunc(false, index)">
+                <td *ngFor="let field of fieldList;" [ngClass]="field.class">
+                    <div class="item-type"*ngIf="field.type == 'typeList'">
+                        <span>「</span>
+                        <span *ngFor="let typeItem of item[field.key]; let typeItemIndex = index;">
+                            <a  *ngIf="field.listType == 'aLabel'; else otherTypeItem;" href="{{ typeItem.url}}" 
+                                [ngStyle]="{'color':(index == hoverIndex && field.key == hoverFieldKey && hoverTypeItemIndex == typeItemIndex &&  isHover) ? field.aHoverColor: field.aColor}"
+                                (mouseover)="isHoverFunc(true, index, field.key, typeItemIndex)" 
+                                (mouseleave)="isHoverFunc(false, index, field.key, typeItemIndex)">
+                                {{ typeItem.value }}
+                            </a>
+                            <ng-template #otherTypeItem>{{ typeItem }}</ng-template>
+                            <span class="split-symbol"*ngIf="typeItemIndex != (item[field.key].length -1)">{{ field.splitSymbol }}</span>
+                        </span>
+                        <span>  」</span>
+                    </div>
+                    <div *ngIf="field.type == 'aLabel'">
+                        <a  href="{{ item[field.key].url }}" [ngStyle]="{'color':(index == hoverIndex && field.key == hoverFieldKey &&  isHover) ? field.aHoverColor: field.aColor}"
+                            (mouseover)="isHoverFunc(true, index, field.key)" (mouseleave)="isHoverFunc(false, index, field.key)">
+                            {{ item[field.key].value }}
+                        </a>
+                    </div>
+                    <div *ngIf="field.type == undefined || field.type == 'font'"
+                        [ngStyle]="{'color':(index == hoverIndex && field.key == hoverFieldKey &&  isHover) ? field.aHoverColor: field.aColor}"
+                        (mouseover)="isHoverFunc(true, index, field.key)" (mouseleave)="isHoverFunc(false, index, field.key)">
+                        {{ item[field.key] }}
+                    </div>
                 </td>
-                <td>我的世界</td>
-                <td style="color: #666;">我的世界我的世界我的世界我的世界我的世界我的世界</td>
-                <td style="font-size: 12px;color: grey;">100M</td>
-                <td style="font-size: 12px;color: grey;">fracong</td>
-                <td style="font-size: 12px;color: #666;text-align: right;">2020-07-13</td>
-            </tr>
-            <tr>
-                <td style="font: 14px/40px '-apple-system',Simsun;color: grey;">
-                    <div class="item-type" >「视频」</div>
-                </td>
-                <td>我的世界</td>
-                <td style="color: #666;">我的世界我的世界我的世界我的世界我的世界我的世界</td>
-                <td style="font-size: 12px;color: grey;">100M</td>
-                <td style="font-size: 12px;color: grey;">fracong</td>
-                <td style="font-size: 12px;color: #666;text-align: right;">2020-07-13</td>
-            </tr>
-            <tr>
-                <td style="font: 14px/40px '-apple-system',Simsun;color: grey;">
-                    <div class="item-type" >「视频」</div>
-                </td>
-                <td>我的世界</td>
-                <td style="color: #666;">我的世界我的世界我的世界我的世界我的世界我的世界</td>
-                <td style="font-size: 12px;color: grey;">100M</td>
-                <td style="font-size: 12px;color: grey;">fracong</td>
-                <td style="font-size: 12px;color: #666;text-align: right;">2020-07-13</td>
-            </tr>
-            <tr>
-                <td style="font: 14px/40px '-apple-system',Simsun;color: grey;overflow: hidden;margin-left: -8px;">
-                    <div class="item-type" >「视频」</div>
-                </td>
-                <td>我的世界</td>
-                <td style="color: #666;">我的世界我的世界我的世界我的世界我的世界我的世界</td>
-                <td style="font-size: 12px;color: grey;">100M</td>
-                <td style="font-size: 12px;color: grey;">fracong</td>
-                <td style="font-size: 12px;color: #666;text-align: right;">2020-07-13</td>
             </tr>
         </tbody>
     </table>

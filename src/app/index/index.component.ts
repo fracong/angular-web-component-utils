@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-27 17:28:52
+ * @LastEditTime: 2020-08-29 20:52:18
  */
 import { Component, OnInit } from '@angular/core';
 
@@ -22,6 +22,9 @@ export class IndexComponent implements OnInit {
   verticalNavList:any;
   carouselInfo:any;
   carouselItemList: any;
+  normalTableInfo: any;
+  normalTableList: any;
+  normalFieldList: any;
 
   constructor() { }
 
@@ -329,7 +332,146 @@ export class IndexComponent implements OnInit {
       },
     ];
 
+    this.normalTableInfo={
+      topClass:['padding-left-10'],
+      isShowTableBorder: true,
+    }
+
+    this.normalFieldList=[
+      {
+        name:'类型',
+        type:'typeList',
+        listType:'aLabel',
+        aColor: '#666',
+        aHoverColor: 'red',
+        splitSymbol:'·',
+        key: 'type',
+        width:'8%',
+        class:['font-color-gray', 'font-size-14', 'margin-left-8', 'font-family-arial']
+      },
+      {
+        name:'名称',
+        type:'aLabel',
+        aColor: '#262626',
+        aHoverColor: 'blue',
+        key: 'name',
+        width:'8%',
+      },
+      {
+        name:'简介',
+        type:'aLabel',
+        aColor: '#666',
+        aHoverColor: '#262626',
+        key: 'int',
+        width:'25%',
+        class:['font-color-gray', 'font-size-14', 'a-color-gray']
+      },
+      {
+        name:'大小',
+        key: 'size',
+        width:'5%',
+        class:['font-color-gray', 'font-size-12']
+      },
+      {
+        name:'所属人',
+        key: 'author',
+        aColor: '#666',
+        aHoverColor: '#262626',
+        width:'8%',
+        class:['font-color-gray', 'font-size-12']
+      },
+      {
+        name:'时间',
+        key: 'time',
+        width:'5%',
+        class:['font-color-gray', 'font-size-12', 'font-right']
+      }
+    ];
+
+    this.normalTableList = [
+      {
+        type: [
+          {
+            value:'视频',
+            url: '#333'
+          },
+          {
+            value:'直播',
+            url: '#331'
+          },
+        ],
+        name:{
+          value:'我的世界',
+          url:'#31',
+        },
+        int: {
+          value:'1我的世界我的世界，我的世界我的世界，我的世界我的世界',
+          url: '#341'
+        },
+        size: '101M',
+        author: 'fracong1',
+        time: '2020-07-13',
+      },
+      {
+        type: [
+          {
+          value:'音频',
+          url: '#332'
+          }
+        ],
+        name: {
+          value:'我的世界2',
+          url: '#32'
+        },
+        int: {
+          value:'2我的世界我的世界，我的世界我的世界，我的世界我的世界',
+          url: '#342'
+        },
+        size: '102M',
+        author: 'fracong2',
+        time: '2020-07-13',
+      },
+      {
+        type: [
+          {
+          value:'图文',
+          url: '#333'
+          }
+        ],
+        name: {
+          value:'我的世界3',
+          url: '#33'
+        },
+        int: {
+          value:'3我的世界我的世界，我的世界我的世界，我的世界我的世界',
+          url: '#343'
+        },
+        size: '103M',
+        author: 'fracong3',
+        time: '2020-07-13',
+      },
+      {
+        type: [
+          {
+            value:'图集',
+            url: '#334'
+            }
+        ],
+        name: {
+          value:'我的世界4',
+          url: '#34'
+        },
+        int: {
+          value:'4我的世界我的世界，我的世界我的世界，我的世界我的世界',
+          url: '#344'
+        },
+        size: '104M',
+        author: 'fracong5',
+        time: '2020-07-13',
+      }
+    ];
   }
+  
   changeNavList(e: any) {
     console.info(e)
   }

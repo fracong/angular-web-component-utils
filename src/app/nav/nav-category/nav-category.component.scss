@@ -1,5 +1,5 @@
 :host::ng-deep .fc-util-category-nav{
-    width: 100%;
+    width: calc(100%-12px);
     display: flex;
     padding-left: 12px;
     .nav-item{
@@ -8,9 +8,5 @@
             font: 12px/50px Arial;
             margin: 0 8px;
         }
-    }
-    a{
-        text-decoration: none;
-        cursor: pointer;
     }
 }

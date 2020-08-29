@@ -1,8 +1,14 @@
+<!--
+ * @Author: fracong
+ * @Date: 2020-08-28 17:10:19
+ * @LastEditors: fracong
+ * @LastEditTime: 2020-08-29 20:17:57
+-->
 <ng-container>
     <div class="fc-util-normal-list" style="width: 1000px;margin-top: 10px;">
-        <div class="list-top">
+        <div class="list-top" [ngClass]="tableInfo.topClass">
             <div class="table-type">
-                <app-normal-table></app-normal-table>
+                <app-normal-table [tableInfo]="tableInfo" [tableList]="tableList" [fieldList]="fieldList"></app-normal-table>
             </div>
             <div></div>
         </div>

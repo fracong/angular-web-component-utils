@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-26 11:07:44
+ * @LastEditTime: 2020-08-29 20:47:59
 -->
 <div class="fc-util">
     <div class="fc-top">
@@ -10,7 +10,7 @@
         <app-nav-category [navItemList]="categoryNavList" [navInfo]="categoryNavInfo" (categoryNavNode)="changeCategoryNavList($event)"></app-nav-category>
     </div>
     <div class="fc-bottom">
-        <app-normal-list></app-normal-list>
+        <app-normal-list [tableInfo]="normalTableInfo" [tableList]="normalTableList" [fieldList]="normalFieldList"></app-normal-list>
         <app-carousel-normal [carouselInfo]="carouselInfo" [carouselItemList] = "carouselItemList"></app-carousel-normal>
         <app-ranking-list 
             [rankItemList]="rankItemList" 

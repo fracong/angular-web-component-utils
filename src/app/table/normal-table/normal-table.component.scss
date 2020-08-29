@@ -1,18 +1,45 @@
-:host::ng-deep .table-list{
-    thead tr td{
-        font: 600 13px/16px '-apple-system',Simsun;
+:host::ng-deep table.table-list{
+    thead tr th{
+        font: 700 13px/16px '-apple-system',Simsun;
+        text-align: left;
+        height: 20px;
+        vertical-align: top;
     }
     tbody tr {
         td{
-            border-bottom: 1px solid #e6e6e6;
             font: 14px/40px '-apple-system',Simsun;
             height: 40px;
-            .item-type{
-                color: grey;
-                overflow: hidden;
-                margin-left: -8px;
-                font: 14px/16px '-apple-system',Simsun;
-            }
         }
+        td.margin-left-8 .item-type{
+            overflow: hidden;
+            margin-left: -8px;
+        }
+        td.font-color-gray, td.a-color-gray a{
+            color: #666;
+        }
+        td.font-color-black, td.a-color-black a{
+            color: #262626;
+        }
+        td.font-size-14{
+            font: 14px/16px '-apple-system',Simsun;
+        }
+        td.font-size-12{
+            font: 12px/16px '-apple-system',Simsun;
+        }
+        td.font-right{
+           text-align: right;
+        }
+        td.font-family-arial .split-symbol{
+            font-family: Arial;
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+        td .item-type a{
+            margin-left: -4px;
+            margin-right: -4px;
+        }
+    }
+    tbody.show-border tr td{
+        border-bottom: 1px solid #e6e6e6;
     }
 }

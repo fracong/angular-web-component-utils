@@ -1,0 +1,11 @@
+:host::ng-deep{
+    a{
+        color: #262626;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    table {
+        border-spacing: 0;
+        border-collapse: collapse;
+    }
+}
