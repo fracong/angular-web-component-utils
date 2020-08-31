@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-20 13:45:45
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-31 17:19:48
+ * @LastEditTime: 2020-08-31 17:32:06
  */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NavCategoryItem, NavCategoryInfo } from 'src/app/model/nav-style/nav-style.model';
@@ -24,10 +24,10 @@ export class NavCategoryComponent implements OnInit {
   }
 
   changeNav(navKeyNum: number, itemNavType: string) {
-    if(itemNavType == 'up-down' && (this.isDown == undefined || this.remarkKeyNum == navKeyNum)) {
+    if(itemNavType == 'up-down' && (this.isDown == undefined || (this.remarkKeyNum == navKeyNum))) {
       this.isDown = (this.isDown == undefined) ? false : !this.isDown;
+      this.remarkKeyNum = navKeyNum;
     }
-    this.remarkKeyNum = navKeyNum;
     if (this.navInfo.activeNum == navKeyNum && itemNavType != 'up-down') return;
     this.navInfo.activeNum = navKeyNum;
     let backInfo: any;
