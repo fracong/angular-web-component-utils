@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-28 17:46:40
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-31 15:21:37
+ * @LastEditTime: 2020-08-31 15:49:18
  */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FieldListItem, TableInfo } from 'src/app/model/table/table.model';
@@ -23,7 +23,6 @@ export class NormalTableComponent implements OnInit {
   hoverIndex: number;
   hoverFieldKey: string;
   hoverTypeItemIndex: number;
-  checkBoxList:any;
 
   constructor() { }
 
