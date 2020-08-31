@@ -2,21 +2,20 @@
  * @Author: fracong
  * @Date: 2020-08-28 17:46:40
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-29 20:47:47
+ * @LastEditTime: 2020-08-31 11:24:33
 -->
 <ng-container>
     <table class="table-list" width="100%">
         <thead>
             <tr>
-                <th *ngFor="let field of fieldList;let index = index" [ngStyle]="{'width': field.width}">
-                    <div *ngIf="index != (fieldList.length - 1)">{{ field.name }}</div>
-                    <div *ngIf="index == (fieldList.length - 1)" style="text-align: right;">{{ field.name }}</div>
+                <th *ngFor="let field of fieldList;let index = index" [ngStyle]="{'width': field.width}" [ngClass]="field.thClass">
+                    {{ field.name }}
                 </th>
             </tr>
         </thead>
         <tbody [ngClass]="{'show-border':tableInfo.isShowTableBorder}">
             <tr *ngFor="let item of tableList; let index = index;"
-                [ngStyle]="{'background-color': isTrHover && index == hoverIndex? '#f7f6f2' : ''}"
+                [ngStyle]="{'background-color': tableInfo.isShowHoverTr && isTrHover && index == hoverIndex? tableInfo.hoverTrColor : ''}"
                 (mouseover)="isTrHoverFunc(true, index)" 
                 (mouseleave)="isTrHoverFunc(false, index)">
                 <td *ngFor="let field of fieldList;" [ngClass]="field.class">
@@ -37,13 +36,32 @@
                     <div *ngIf="field.type == 'aLabel'">
                         <a  href="{{ item[field.key].url }}" [ngStyle]="{'color':(index == hoverIndex && field.key == hoverFieldKey &&  isHover) ? field.aHoverColor: field.aColor}"
                             (mouseover)="isHoverFunc(true, index, field.key)" (mouseleave)="isHoverFunc(false, index, field.key)">
-                            {{ item[field.key].value }}
+                            {{ substringValue(field.maxLength, item[field.key].value) }}
                         </a>
+                    </div>
+                    <div *ngIf="field.type == 'html'"
+                        [ngStyle]="{'color':(index == hoverIndex && field.key == hoverFieldKey &&  isHover) ? field.aHoverColor: field.aColor}"
+                        (mouseover)="isHoverFunc(true, index, field.key)" (mouseleave)="isHoverFunc(false, index, field.key)"
+                        [innerHTML]="item[field.key] | transformHtml">
+                    </div>
+                    <div *ngIf="field.type == 'tagList'"
+                        [ngStyle]="{'color':(index == hoverIndex && field.key == hoverFieldKey &&  isHover) ? field.aHoverColor: field.aColor}"
+                        (mouseover)="isHoverFunc(true, index, field.key)" (mouseleave)="isHoverFunc(false, index, field.key)">
+                        <span *ngFor="let tagItem of item[field.key];let tagIndex = index" class="item-tag" [ngStyle]="{'color': field.tagColor,'background-color': tableInfo.tagBgcolorList[field.tagBgColorList[tagIndex]]}">
+                            {{ substringValue(5, tagItem) }}
+                        </span>
+                    </div>
+                    <div class="item-button" *ngIf="field.type == 'button'">
+                        <button *ngFor="let buttonItem of field.buttonList" 
+                            (click)="clickButtons(buttonItem.key, item)"
+                            [ngStyle]="{'color': buttonItem.color, 'background-color': buttonItem.bgColor,'font-size': buttonItem.fontSize}">
+                            {{ buttonItem.name }}
+                        </button>
                     </div>
                     <div *ngIf="field.type == undefined || field.type == 'font'"
                         [ngStyle]="{'color':(index == hoverIndex && field.key == hoverFieldKey &&  isHover) ? field.aHoverColor: field.aColor}"
                         (mouseover)="isHoverFunc(true, index, field.key)" (mouseleave)="isHoverFunc(false, index, field.key)">
-                        {{ item[field.key] }}
+                        {{ substringValue(field.maxLength, item[field.key]) }}
                     </div>
                 </td>
             </tr>

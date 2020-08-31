@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-29 20:52:18
+ * @LastEditTime: 2020-08-31 11:24:45
  */
 import { Component, OnInit } from '@angular/core';
 
@@ -22,7 +22,7 @@ export class IndexComponent implements OnInit {
   verticalNavList:any;
   carouselInfo:any;
   carouselItemList: any;
-  normalTableInfo: any;
+  normalListInfo: any;
   normalTableList: any;
   normalFieldList: any;
 
@@ -332,9 +332,14 @@ export class IndexComponent implements OnInit {
       },
     ];
 
-    this.normalTableInfo={
+    this.normalListInfo={
       topClass:['padding-left-10'],
-      isShowTableBorder: true,
+      tableInfo:{
+        isShowTableBorder: true,
+        isShowHoverTr: true,
+        hoverTrColor: '#f7f6f2',
+        tagBgcolorList:['#ea5d5d', '#5491e6', '#54cea4'],
+      }
     }
 
     this.normalFieldList=[
@@ -346,7 +351,7 @@ export class IndexComponent implements OnInit {
         aHoverColor: 'red',
         splitSymbol:'·',
         key: 'type',
-        width:'8%',
+        width:'5%',
         class:['font-color-gray', 'font-size-14', 'margin-left-8', 'font-family-arial']
       },
       {
@@ -355,15 +360,16 @@ export class IndexComponent implements OnInit {
         aColor: '#262626',
         aHoverColor: 'blue',
         key: 'name',
-        width:'8%',
+        width:'5%',
       },
       {
         name:'简介',
         type:'aLabel',
+        maxLength: 15,
         aColor: '#666',
         aHoverColor: '#262626',
         key: 'int',
-        width:'25%',
+        width:'15%',
         class:['font-color-gray', 'font-size-14', 'a-color-gray']
       },
       {
@@ -374,17 +380,49 @@ export class IndexComponent implements OnInit {
       },
       {
         name:'所属人',
+        type:'html',
         key: 'author',
         aColor: '#666',
         aHoverColor: '#262626',
-        width:'8%',
+        width:'5%',
         class:['font-color-gray', 'font-size-12']
+      },
+      {
+        name: '标签',
+        type: 'tagList',
+        key: 'status',
+        bgColor: 'blue',
+        width:'10%',
+        tagColor: '#fff',
+        tagBgColorList:[0, 1, 2],
       },
       {
         name:'时间',
         key: 'time',
         width:'5%',
-        class:['font-color-gray', 'font-size-12', 'font-right']
+        class:['font-color-gray', 'font-size-12']
+      },
+      {
+        name:'操作',
+        type: 'button',
+        key: 'operating',
+        width:'5%',
+        thClass: ['font-right'],
+        class: ['font-right'],
+        buttonList: [
+          {
+            name: '编辑',
+            key: 'edit',
+            color: '#fff',
+            bgColor:'#ffc107',
+          },
+          {
+            name: '删除',
+            key: 'delete',
+            color: '#fff',
+            bgColor:'#007bff',
+          }
+        ],
       }
     ];
 
@@ -409,8 +447,9 @@ export class IndexComponent implements OnInit {
           url: '#341'
         },
         size: '101M',
-        author: 'fracong1',
+        author: '<a class="test-a">fracong1<style>.test-a {color: #666 !important; } .test-a:hover{color: red !important;}</style></a>',
         time: '2020-07-13',
+        status: ['新闻', '娱乐', '体育'],
       },
       {
         type: [
@@ -484,6 +523,10 @@ export class IndexComponent implements OnInit {
     console.info(e)
   }
   changeVerticalNavList(e: any){
+    console.info(e)
+  }
+
+  clickBackInfo(e: any){
     console.info(e)
   }
 }

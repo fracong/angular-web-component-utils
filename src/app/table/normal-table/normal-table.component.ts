@@ -2,9 +2,9 @@
  * @Author: fracong
  * @Date: 2020-08-28 17:46:40
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-29 20:50:39
+ * @LastEditTime: 2020-08-31 11:16:03
  */
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FieldListItem, TableInfo } from 'src/app/model/table/table.model';
 
 @Component({
@@ -16,6 +16,7 @@ export class NormalTableComponent implements OnInit {
   @Input('tableInfo') tableInfo: TableInfo;
   @Input('tableList') tableList: any;
   @Input('fieldList') fieldList: Array<FieldListItem>;
+  @Output('buttonClick') buttonClick = new EventEmitter<any>();
   objectKeys = Object.keys;
   isTrHover: boolean;
   isHover:boolean;
@@ -38,5 +39,17 @@ export class NormalTableComponent implements OnInit {
   isTrHoverFunc(isTrHover: boolean, index: number) {
     this.isTrHover = isTrHover;
     this.hoverIndex = index;
+  }
+
+  substringValue(maxLength:number, value: string){
+    return maxLength && value.length > maxLength ? value.substring(0, maxLength).concat('…') : value;
+  }
+
+  clickButtons(key: string, item: any){
+    let backInfo = {
+      key: key,
+      itemInfo: item
+    };
+    this.buttonClick.emit(backInfo);
   }
 }
