@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 11:43:03
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-21 13:50:28
+ * @LastEditTime: 2020-08-31 17:24:03
  */
 export class NavInfo{
     navType:string;
@@ -43,6 +43,7 @@ export class NavCategoryInfo{
 export class NavCategoryItem{
     navKeyNum: number;
     title: string;
+    itemNavType: string; // title or up-down, defualt is title.
 }
 
 export class NavVerticalInfo{
