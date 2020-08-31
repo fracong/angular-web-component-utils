@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-31 15:34:47
+ * @LastEditTime: 2020-08-31 17:05:00
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -177,20 +177,21 @@ export class IndexComponent implements OnInit {
     ]
 
     this.categoryNavInfo={
-      navType:'note',
+      navType: 'note',
       height: '50px',
       background:'#f7f6f2',
       fontSzie:'12px',
       fontFamily:'\'Microsoft YaHei\',sans-serif',
       activeNum:1,
       activeColor:'#ed4259',
-      splitSymbol:'|'
+      // splitSymbol:'|'
     }
 
     this.categoryNavList = [
       {
         navKeyNum:1,
         title:'全部',
+        itemNavType: 'title',
       },
       {
         navKeyNum:2,
@@ -199,7 +200,13 @@ export class IndexComponent implements OnInit {
       {
         navKeyNum:3,
         title:'分类2',
-      }
+      },
+      {
+        navKeyNum:4,
+        title:'人数排行',
+        itemNavType: 'up-down',
+        imgUrl: '/assets/fonts/icons/arrow-left.svg',
+      },
     ]
 
     this.verticalNavInfo={

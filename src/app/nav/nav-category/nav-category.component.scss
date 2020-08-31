@@ -2,11 +2,25 @@
     width: calc(100%-12px);
     display: flex;
     padding-left: 12px;
+    overflow: hidden;
     .nav-item{
         color: #a6a6a6;
         .nav-point{
             font: 12px/50px Arial;
             margin: 0 8px;
+        }
+        .nav-title {
+            span {
+                position: relative;
+                .icon{
+                    position: absolute;
+                    top: -5px;
+                    margin-left: -2px;
+                    width:17px;
+                    height:29px;
+                    background-size: 17px 29px;
+                }
+            }
         }
     }
 }
