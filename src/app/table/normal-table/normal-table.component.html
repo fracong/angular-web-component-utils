@@ -2,12 +2,15 @@
  * @Author: fracong
  * @Date: 2020-08-28 17:46:40
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-31 11:24:33
+ * @LastEditTime: 2020-08-31 15:33:02
 -->
 <ng-container>
     <table class="table-list" width="100%">
         <thead>
             <tr>
+                <th class="table-check-box" *ngIf="!tableInfo.isHideCheckBox" [ngStyle]="{'width': tableInfo.checkBoxWidth}">
+                    <input type="checkbox" name="allNum" (click)="checkAllBox();">
+                </th>
                 <th *ngFor="let field of fieldList;let index = index" [ngStyle]="{'width': field.width}" [ngClass]="field.thClass">
                     {{ field.name }}
                 </th>
@@ -18,6 +21,9 @@
                 [ngStyle]="{'background-color': tableInfo.isShowHoverTr && isTrHover && index == hoverIndex? tableInfo.hoverTrColor : ''}"
                 (mouseover)="isTrHoverFunc(true, index)" 
                 (mouseleave)="isTrHoverFunc(false, index)">
+                <td *ngIf="!tableInfo.isHideCheckBox" style="text-align: center;">
+                    <input type="checkbox" name="listNum"  value="{{item[tableInfo.itemKey]}}" (click)="checkItemBox();">
+                </td>
                 <td *ngFor="let field of fieldList;" [ngClass]="field.class">
                     <div class="item-type"*ngIf="field.type == 'typeList'">
                         <span>「</span>

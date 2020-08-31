@@ -1,8 +1,14 @@
 :host::ng-deep table.table-list{
-    thead tr th{
-        font: 700 13px/16px '-apple-system',Simsun;
-        height: 20px;
-        vertical-align: top;
+    thead tr{
+        th{
+            font: 700 13px/16px '-apple-system',Simsun;
+            height: 20px;
+            vertical-align: top;
+        }
+        th.table-check-box {
+            text-align: center;
+            vertical-align: top;
+        }
     }
     tbody tr {
         td{
@@ -24,11 +30,12 @@
                 padding: 1px 2px;
                 line-height: 1.5;
                 border-radius: .25rem;
-                margin-right: 2px;
-                cursor: pointer;
+                margin-right: 4px;
             }
             .item-button button:hover{
                 font-weight: 600;
+                border: 2px solid transparent;
+                margin-right: 2px;
             }
         }
         td.margin-left-8 .item-type{

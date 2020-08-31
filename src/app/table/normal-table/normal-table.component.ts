@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-28 17:46:40
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-31 11:16:03
+ * @LastEditTime: 2020-08-31 15:21:37
  */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FieldListItem, TableInfo } from 'src/app/model/table/table.model';
@@ -23,6 +23,7 @@ export class NormalTableComponent implements OnInit {
   hoverIndex: number;
   hoverFieldKey: string;
   hoverTypeItemIndex: number;
+  checkBoxList:any;
 
   constructor() { }
 
@@ -51,5 +52,38 @@ export class NormalTableComponent implements OnInit {
       itemInfo: item
     };
     this.buttonClick.emit(backInfo);
+  }
+
+  checkAllBox(){
+    let allNum = document.getElementsByName('allNum')[0] as HTMLInputElement;
+    let listNum = document.getElementsByName('listNum');
+    listNum.forEach(element => {
+      let elementInput = element as HTMLInputElement;
+      elementInput.checked = allNum.checked ? true : false;
+    });
+  }
+
+  checkItemBox(){
+    let listNum = document.getElementsByName('listNum');
+    let flag = true;
+    for (let index = 0; index < listNum.length; index++) {
+      const element = listNum[index] as HTMLInputElement;
+      if(!element.checked) {
+        flag = false;
+        break;
+      }
+    }
+    let allNum = document.getElementsByName('allNum')[0] as HTMLInputElement;
+    allNum.checked = flag ? true : false;
+  }
+
+  getCheckedKeyList() {
+    let listNum = document.getElementsByName('listNum');
+    let returnArray = new Array<any>();
+    for (let index = 0; index < listNum.length; index++) {
+      const element = listNum[index] as HTMLInputElement;
+      if(element.checked) returnArray.push(element.value);
+    }
+    return returnArray;
   }
 }

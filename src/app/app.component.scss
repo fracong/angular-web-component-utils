@@ -1,7 +1,6 @@
 :host::ng-deep{
     a{
         color: #262626;
-        cursor: pointer;
         text-decoration: none;
     }
     table {
@@ -21,5 +20,11 @@
                 text-align: left;
             }
         }
+    }
+    input:focus, button:focus {
+        outline: transparent auto 0px;
+    }
+    a, button, input[type='checkbox']{
+        cursor: pointer;
     }
 }

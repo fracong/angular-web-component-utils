@@ -2,9 +2,10 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-31 11:24:45
+ * @LastEditTime: 2020-08-31 15:34:47
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NormalListComponent } from '../list/normal-list/normal-list.component';
 
 @Component({
   selector: 'app-index',
@@ -12,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
+  @ViewChild('normalList', { static: false }) normalList: NormalListComponent;
   navInfo: any;
   navItemList: any;
   rankItemList: any;
@@ -339,6 +341,9 @@ export class IndexComponent implements OnInit {
         isShowHoverTr: true,
         hoverTrColor: '#f7f6f2',
         tagBgcolorList:['#ea5d5d', '#5491e6', '#54cea4'],
+        itemKey:'id',
+        // isHideCheckBox: true,
+        checkBoxWidth: '2%',
       }
     }
 
@@ -351,7 +356,7 @@ export class IndexComponent implements OnInit {
         aHoverColor: 'red',
         splitSymbol:'·',
         key: 'type',
-        width:'5%',
+        width:'6%',
         class:['font-color-gray', 'font-size-14', 'margin-left-8', 'font-family-arial']
       },
       {
@@ -428,6 +433,7 @@ export class IndexComponent implements OnInit {
 
     this.normalTableList = [
       {
+        id: 1,
         type: [
           {
             value:'视频',
@@ -452,6 +458,7 @@ export class IndexComponent implements OnInit {
         status: ['新闻', '娱乐', '体育'],
       },
       {
+        id: 2,
         type: [
           {
           value:'音频',
@@ -471,6 +478,7 @@ export class IndexComponent implements OnInit {
         time: '2020-07-13',
       },
       {
+        id: 3,
         type: [
           {
           value:'图文',
@@ -490,6 +498,7 @@ export class IndexComponent implements OnInit {
         time: '2020-07-13',
       },
       {
+        id: 4,
         type: [
           {
             value:'图集',
@@ -527,6 +536,10 @@ export class IndexComponent implements OnInit {
   }
 
   clickBackInfo(e: any){
-    console.info(e)
+    console.info(e);
+  }
+
+  getNormalListCheckedKeyList(){
+    console.info(this.normalList.getCheckedKeyList());
   }
 }

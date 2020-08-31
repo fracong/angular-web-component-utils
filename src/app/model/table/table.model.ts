@@ -2,13 +2,16 @@
  * @Author: fracong
  * @Date: 2020-08-29 20:36:43
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-31 11:11:20
+ * @LastEditTime: 2020-08-31 14:28:38
  */
 export class TableInfo{
     isShowTableBorder: boolean;
     isShowHoverTr: boolean;
     hoverTrColor: string;
     tagBgcolorList: Array<string>;
+    itemKey: string;
+    isHideCheckBox: boolean;
+    checkBoxWidth: string;
 }
 
 export class FieldListItem{

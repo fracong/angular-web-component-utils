@@ -8,7 +8,7 @@
     <div class="fc-util-normal-list" style="width: 1000px;margin-top: 10px;">
         <div class="list-top" [ngClass]="listInfo.topClass">
             <div class="table-type">
-                <app-normal-table [tableInfo]="listInfo.tableInfo" [tableList]="tableList" [fieldList]="fieldList" (buttonClick)="clickBackInfo($event)"></app-normal-table>
+                <app-normal-table #normalTable [tableInfo]="listInfo.tableInfo" [tableList]="tableList" [fieldList]="fieldList" (buttonClick)="clickBackInfo($event)"></app-normal-table>
             </div>
             <div></div>
         </div>
