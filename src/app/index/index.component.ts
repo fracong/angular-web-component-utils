@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-31 17:05:00
+ * @LastEditTime: 2020-09-01 09:39:22
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -184,7 +184,7 @@ export class IndexComponent implements OnInit {
       fontFamily:'\'Microsoft YaHei\',sans-serif',
       activeNum:1,
       activeColor:'#ed4259',
-      // splitSymbol:'|'
+      splitSymbol:'|'
     }
 
     this.categoryNavList = [
@@ -204,6 +204,12 @@ export class IndexComponent implements OnInit {
       {
         navKeyNum:4,
         title:'人数排行',
+        itemNavType: 'up-down',
+        imgUrl: '/assets/fonts/icons/arrow-left.svg',
+      },
+      {
+        navKeyNum: 5,
+        title:'数量排行',
         itemNavType: 'up-down',
         imgUrl: '/assets/fonts/icons/arrow-left.svg',
       },

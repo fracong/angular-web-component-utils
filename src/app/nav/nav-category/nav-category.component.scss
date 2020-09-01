@@ -7,12 +7,19 @@
         color: #a6a6a6;
         .nav-point{
             font: 12px/50px Arial;
-            margin: 0 8px;
+            margin: 0 4px;
+        }
+        .nav-point.item-up-down{
+            margin: 0 4px 0 16px;
         }
         .nav-title {
-            span {
+            .item-up-down {
                 position: relative;
-                .icon{
+                .item-up-down-title{
+                    display: inline-block;
+                }
+                .item-up-down-icon{
+                    display: inline-block;
                     position: absolute;
                     top: -5px;
                     margin-left: -2px;

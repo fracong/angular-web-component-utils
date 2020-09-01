@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-20 13:45:45
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-31 17:32:06
+ * @LastEditTime: 2020-09-01 09:33:23
  */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NavCategoryItem, NavCategoryInfo } from 'src/app/model/nav-style/nav-style.model';
@@ -17,16 +17,20 @@ export class NavCategoryComponent implements OnInit {
   @Input('navItemList') navItemList: Array<NavCategoryItem>;
   @Output('categoryNavNode') categoryNavNode = new EventEmitter<any>();
   isDown: boolean;
-  remarkKeyNum: number;
+  // remarkKeyNum: number;
+  remarkIsUpMap: Map<number, boolean> = new Map<number, boolean>();
   constructor() { }
 
   ngOnInit() {
   }
 
   changeNav(navKeyNum: number, itemNavType: string) {
-    if(itemNavType == 'up-down' && (this.isDown == undefined || (this.remarkKeyNum == navKeyNum))) {
-      this.isDown = (this.isDown == undefined) ? false : !this.isDown;
-      this.remarkKeyNum = navKeyNum;
+    let isDownPre = this.remarkIsUpMap.get(navKeyNum);
+    if (itemNavType == 'up-down' && this.navInfo.activeNum == navKeyNum) {
+      let isDown = (isDownPre == undefined) ? false : !isDownPre;
+      this.remarkIsUpMap.set(navKeyNum, isDown);
+    } else if (itemNavType == 'up-down' && isDownPre == undefined) {
+      this.remarkIsUpMap.set(navKeyNum, false);
     }
     if (this.navInfo.activeNum == navKeyNum && itemNavType != 'up-down') return;
     this.navInfo.activeNum = navKeyNum;
@@ -35,15 +39,14 @@ export class NavCategoryComponent implements OnInit {
       backInfo = {
         navType: this.navInfo.navType,
         itemKey:navKeyNum,
-        orderByDown: !this.isDown,
+        orderByDown: !this.remarkIsUpMap.get(navKeyNum),
       };
     } else {
       backInfo = {
         navType: this.navInfo.navType,
-        itemKey:navKeyNum
+        itemKey: navKeyNum
       };
     }
     this.categoryNavNode.emit(backInfo);
   }
-
 }
