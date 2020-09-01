@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-01 09:39:22
+ * @LastEditTime: 2020-09-01 17:43:15
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -182,7 +182,7 @@ export class IndexComponent implements OnInit {
       background:'#f7f6f2',
       fontSzie:'12px',
       fontFamily:'\'Microsoft YaHei\',sans-serif',
-      activeNum:1,
+      activeNum: 6,
       activeColor:'#ed4259',
       splitSymbol:'|'
     }
@@ -212,6 +212,48 @@ export class IndexComponent implements OnInit {
         title:'数量排行',
         itemNavType: 'up-down',
         imgUrl: '/assets/fonts/icons/arrow-left.svg',
+      },
+      {
+        navKeyNum: 6,
+        title:'总分类1',
+        itemNavType: 'drop-down',
+        dropDownActiveKey: 1,
+        dropDownActiveTitle: '我的世界1',
+        dropDownItemKeys:[
+          {
+            key: 1,
+            title: '我的世界1'
+          },
+          {
+            key: 2,
+            title: '我的世界2'
+          },
+        ],
+      },
+      {
+        navKeyNum:7,
+        title:'分类3',
+      },
+      {
+        navKeyNum: 8,
+        title:'总分类2',
+        itemNavType: 'drop-down',
+        dropDownActiveKey: 1,
+        dropDownActiveTitle: '我的世界3',
+        dropDownItemKeys:[
+          {
+            key: 1,
+            title: '我的世界3'
+          },
+          {
+            key: 2,
+            title: '我的世界4'
+          },
+        ],
+      },
+      {
+        navKeyNum:9,
+        title:'分类4',
       },
     ]
 

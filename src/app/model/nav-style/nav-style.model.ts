@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 11:43:03
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-31 17:24:03
+ * @LastEditTime: 2020-09-01 17:06:11
  */
 export class NavInfo{
     navType:string;
@@ -44,6 +44,15 @@ export class NavCategoryItem{
     navKeyNum: number;
     title: string;
     itemNavType: string; // title or up-down, defualt is title.
+    imgUrl: string;
+    dropDownActiveKey: number;// 0 is parent Category, and other item begin 1, and the key is only.
+    dropDownActiveTitle: string;
+    dropDownItemKeys: Array<NavDropDownItem>;
+}
+
+export class NavDropDownItem{
+    key: number;
+    title: string;
 }
 
 export class NavVerticalInfo{

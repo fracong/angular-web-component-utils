@@ -1,12 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-.right-triangle{
+.icon-triangle{
     display: inline-block;
     width: 0;
     height: 0;
-    margin: -3px 0 0 8px;
     vertical-align: middle;
     border-top: 4px solid transparent;
     border-right: 4px solid transparent;
     border-bottom: 4px solid transparent;
-    border-left: 4px solid #ed4259;
+    border-left: 4px solid transparent;
 }

@@ -2,10 +2,11 @@
  * @Author: fracong
  * @Date: 2020-08-20 13:45:45
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-01 09:33:23
+ * @LastEditTime: 2020-09-01 17:40:48
  */
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { NavCategoryItem, NavCategoryInfo } from 'src/app/model/nav-style/nav-style.model';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener, ViewChildren, QueryList, ElementRef } from '@angular/core';
+import { NavCategoryItem, NavCategoryInfo, NavDropDownItem } from 'src/app/model/nav-style/nav-style.model';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-nav-category',
@@ -16,32 +17,100 @@ export class NavCategoryComponent implements OnInit {
   @Input('navInfo') navInfo: NavCategoryInfo;
   @Input('navItemList') navItemList: Array<NavCategoryItem>;
   @Output('categoryNavNode') categoryNavNode = new EventEmitter<any>();
+  @ViewChildren('dropDown') dropDown: QueryList<ElementRef>;
+  isHover:boolean;
+  hoverNavKeyNum: number;
   isDown: boolean;
-  // remarkKeyNum: number;
-  remarkIsUpMap: Map<number, boolean> = new Map<number, boolean>();
+  remarkIsUpDownMap: Map<number, boolean> = new Map<number, boolean>();
+  isShowDropDown: boolean;
+  remarkDropDownNum: number; 
+  remarkDropDownActiveMap: Map<number, NavDropDownItem> = new Map<number, NavDropDownItem>();
   constructor() { }
 
   ngOnInit() {
   }
 
-  changeNav(navKeyNum: number, itemNavType: string) {
-    let isDownPre = this.remarkIsUpMap.get(navKeyNum);
-    if (itemNavType == 'up-down' && this.navInfo.activeNum == navKeyNum) {
-      let isDown = (isDownPre == undefined) ? false : !isDownPre;
-      this.remarkIsUpMap.set(navKeyNum, isDown);
-    } else if (itemNavType == 'up-down' && isDownPre == undefined) {
-      this.remarkIsUpMap.set(navKeyNum, false);
+  @HostListener('document:click', ['$event']) bodyClick(e: any) {
+    if(getTrigger(this.dropDown)){
+      this.isShowDropDown = false;
     }
-    if (this.navInfo.activeNum == navKeyNum && itemNavType != 'up-down') return;
+    function getTrigger(queryList) {
+      let flag=  true;
+      (<HTMLElement[]>e.path).forEach(i=>{
+        flag && queryList.forEach(el => {
+          i.isEqualNode && i.isEqualNode(el.nativeElement) && (flag = false)
+        });
+      });
+      return flag;
+    }
+  }
+
+  changeNav(navKeyNum: number, itemNavType: string) {
+    let isDownPre = this.remarkIsUpDownMap.get(navKeyNum);
+    if (itemNavType == 'up-down') {
+      if(this.navInfo.activeNum == navKeyNum) {
+        let isDown = (isDownPre == undefined) ? false : !isDownPre;
+        this.remarkIsUpDownMap.set(navKeyNum, isDown);
+      } else if (isDownPre == undefined) {
+        this.remarkIsUpDownMap.set(navKeyNum, false);
+      }
+    } else if (itemNavType == 'drop-down') {
+      this.isShowDropDown = !this.isShowDropDown;
+      this.isHover = false;
+      this.remarkDropDownNum = navKeyNum;
+      // this.navInfo.activeNum = navKeyNum;
+      return;
+    } else if (this.navInfo.activeNum == navKeyNum) {
+      return;
+    }
     this.navInfo.activeNum = navKeyNum;
+  }
+
+  isNavActiveColor(navKeyNum: number) {
+    return this.navInfo.activeNum == navKeyNum || (this.isHover && this.hoverNavKeyNum == navKeyNum) ? this.navInfo.activeColor : '#a6a6a6';
+  }
+
+  isNavActiveWeight(navKeyNum: number) {
+    return this.navInfo.activeNum == navKeyNum ? '700' : '400';
+  }
+
+  isActiveDropDown(item: any) {
+    return item.itemNavType == 'drop-down' && this.navInfo.activeNum==item.navKeyNum && item.dropDownActiveNum && item.dropDownActiveNum != 0;
+  }
+
+  selectDropDownItem(navKeyNum: number, itemNavType: string, dropDownItem: NavDropDownItem) {
+    let flag = false;
+    this.navItemList.forEach(element=>{
+      if(navKeyNum == element.navKeyNum) {
+        if (element.dropDownActiveKey == dropDownItem.key) {
+          flag = true;
+          return;
+        }
+        element.dropDownActiveKey = dropDownItem.key;
+        element.dropDownActiveTitle = dropDownItem.title;
+      }
+    });
+    if(flag) return;
+    this.navInfo.activeNum = navKeyNum;
+    this.remarkDropDownActiveMap.set(navKeyNum, dropDownItem);
+    this.backInfo(navKeyNum, itemNavType);
+  }
+
+  backInfo(navKeyNum: number, itemNavType: string) {
     let backInfo: any;
-    if(itemNavType == 'up-down') {
+    if (itemNavType == 'up-down') {
       backInfo = {
         navType: this.navInfo.navType,
         itemKey:navKeyNum,
-        orderByDown: !this.remarkIsUpMap.get(navKeyNum),
+        orderByDown: !this.remarkIsUpDownMap.get(navKeyNum),
       };
-    } else {
+    } else if (itemNavType == 'drop-down') {
+      backInfo = {
+        navType: this.navInfo.navType,
+        itemKey:navKeyNum,
+        activeDropDownKey: this.remarkDropDownActiveMap.get(navKeyNum).key,
+      };
+    }else {
       backInfo = {
         navType: this.navInfo.navType,
         itemKey: navKeyNum
