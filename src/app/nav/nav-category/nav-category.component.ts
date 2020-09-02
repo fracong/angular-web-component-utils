@@ -2,11 +2,10 @@
  * @Author: fracong
  * @Date: 2020-08-20 13:45:45
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-01 17:40:48
+ * @LastEditTime: 2020-09-02 09:10:17
  */
 import { Component, OnInit, Input, Output, EventEmitter, HostListener, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { NavCategoryItem, NavCategoryInfo, NavDropDownItem } from 'src/app/model/nav-style/nav-style.model';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-nav-category',
@@ -25,6 +24,7 @@ export class NavCategoryComponent implements OnInit {
   isShowDropDown: boolean;
   remarkDropDownNum: number; 
   remarkDropDownActiveMap: Map<number, NavDropDownItem> = new Map<number, NavDropDownItem>();
+  remarkItemNavType: string;
   constructor() { }
 
   ngOnInit() {
@@ -57,13 +57,15 @@ export class NavCategoryComponent implements OnInit {
     } else if (itemNavType == 'drop-down') {
       this.isShowDropDown = !this.isShowDropDown;
       this.isHover = false;
-      this.remarkDropDownNum = navKeyNum;
-      // this.navInfo.activeNum = navKeyNum;
+      this.remarkDropDownNum = navKeyNum; // change which drop down is show or hide.
+      this.remarkItemNavType = itemNavType;
       return;
     } else if (this.navInfo.activeNum == navKeyNum) {
       return;
     }
     this.navInfo.activeNum = navKeyNum;
+    this.remarkItemNavType = itemNavType;
+    this.backInfo(navKeyNum, itemNavType);
   }
 
   isNavActiveColor(navKeyNum: number) {
@@ -82,7 +84,7 @@ export class NavCategoryComponent implements OnInit {
     let flag = false;
     this.navItemList.forEach(element=>{
       if(navKeyNum == element.navKeyNum) {
-        if (element.dropDownActiveKey == dropDownItem.key) {
+        if (element.dropDownActiveKey == dropDownItem.key && this.navInfo.activeNum == navKeyNum) {
           flag = true;
           return;
         }

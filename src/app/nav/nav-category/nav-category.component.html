@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-20 13:45:45
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-01 17:42:13
+ * @LastEditTime: 2020-09-02 08:20:35
 -->
 <ng-container>
     <div class="fc-util-category-nav" [ngStyle]="{'height': navInfo.height,'background': navInfo.background, 'font':navInfo.fontSzie+'/'+navInfo.height+' '+navInfo.fontFamily}">
@@ -23,7 +23,7 @@
                 </span>
                 <span #dropDown class="item-drop-down" *ngIf="item.itemNavType == 'drop-down'" 
                     [ngStyle]="{'color': isNavActiveColor(item.navKeyNum), 'font-weight': isNavActiveWeight(item.navKeyNum)}">
-                    <span class="drop-down-title" >{{ (item.dropDownActiveKey == undefined || item.dropDownActiveKey != 0) && item.dropDownActiveTitle? item.dropDownActiveTitle : item.title}}</span>
+                    <span class="drop-down-title" >{{ (item.dropDownActiveKey == undefined || item.dropDownActiveKey == 0) && item.dropDownActiveTitle? item.title : item.dropDownActiveTitle}}</span>
                     <span class="icon-triangle left-triangle" *ngIf="!(isShowDropDown && remarkDropDownNum == item.navKeyNum)" [ngStyle]="{'border-right-color': isNavActiveColor(item.navKeyNum)}"></span>
                     <span class="icon-triangle bottom-triangle" *ngIf="isShowDropDown && remarkDropDownNum == item.navKeyNum" [ngStyle]="{'border-top-color': isNavActiveColor(item.navKeyNum)}"></span>
                     <div class="drop-down-hide"*ngIf="isShowDropDown && remarkDropDownNum == item.navKeyNum" [ngStyle]="{'top': '22px','left': '-5px','width':'100px'}">

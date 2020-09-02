@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-01 17:43:15
+ * @LastEditTime: 2020-09-02 08:23:48
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -238,7 +238,7 @@ export class IndexComponent implements OnInit {
         navKeyNum: 8,
         title:'总分类2',
         itemNavType: 'drop-down',
-        dropDownActiveKey: 1,
+        // dropDownActiveKey: 1,
         dropDownActiveTitle: '我的世界3',
         dropDownItemKeys:[
           {
@@ -253,6 +253,27 @@ export class IndexComponent implements OnInit {
       },
       {
         navKeyNum:9,
+        title:'分类4',
+      },
+      {
+        navKeyNum: 10,
+        title:'总分类2',
+        itemNavType: 'drop-down',
+        // dropDownActiveKey: 1,
+        dropDownActiveTitle: '我的世界3',
+        dropDownItemKeys:[
+          {
+            key: 1,
+            title: '我的世界3'
+          },
+          {
+            key: 2,
+            title: '我的世界4'
+          },
+        ],
+      },
+      {
+        navKeyNum:11,
         title:'分类4',
       },
     ]
