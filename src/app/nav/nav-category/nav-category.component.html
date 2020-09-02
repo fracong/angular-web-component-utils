@@ -2,43 +2,62 @@
  * @Author: fracong
  * @Date: 2020-08-20 13:45:45
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-02 08:20:35
+ * @LastEditTime: 2020-09-02 17:50:00
 -->
 <ng-container>
     <div class="fc-util-category-nav" [ngStyle]="{'height': navInfo.height,'background': navInfo.background, 'font':navInfo.fontSzie+'/'+navInfo.height+' '+navInfo.fontFamily}">
-        <div class="nav-item" [ngClass]="{'nav-up-down': item.itemNavType == 'up-down', 'nav-drop-down': isActiveDropDown(item)}" *ngFor="let item of navItemList; let index = index;">
-            <a class="nav-title" (click)="changeNav(item.navKeyNum, item.itemNavType)" (mouseover)="isHover=true;hoverNavKeyNum=item.navKeyNum;" (mouseleave)="isHover=false;hoverNavKeyNum=undefined;">
-                <span class="item-title" *ngIf="item.itemNavType == undefined || item.itemNavType == 'title'" 
-                    [ngStyle]="{'color': isNavActiveColor(item.navKeyNum), 'font-weight':isNavActiveWeight(item.navKeyNum)}">
-                    {{item.title}}
-                </span>
-                <span class="item-up-down" *ngIf="item.itemNavType == 'up-down'" 
-                    [ngStyle]="{'color': isNavActiveColor(item.navKeyNum), 'font-weight': isNavActiveWeight(item.navKeyNum)}">
-                   <div class="item-up-down-title" >{{item.title}}</div> 
-                    <div class="item-up-down-icon" 
-                        [ngStyle]="{'filter': 'drop-shadow('+isNavActiveColor(item.navKeyNum)+' 80px 0)',
-                        'transform':'rotate('+(remarkIsUpDownMap.get(item.navKeyNum) ? '' : '-')+'90deg) translateX(-80px)',
-                        'background-image':'url('+item.imgUrl+')'}">
-                    </div>
-                </span>
-                <span #dropDown class="item-drop-down" *ngIf="item.itemNavType == 'drop-down'" 
-                    [ngStyle]="{'color': isNavActiveColor(item.navKeyNum), 'font-weight': isNavActiveWeight(item.navKeyNum)}">
-                    <span class="drop-down-title" >{{ (item.dropDownActiveKey == undefined || item.dropDownActiveKey == 0) && item.dropDownActiveTitle? item.title : item.dropDownActiveTitle}}</span>
-                    <span class="icon-triangle left-triangle" *ngIf="!(isShowDropDown && remarkDropDownNum == item.navKeyNum)" [ngStyle]="{'border-right-color': isNavActiveColor(item.navKeyNum)}"></span>
-                    <span class="icon-triangle bottom-triangle" *ngIf="isShowDropDown && remarkDropDownNum == item.navKeyNum" [ngStyle]="{'border-top-color': isNavActiveColor(item.navKeyNum)}"></span>
-                    <div class="drop-down-hide"*ngIf="isShowDropDown && remarkDropDownNum == item.navKeyNum" [ngStyle]="{'top': '22px','left': '-5px','width':'100px'}">
-                        <div class="drop-down-item"
-                            (click)="selectDropDownItem(item.navKeyNum, item.itemNavType, {'key':0, 'title': item.title})">
-                            {{ item.title }}
+        <div class="nav-left-item">
+            <div class="nav-item" [ngClass]="{'nav-up-down': item.itemNavType == 'up-down', 'nav-drop-down': isActiveDropDown(item)}" *ngFor="let item of navItemList; let index = index;">
+                <a class="nav-title" (click)="changeNav(item.navKeyNum, item.itemNavType)" (mouseover)="isHover=true;hoverNavKeyNum=item.navKeyNum;" (mouseleave)="isHover=false;hoverNavKeyNum=undefined;">
+                    <span class="item-title" *ngIf="item.itemNavType == undefined || item.itemNavType == 'title'" 
+                        [ngStyle]="{'color': isNavActiveColor(item.navKeyNum), 'font-weight':isNavActiveWeight(item.navKeyNum)}">
+                        {{item.title}}
+                    </span>
+                    <span class="item-up-down" *ngIf="item.itemNavType == 'up-down'" 
+                        [ngStyle]="{'color': isNavActiveColor(item.navKeyNum), 'font-weight': isNavActiveWeight(item.navKeyNum)}">
+                        <div class="item-up-down-title" >{{item.title}}</div> 
+                        <div class="item-up-down-icon" 
+                            [ngStyle]="{'filter': 'drop-shadow('+isNavActiveColor(item.navKeyNum)+' 80px 0)',
+                            'transform':'rotate('+(remarkIsUpDownMap.get(item.navKeyNum) ? '' : '-')+'90deg) translateX(-80px)',
+                            'background-image':'url('+item.imgUrl+')'}">
                         </div>
-                        <div *ngFor="let dropDownItem of item.dropDownItemKeys" class="drop-down-item"
-                            (click)="selectDropDownItem(item.navKeyNum, item.itemNavType, dropDownItem)">
-                            {{ dropDownItem.title }}
+                    </span>
+                    <span #dropDown class="item-drop-down" *ngIf="item.itemNavType == 'drop-down'" 
+                        [ngStyle]="{'color': isNavActiveColor(item.navKeyNum), 'font-weight': isNavActiveWeight(item.navKeyNum)}">
+                        <span class="drop-down-title" >{{ (item.dropDownActiveKey == undefined || item.dropDownActiveKey == 0) && item.dropDownActiveTitle? item.title : item.dropDownActiveTitle}}</span>
+                        <span class="icon-triangle left-triangle" *ngIf="!(isShowDropDown && remarkDropDownNum == item.navKeyNum)" [ngStyle]="{'border-right-color': isNavActiveColor(item.navKeyNum)}"></span>
+                        <span class="icon-triangle bottom-triangle" *ngIf="isShowDropDown && remarkDropDownNum == item.navKeyNum" [ngStyle]="{'border-top-color': isNavActiveColor(item.navKeyNum)}"></span>
+                        <div class="drop-down-hide"*ngIf="isShowDropDown && remarkDropDownNum == item.navKeyNum" [ngStyle]="{'top': '22px','left': '-5px','width':'100px'}">
+                            <div class="drop-down-item"
+                                (click)="selectDropDownItem(item.navKeyNum, item.itemNavType, {'key':0, 'title': item.title})">
+                                {{ item.title }}
+                            </div>
+                            <div *ngFor="let dropDownItem of item.dropDownItemKeys" class="drop-down-item"
+                                (click)="selectDropDownItem(item.navKeyNum, item.itemNavType, dropDownItem)">
+                                {{ dropDownItem.title }}
+                            </div>
+                        </div>
+                    </span>
+                </a>
+                <span class="nav-point" [ngClass]="{'item-up-down': item.itemNavType == 'up-down', 'item-drop-down': item.itemNavType == 'drop-down'}" *ngIf="index != (navItemList.length - 1)">{{navInfo.splitSymbol}}</span>
+            </div>
+        </div>
+        <div class="nav-right-other" *ngIf="navInfo.isShowRight == undefined || navInfo.isShowRight">
+            <ng-container *ngFor="let rightItem of navInfo.rightInfoList; let rightIndex = index;">
+                <div class="right-item" [ngClass]="['right-item-'+(rightIndex+1)]">
+                    <div class="item-title-icon"  *ngIf="rightItem.type == 'title-icon'" [ngStyle]="{'font':navInfo.fontSzie+'/'+(navInfo.height.replace('px','')/2-1+'px')+' '+navInfo.fontFamily}">
+                        <app-icon-tip  *ngIf="rightItem.position=='left'" [iconTip]="rightItem.iconInfo"></app-icon-tip>
+                        <div [ngClass]="['icon-'+(rightItem.position?rightItem.position:'right')]" [innerHTML]="rightItem.title | transformHtml"></div>
+                        <app-icon-tip  *ngIf="rightItem.position == undefined || rightItem.position=='right'" [iconTip]="rightItem.iconInfo"></app-icon-tip>
+                    </div>
+                    <div class="item-icon"  *ngIf="rightItem.type == 'icon'">
+                        <div class="fc-icon" (click)="rightClick(navInfo.rightIconActiveKey, rightItem.key)"
+                            [ngStyle]="{'background-image':'url('+(navInfo.rightIconActiveKey == rightItem.key ? rightItem.activeUrl:rightItem.iconUrl)+')'}">
                         </div>
                     </div>
-                 </span>
-            </a>
-            <span class="nav-point" [ngClass]="{'item-up-down': item.itemNavType == 'up-down', 'item-drop-down': item.itemNavType == 'drop-down'}" *ngIf="index != (navItemList.length - 1)">{{navInfo.splitSymbol}}</span>
+                    <span class="nav-right-symbol" *ngIf="rightIndex != (navInfo.rightInfoList.length - 1)">{{navInfo.splitSymbol}}</span>
+                </div>
+            </ng-container>
         </div>
     </div>
 </ng-container>

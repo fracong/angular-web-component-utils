@@ -1,0 +1,6 @@
+<div class="icon-tip fc-icon"(mouseover)="isShowTip=true;" (mouseleave)="isShowTip=false;"  [ngStyle]="{'background-image':'url('+iconTip.iconUrl+')'}">
+    <div class="icon-tip-info" *ngIf="isShowTip" [ngClass]="['icon-tip-'+(iconTip.tipPosition?iconTip.tipPosition: 'top')]">
+        <span class="icon-triangle"></span>
+        <div class="icon-tip-title"  [ngStyle]="iconTip.tipStyle">{{iconTip.iconTip}}</div>
+    </div>
+</div>

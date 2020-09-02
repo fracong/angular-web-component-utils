@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 11:43:03
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-01 17:06:11
+ * @LastEditTime: 2020-09-02 17:58:22
  */
 export class NavInfo{
     navType:string;
@@ -38,6 +38,23 @@ export class NavCategoryInfo{
     activeNum: number;
     activeColor: string;
     splitSymbol: string;
+    rightIconActiveKey: number;
+    rightInfoList: any;
+}
+
+export class RightItem{
+    type: string;
+    key: number;
+    title: string;
+    position: string;// left or right, defualt is right.
+    iconInfo: IconInfo;
+}
+
+export class IconInfo{
+    iconUrl:string;
+    iconTip: string;
+    tipStyle: any;
+    tipPosition: string; //top or bottom, defualt is top.
 }
 
 export class NavCategoryItem{

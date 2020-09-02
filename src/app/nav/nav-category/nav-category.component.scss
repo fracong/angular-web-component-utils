@@ -1,68 +1,99 @@
 :host::ng-deep .fc-util-category-nav{
-    width: calc(100%-12px);
-    display: flex;
-    padding-left: 12px;
-    .nav-item{
-        color: #a6a6a6;
-        .nav-point{
-            font: 12px/50px Arial;
-            margin: 0 4px;
-        }
-        .nav-point.item-up-down{
-            margin: 0 4px 0 16px;
-        }
-        .nav-title {
-            padding: 3px 5px;
-            .item-up-down {
-                position: relative;
-                .item-up-down-title{
-                    display: inline-block;
-                }
-                .item-up-down-icon{
-                    display: inline-block;
-                    position: absolute;
-                    top: -5px;
-                    margin-left: -2px;
-                    width:17px;
-                    height:29px;
-                    background-size: 17px 29px;
-                }
+    // width: calc(100%-12px);
+    position: relative;
+    // padding-left: 12px;
+    .nav-left-item{
+        position: absolute;
+        left: 0;
+        display: flex;
+        .nav-item{
+            color: #a6a6a6;
+            .nav-point{
+                font: 12px/50px Arial;
+                margin: 0 4px;
             }
-            .item-drop-down{
-                position: relative;
-                padding: 0px 5px;
-                .left-triangle{
-                    width: 6px;
-                    margin: -1px 0px 0px -4px;
-                }
-                .bottom-triangle{
-                    height: 6px;
-                    margin: 7px 0px 0px 2px;
-                }
-                .drop-down-hide{
-                    position: absolute;
-                    background-color: #fff;
-                    box-shadow: 0 0 4px rgba(0,0,0,.2);
-                    border-radius: 3px;
-                    .drop-down-item{
-                        color: #666;
-                        font: 12px / 16px "Microsoft YaHei", sans-serif;
-                        padding: 5px 10px 5px ;
+            .nav-point.item-up-down{
+                margin: 0 4px 0 16px;
+            }
+            .nav-title {
+                padding: 3px 5px;
+                .item-up-down {
+                    position: relative;
+                    .item-up-down-title{
+                        display: inline-block;
                     }
-                    .drop-down-item:hover{
-                        background-color: #f7f7f7;
-                        color: #262626;
+                    .item-up-down-icon{
+                        display: inline-block;
+                        position: absolute;
+                        top: -5px;
+                        margin-left: -2px;
+                        width:17px;
+                        height:29px;
+                        background-size: 17px 29px;
                     }
                 }
+                .item-drop-down{
+                    position: relative;
+                    padding: 0px 5px;
+                    .left-triangle{
+                        width: 6px;
+                        margin: -1px 0px 0px -4px;
+                    }
+                    .bottom-triangle{
+                        height: 6px;
+                        margin: 7px 0px 0px 2px;
+                    }
+                    .drop-down-hide{
+                        position: absolute;
+                        background-color: #fff;
+                        box-shadow: 0 0 4px rgba(0,0,0,.2);
+                        border-radius: 3px;
+                        .drop-down-item{
+                            color: #666;
+                            font: 12px / 16px "Microsoft YaHei", sans-serif;
+                            padding: 5px 10px 5px ;
+                        }
+                        .drop-down-item:hover{
+                            background-color: #f7f7f7;
+                            color: #262626;
+                        }
+                    }
+                }
             }
         }
+        .nav-item.nav-up-down{
+            overflow: hidden;
+        }
+        .nav-item.nav-drop-down .nav-title{
+            background-color: #f7f7f7;
+            box-shadow: 0 0 4px rgba(0,0,0,.2);
+            border-radius: 3px;
+        }
     }
-    .nav-item.nav-up-down{
-        overflow: hidden;
-    }
-    .nav-item.nav-drop-down .nav-title{
-        background-color: #f7f7f7;
-        box-shadow: 0 0 4px rgba(0,0,0,.2);
-        border-radius: 3px;
+    .nav-right-other{
+        position: absolute;
+        right: 0;
+        display: flex;
+        .right-item{
+            position: relative;
+            margin: 12.3px 10px 0 5px;
+            .item-title-icon{
+                color: #a6a6a6;
+                display: flex;
+                .icon-left{
+                    margin-left: 5px;
+                }
+                .icon-right{
+                    margin-right: 5px;
+                }
+            }
+            .nav-right-symbol{
+                position: absolute;
+                top: 0;
+                right: -10px;
+                color: #c1bdbd;
+                font: 12px / 22px "Microsoft YaHei", sans-serif;
+            }
+        }
     }
 }

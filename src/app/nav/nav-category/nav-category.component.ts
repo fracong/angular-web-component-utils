@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-20 13:45:45
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-02 09:10:17
+ * @LastEditTime: 2020-09-02 17:51:47
  */
 import { Component, OnInit, Input, Output, EventEmitter, HostListener, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { NavCategoryItem, NavCategoryInfo, NavDropDownItem } from 'src/app/model/nav-style/nav-style.model';
@@ -65,7 +65,7 @@ export class NavCategoryComponent implements OnInit {
     }
     this.navInfo.activeNum = navKeyNum;
     this.remarkItemNavType = itemNavType;
-    this.backInfo(navKeyNum, itemNavType);
+    this.backNavInfo(navKeyNum, itemNavType);
   }
 
   isNavActiveColor(navKeyNum: number) {
@@ -95,10 +95,21 @@ export class NavCategoryComponent implements OnInit {
     if(flag) return;
     this.navInfo.activeNum = navKeyNum;
     this.remarkDropDownActiveMap.set(navKeyNum, dropDownItem);
-    this.backInfo(navKeyNum, itemNavType);
+    this.backNavInfo(navKeyNum, itemNavType);
   }
 
-  backInfo(navKeyNum: number, itemNavType: string) {
+  rightClick(activeRightKey: number,rightKey: number){
+    if(activeRightKey == rightKey) return;
+    this.navInfo.rightIconActiveKey = rightKey;
+    activeRightKey = rightKey;
+    let backInfo = {
+      navType: this.navInfo.navType,
+      rightKey: rightKey,
+    };
+    this.categoryNavNode.emit(backInfo);
+  }
+
+  backNavInfo(navKeyNum: number, itemNavType: string) {
     let backInfo: any;
     if (itemNavType == 'up-down') {
       backInfo = {

@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-02 08:23:48
+ * @LastEditTime: 2020-09-02 17:39:22
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -184,7 +184,49 @@ export class IndexComponent implements OnInit {
       fontFamily:'\'Microsoft YaHei\',sans-serif',
       activeNum: 6,
       activeColor:'#ed4259',
-      splitSymbol:'|'
+      splitSymbol:'|',
+      // isShowRight: true,
+      rightIconActiveKey:'2',
+      rightInfoList: [
+        {
+          type: 'title-icon',
+          key: 0,
+          title:'222<a style="color:red;">&nbsp;&nbsp;&lt;html代码&gt;&nbsp;&nbsp;</a>22',
+          position: 'left',
+          iconInfo: {
+            iconUrl: 'assets/fonts/icons/question.svg',
+            iconTip: '我的世界我的世界1',
+            tipStyle:{
+              width:'140px',
+              left: '-65px',
+            },
+            tipPosition:'top',
+          }
+        },
+        {
+          type: 'title-icon',
+          key: 1,
+          title:'1111111',
+          // position: 'right',
+          iconInfo:{
+            iconUrl: 'assets/fonts/icons/question.svg',
+            iconTip: '我的世界我的世界2,我的世界我的世界2',
+            tipPosition:'top',
+          }
+        },
+        {
+          type: 'icon',
+          key: 2,
+          iconUrl: 'assets/fonts/icons/menu-blocky.svg',
+          activeUrl:'assets/fonts/icons/menu-blocky-active.svg',
+        },
+        {
+          type: 'icon',
+          key: 3,
+          iconUrl: 'assets/fonts/icons/menu-list.svg',
+          activeUrl:'assets/fonts/icons/menu-list-active.svg',
+        }
+      ],
     }
 
     this.categoryNavList = [
@@ -257,7 +299,7 @@ export class IndexComponent implements OnInit {
       },
       {
         navKeyNum: 10,
-        title:'总分类2',
+        title:'总分类3',
         itemNavType: 'drop-down',
         // dropDownActiveKey: 1,
         dropDownActiveTitle: '我的世界3',
@@ -276,7 +318,7 @@ export class IndexComponent implements OnInit {
         navKeyNum:11,
         title:'分类4',
       },
-    ]
+    ];
 
     this.verticalNavInfo={
       navType:'app',
