@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 11:43:03
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-02 17:58:22
+ * @LastEditTime: 2020-09-03 10:18:50
  */
 export class NavInfo{
     navType:string;
@@ -46,7 +46,7 @@ export class RightItem{
     type: string;
     key: number;
     title: string;
-    position: string;// left or right, defualt is right.
+    position: string;// left or right, defualt is right; if no have icon, the value is '', and the iconInfo is none.
     iconInfo: IconInfo;
 }
 

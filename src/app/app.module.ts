@@ -21,6 +21,7 @@ import { NormalListComponent } from './list/normal-list/normal-list.component';
 import { NormalTableComponent } from './table/normal-table/normal-table.component';
 import { TransformHtmlPipe } from './pipe/transform-html.pipe';
 import { IconTipComponent } from './tip/icon-tip/icon-tip.component';
+import { NormalLabelPageComponent } from './label-page/normal-label-page/normal-label-page.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { IconTipComponent } from './tip/icon-tip/icon-tip.component';
     NormalListComponent,
     NormalTableComponent,
     TransformHtmlPipe,
-    IconTipComponent
+    IconTipComponent,
+    NormalLabelPageComponent
   ],
   imports: [
     BrowserModule,

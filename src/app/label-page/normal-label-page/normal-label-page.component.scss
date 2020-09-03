@@ -1,0 +1,27 @@
+:host::ng-deep .fc-util-label-page{
+    border-bottom: #a6a6a6 1px solid;
+    height: 30px;
+    .label-item{
+        cursor: pointer;
+        display: inline-block;
+        border-top: transparent 2px solid;
+        border-right: transparent 1px solid;
+        border-left: transparent 1px solid;
+        .item-font{
+            font: 12px/25px '-apple-system',Simsun;
+            height: 29px;
+            margin: 0 5px;
+            text-align: center;
+        }
+    }
+    .label-item.active{
+        background-color: #fff;
+        border-top: #ed4259 2px solid;
+        border-right: #a6a6a6 1px solid;
+        border-left: #a6a6a6 1px solid;
+        .item-font{
+            font-weight: 600;
+            color: #ed4259;
+        }
+    }
+}

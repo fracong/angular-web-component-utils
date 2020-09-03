@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-31 15:21:08
+ * @LastEditTime: 2020-09-03 13:48:09
 -->
 <div class="fc-util">
     <div class="fc-top">
@@ -10,6 +10,10 @@
         <app-nav-category [navItemList]="categoryNavList" [navInfo]="categoryNavInfo" (categoryNavNode)="changeCategoryNavList($event)"></app-nav-category>
     </div>
     <div class="fc-bottom">
+        <app-normal-label-page [listInfo]="listInfo" (labelPageNode)="labelPageBack($event)">
+
+            <div>aaaaaaaaaaaaaaaaaa</div>
+        </app-normal-label-page>
         <app-normal-list #normalList [listInfo]="normalListInfo" [tableList]="normalTableList" [fieldList]="normalFieldList" (tableButtonClick)="clickBackInfo($event)"></app-normal-list>
         <app-carousel-normal [carouselInfo]="carouselInfo" [carouselItemList] = "carouselItemList"></app-carousel-normal>
         <app-ranking-list 

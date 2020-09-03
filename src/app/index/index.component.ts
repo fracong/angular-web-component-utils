@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-02 17:39:22
+ * @LastEditTime: 2020-09-03 14:39:51
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -27,6 +27,7 @@ export class IndexComponent implements OnInit {
   normalListInfo: any;
   normalTableList: any;
   normalFieldList: any;
+  listInfo: any;
 
   constructor() { }
 
@@ -211,7 +212,7 @@ export class IndexComponent implements OnInit {
           iconInfo:{
             iconUrl: 'assets/fonts/icons/question.svg',
             iconTip: '我的世界我的世界2,我的世界我的世界2',
-            tipPosition:'top',
+            tipPosition:'bottom',
           }
         },
         {
@@ -636,7 +637,43 @@ export class IndexComponent implements OnInit {
         time: '2020-07-13',
       }
     ];
+
+    this.listInfo = {
+      labelPageType: 'normal',
+      activeItemKey: 2,
+      // height:'30px',
+      // activeColor: '#ed4259',
+      // fontSize: '14px',
+      labelList: [
+        {
+          key: 1,
+          title: '11111111',
+          width: '80px',
+        },
+        {
+          key: 2,
+          title: '2222222',
+          width: '80px',
+        },
+        {
+          key: 3,
+          title: '33333333',
+          width: '80px',
+        },
+        {
+          key: 4,
+          title: '444444',
+          width: '80px',
+        },
+        {
+          key: 5,
+          title: '55555555555',
+          width: '90px',
+        }
+      ],
+    };
   }
+
   
   changeNavList(e: any) {
     console.info(e)
@@ -659,5 +696,9 @@ export class IndexComponent implements OnInit {
 
   getNormalListCheckedKeyList(){
     console.info(this.normalList.getCheckedKeyList());
+  }
+
+  labelPageBack(e: any){
+    console.info(e);
   }
 }
