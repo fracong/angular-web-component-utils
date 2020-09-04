@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-03 14:39:51
+ * @LastEditTime: 2020-09-04 11:58:41
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -640,8 +640,9 @@ export class IndexComponent implements OnInit {
 
     this.listInfo = {
       labelPageType: 'normal',
+      // styleType: 'bottom',
       activeItemKey: 2,
-      // height:'30px',
+      labelHeight:'30px',
       // activeColor: '#ed4259',
       // fontSize: '14px',
       labelList: [

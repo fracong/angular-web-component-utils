@@ -1,27 +1,41 @@
 :host::ng-deep .fc-util-label-page{
-    border-bottom: #a6a6a6 1px solid;
-    height: 30px;
-    .label-item{
-        cursor: pointer;
-        display: inline-block;
-        border-top: transparent 2px solid;
-        border-right: transparent 1px solid;
-        border-left: transparent 1px solid;
-        .item-font{
-            font: 12px/25px '-apple-system',Simsun;
-            height: 29px;
-            margin: 0 5px;
-            text-align: center;
+    .label-page-top{
+        border-bottom: #e6e1e1 1px solid;
+        height: 30px;
+        background: rgb(247, 246, 242);
+        .label-item{
+            cursor: pointer;
+            display: inline-block;
+            border-top: transparent 2px solid;
+            border-right: transparent 1px solid;
+            border-left: transparent 1px solid;
+            .item-font{
+                font: 12px/25px '-apple-system',Simsun;
+                height: 29px;
+                margin: 0 5px;
+                text-align: center;
+            }
+        }
+        .label-item:hover{
+            color: #ed4259;
         }
     }
-    .label-item.active{
+    .label-page-top.style-top .label-item.active{
         background-color: #fff;
-        border-top: #ed4259 2px solid;
-        border-right: #a6a6a6 1px solid;
-        border-left: #a6a6a6 1px solid;
+        border-top-color: #ed4259;
+        border-right-color: #e6e1e1;
+        border-left-color: #e6e1e1;
         .item-font{
             font-weight: 600;
             color: #ed4259;
+        }
+    }
+    .label-page-top.style-bottom .label-item.active{
+        border-bottom: #ed4259 2px solid;
+        .item-font{
+            font-weight: 600;
+            color: #ed4259;
+            height: 27px;
         }
     }
 }
