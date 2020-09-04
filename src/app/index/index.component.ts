@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-04 11:58:41
+ * @LastEditTime: 2020-09-04 13:48:00
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -27,7 +27,7 @@ export class IndexComponent implements OnInit {
   normalListInfo: any;
   normalTableList: any;
   normalFieldList: any;
-  listInfo: any;
+  labelListInfo: any;
 
   constructor() { }
 
@@ -322,13 +322,13 @@ export class IndexComponent implements OnInit {
     ];
 
     this.verticalNavInfo={
-      navType:'app',
+      navType:'appVerticalNav',
       title:'热门应用排名',
       titleFontSize:'16px',
       width:'250px',
       activeColor: '#ed4259',
       hoverColor:'#a6a6a6',
-      activeType:'payRanking',
+      activeKey:1,
       itemFontSize:'14px',
       itemMargin:'15px',
     }
@@ -336,11 +336,11 @@ export class IndexComponent implements OnInit {
     this.verticalNavList=[
       {
         title:'支付榜',
-        type:'payRanking'
+        key: 1
       },
       {
         title:'视频榜',
-        type:'viewRanking'
+        key: 2
       }
     ];
 
@@ -638,13 +638,13 @@ export class IndexComponent implements OnInit {
       }
     ];
 
-    this.listInfo = {
+    this.labelListInfo = {
       labelPageType: 'normal',
       // styleType: 'bottom',
       activeItemKey: 2,
       labelHeight:'30px',
-      // activeColor: '#ed4259',
-      // fontSize: '14px',
+      activeColor: '#ed4259',
+      fontSize: '14px',
       labelList: [
         {
           key: 1,

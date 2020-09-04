@@ -4,6 +4,7 @@
         height: 30px;
         background: rgb(247, 246, 242);
         .label-item{
+            box-sizing: border-box;
             cursor: pointer;
             display: inline-block;
             border-top: transparent 2px solid;
@@ -15,9 +16,6 @@
                 margin: 0 5px;
                 text-align: center;
             }
-        }
-        .label-item:hover{
-            color: #ed4259;
         }
     }
     .label-page-top.style-top .label-item.active{

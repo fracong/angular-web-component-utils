@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 11:43:03
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-03 10:18:50
+ * @LastEditTime: 2020-09-04 13:45:22
  */
 export class NavInfo{
     navType:string;
@@ -80,12 +80,11 @@ export class NavVerticalInfo{
     bgColor:string;
     activeColor: string;
     hoverColor:string;
-    activeType: string;
+    activeKey: number;
     itemFontSize: string;
 }
 
 export class NavVerticalItem{
     title: string;
-    type: string;
-    margin: string;
+    key: number;
 }

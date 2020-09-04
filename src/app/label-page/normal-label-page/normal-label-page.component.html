@@ -2,17 +2,20 @@
  * @Author: fracong
  * @Date: 2020-09-03 10:47:11
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-04 12:33:03
+ * @LastEditTime: 2020-09-04 14:01:35
 -->
 <ng-container>
     <div class="fc-util-label-page">
         <div class="label-page-top" [ngStyle]="{'height': listInfo.labelHeight}" [ngClass]="['style-'+(listInfo.styleType?listInfo.styleType:'top')]">
             <div class="label-item" *ngFor="let item of listInfo.labelList" [ngClass]="{'active': listInfo.activeItemKey == item.key}"
-                [ngStyle]="{'border-top-color': listInfo.activeItemKey == item.key? listInfo.activeColor: ''}"(click)="changeLabel(item.key);">
+                [ngStyle]="{'border-top-color': (listInfo.activeItemKey == item.key && (listInfo.styleType == undefined || listInfo.styleType == 'top'))? listInfo.activeColor: '',
+                'border-bottom-color': (listInfo.activeItemKey == item.key && listInfo.styleType == 'bottom')? listInfo.activeColor: ''}"
+                (click)="changeLabel(item.key);">
                 <div class="item-font" (mouseover)="isHover=true;remarkKey=item.key;" (mouseleave)="isHover=false;remarkKey=item.key;"
-                    [ngStyle]="{'width': item.width, 'height': listInfo.height?(listInfo.height.replace('px','')-1 +'px'):'','font-size':listInfo.fontSize?listInfo.fontSize:'',
-                        'color': (listInfo.activeItemKey == item.key)? listInfo.activeColor: '',
-                        'color': (isHover == true && remarkKey == item.key && listInfo.activeItemKey != item.key)? listInfo.activeColor: ''}">
+                    [ngStyle]="{'width': item.width,'font-size':listInfo.fontSize?listInfo.fontSize:'',
+                        'height': listInfo.labelHeight ?listInfo.labelHeight.replace('px','')-((listInfo.styleType == undefined || listInfo.styleType == 'top')?1:(listInfo.styleType == 'bottom')?3:'') +'px' :'',
+                        'color': (listInfo.activeItemKey == item.key)? listInfo.activeColor: (isHover&& remarkKey == item.key? listInfo.activeColor:''),
+                        'line-height':listInfo.labelHeight.replace('px','')-5+'px'}">
                     {{item.title}}
                 </div>
             </div>
