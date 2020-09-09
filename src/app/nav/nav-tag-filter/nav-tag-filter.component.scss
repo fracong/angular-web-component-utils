@@ -1,0 +1,31 @@
+:host::ng-deep .fc-util-nav-tag-filter{
+    .item-title{
+        font: 700 12px/18px '-apple-system',Simsun;
+        margin-bottom: 5px;
+    }
+    .selected-tags{
+        .selected-tags-list{
+            min-height: 32px;
+            margin-top: 5px;
+        }
+    }
+    .tag-category{
+        border-bottom: 1px #ebebeb solid;
+        padding: 5px 0;
+        margin-bottom: 5px;
+    }
+    .tag-normal{
+        cursor: pointer;
+        margin: 5px 2px;
+        font-size: 12px;
+        padding: 2px;
+        font: 12px/18px "Microsoft YaHei", sans-serif;
+    }
+    .tag-normal:hover{
+        color: red;
+    }
+    .tag-normal.active{
+        color: #fff;
+        background-color: red;
+    }
+}

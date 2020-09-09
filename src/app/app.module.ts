@@ -22,6 +22,8 @@ import { NormalTableComponent } from './table/normal-table/normal-table.componen
 import { TransformHtmlPipe } from './pipe/transform-html.pipe';
 import { IconTipComponent } from './tip/icon-tip/icon-tip.component';
 import { NormalLabelPageComponent } from './label-page/normal-label-page/normal-label-page.component';
+import { NavTagFilterComponent } from './nav/nav-tag-filter/nav-tag-filter.component';
+import { TagMinusComponent } from './tag/tag-minus/tag-minus.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { NormalLabelPageComponent } from './label-page/normal-label-page/normal-
     NormalTableComponent,
     TransformHtmlPipe,
     IconTipComponent,
-    NormalLabelPageComponent
+    NormalLabelPageComponent,
+    NavTagFilterComponent,
+    TagMinusComponent
   ],
   imports: [
     BrowserModule,

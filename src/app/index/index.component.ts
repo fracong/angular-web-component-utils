@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-04 13:48:00
+ * @LastEditTime: 2020-09-09 15:38:51
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -28,6 +28,9 @@ export class IndexComponent implements OnInit {
   normalTableList: any;
   normalFieldList: any;
   labelListInfo: any;
+  tagStyle: any;
+  selectedKeyList:any;
+  categoryTagList: any;
 
   constructor() { }
 
@@ -673,6 +676,37 @@ export class IndexComponent implements OnInit {
         }
       ],
     };
+
+    this.tagStyle = {
+      fontSize: '12px',
+      color:'#fff',
+      bgcolor:'#a3a5a9',
+      svgBgcolor:'rgb(146, 146, 148)',
+      fontWeight:'600',
+      tagSize: '22px'
+    }
+    this.selectedKeyList = [1,2];
+
+    this.categoryTagList=[
+      {
+        categoryTitle: '视频',
+        tagList: [
+          {
+            key: 1,
+            title: '娱乐'
+          },
+          {
+            key: 2,
+            title: '体育'
+          },
+          {
+            key: 3,
+            title: '新闻'
+          },
+        ]
+      }
+    ];
+
   }
 
   
@@ -700,6 +734,10 @@ export class IndexComponent implements OnInit {
   }
 
   labelPageBack(e: any){
+    console.info(e);
+  }
+
+  deleteSelectedTagBack(e: any){
     console.info(e);
   }
 }

@@ -1,0 +1,22 @@
+:host::ng-deep  .fc-tag{
+    position: relative;
+    padding: 2px 25px 2px 10px;
+    margin-left: 5px;
+    border-radius: 14px;
+    background-color: #a3a5a9;
+    font: 14px/24px "Microsoft YaHei", sans-serif;
+    .import-svg{
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+        opacity: 0.7;
+        svg{
+            width: 28px;
+            height: 28px;
+        }
+    }
+    .import-svg:hover{
+        opacity: 1;
+    }
+}
