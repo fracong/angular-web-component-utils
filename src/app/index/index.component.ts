@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-09 15:38:51
+ * @LastEditTime: 2020-09-09 17:02:55
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -680,7 +680,6 @@ export class IndexComponent implements OnInit {
     this.tagStyle = {
       fontSize: '12px',
       color:'#fff',
-      bgcolor:'#a3a5a9',
       svgBgcolor:'rgb(146, 146, 148)',
       fontWeight:'600',
       tagSize: '22px'
@@ -690,6 +689,7 @@ export class IndexComponent implements OnInit {
     this.categoryTagList=[
       {
         categoryTitle: '视频',
+        bgcolor: 'red',
         tagList: [
           {
             key: 1,
@@ -702,6 +702,24 @@ export class IndexComponent implements OnInit {
           {
             key: 3,
             title: '新闻'
+          },
+        ]
+      },
+      {
+        categoryTitle: '图片',
+        bgcolor: 'purple',
+        tagList: [
+          {
+            key: 4,
+            title: '电影'
+          },
+          {
+            key: 5,
+            title: '音乐'
+          },
+          {
+            key: 6,
+            title: '广告'
           },
         ]
       }

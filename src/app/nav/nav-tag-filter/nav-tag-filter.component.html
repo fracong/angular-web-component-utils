@@ -1,8 +1,8 @@
 <!--
- * @Author: ...
+ * @Author: fracong
  * @Date: 2020-09-04 15:58:08
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-09 15:15:24
+ * @LastEditTime: 2020-09-09 16:26:43
 -->
 <ng-container>
     <div class="fc-util-nav-tag-filter"[ngStyle]="{'width':'600px'}">
@@ -10,14 +10,14 @@
             <div class="selected-tags-title item-title">已选</div>
             <div class="fc-util-tag-list selected-tags-list">
                 <div class="tag-item" *ngFor="let tagItem of selectedTagList">
-                    <app-tag-minus [tag]="tagItem" [tagStyle]="tagStyle" (clickBack)="deleteSelectedTag($event)"></app-tag-minus>
+                    <app-tag-minus [tag]="tagItem" [tagStyle]="tagStyle" [bgcolor]="tagBgcolorMap.get(tagItem.key)" (clickBack)="deleteSelectedTag($event)"></app-tag-minus>
                 </div>
             </div>
         </div>
         <div class="filter-type-items tag-category">
             <div class="filter-type-item" *ngFor="let categoryTag of categoryTagList">
                 <div class="filter-type-title item-title">{{categoryTag.categoryTitle}}</div>
-                <div class="fc-util-tag-list filter-type-list">
+                <div class="fc-util-tag-list filter-type-list" [ngClass]="['active-'+categoryTag.bgcolor]">
                     <div class="tag-item tag-normal" [ngClass]="{'active': selectedKeyList.includes(tagItem.key)}" *ngFor="let tagItem of categoryTag.tagList" (click)="clickTag(tagItem.key);">{{tagItem.title}}</div>
                 </div>
             </div>

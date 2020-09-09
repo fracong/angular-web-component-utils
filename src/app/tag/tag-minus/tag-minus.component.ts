@@ -15,6 +15,7 @@ import { Tag, TagStyle } from 'src/app/model/tag/tag.model';
 export class TagMinusComponent implements OnInit {
   @Input('tag') tag: Tag;
   @Input('tagStyle') tagStyle: TagStyle;
+  @Input('bgcolor') bgcolor: string;
   @Output('clickBack') clickBack = new EventEmitter<any>();
 
   constructor() { }

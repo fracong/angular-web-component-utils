@@ -13,6 +13,7 @@ export class NavTagFilterComponent implements OnInit {
   @Input('tagStyle') tagStyle: TagStyle;
   @Output('deleteSelectedTagBack') deleteSelectedTagBack = new EventEmitter<any>();
   tagMap = new Map<number, string>();
+  tagBgcolorMap = new Map<number, string>();
 
   constructor() { }
 
@@ -21,7 +22,9 @@ export class NavTagFilterComponent implements OnInit {
     this.categoryTagList.forEach((element)=>{
       let tagList = element.tagList;
       tagList.forEach((tag)=>{
+        if(this.tagMap.has(tag.key)) throw new Error('Duplicate key['+tag.key+'] in tag!');
         this.tagMap.set(tag.key, tag.title);
+        this.tagBgcolorMap.set(tag.key, element.bgcolor);
       });
     });
     this.reloadSelectTagList();
@@ -30,7 +33,7 @@ export class NavTagFilterComponent implements OnInit {
   deleteSelectedTag(tag: Tag) {
     this.selectedKeyList.splice(this.selectedKeyList.indexOf(tag.key), 1);
     this.reloadSelectTagList();
-    this.deleteSelectedTagBack.emit(this.selectedKeyList);
+    this.backInfo();
   }
 
   clickTag(key: number) {
@@ -40,17 +43,25 @@ export class NavTagFilterComponent implements OnInit {
       this.selectedKeyList.push(key);
     }
     this.reloadSelectTagList();
-    this.deleteSelectedTagBack.emit(this.selectedKeyList);
+    this.backInfo();
   }
 
   reloadSelectTagList() {
-    let newSelectedTagList = new Array<Tag>();
+    let newTagList = new Array<Tag>();
     this.selectedKeyList.forEach(element => {
       let tag = new Tag();
       tag.key = element;
       tag.title = this.tagMap.get(element);
-      newSelectedTagList.push(tag);
+      newTagList.push(tag);
     });
-    this.selectedTagList = newSelectedTagList;
+    this.selectedTagList = newTagList;
+  }
+
+  backInfo(){
+    let backList = new Array<number>();
+    this.selectedKeyList.forEach(element => {
+      backList.push(element);
+    });
+    this.deleteSelectedTagBack.emit(backList.sort());
   }
 }

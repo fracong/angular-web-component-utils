@@ -22,10 +22,33 @@
         font: 12px/18px "Microsoft YaHei", sans-serif;
     }
     .tag-normal:hover{
-        color: red;
+        color:  #ff4141;
     }
-    .tag-normal.active{
+    .active-red .tag-normal.active{
         color: #fff;
-        background-color: red;
+        background-color: rgb(255, 65, 65);
+    }
+    .active-blue .tag-normal.active{
+        color: #fff;
+        background-color: #5f5ffc;
+    }
+    .active-yellow .tag-normal.active{
+        background-color:#d6c20f;
+    }
+    .active-gray .tag-normal.active{
+        color: #fff;
+        background-color: #545457;
+    }
+    .active-green .tag-normal.active{
+        color: #fff;
+        background-color: #1ea50d;
+    }
+    .active-pink .tag-normal.active{
+        color: #fff;
+        background-color: #d41a9d;
+    }
+    .active-purple .tag-normal.active{
+        color: #fff;
+        background-color: #861186;
     }
 }
