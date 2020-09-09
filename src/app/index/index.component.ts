@@ -28,7 +28,7 @@ export class IndexComponent implements OnInit {
   normalTableList: any;
   normalFieldList: any;
   labelListInfo: any;
-  tagStyle: any;
+  navTagFilterInfo: any;
   selectedKeyList:any;
   categoryTagList: any;
 
@@ -677,12 +677,14 @@ export class IndexComponent implements OnInit {
       ],
     };
 
-    this.tagStyle = {
-      fontSize: '12px',
-      color:'#fff',
-      svgBgcolor:'rgb(146, 146, 148)',
-      fontWeight:'600',
-      tagSize: '22px'
+    this.navTagFilterInfo = {
+      selectedTitle:'已选',
+      width:'600',
+      tagStyle: {
+        fontSize: '12px',
+        fontWeight:'600',
+        tagSize: '22px'
+      }
     }
     this.selectedKeyList = [1,2];
 

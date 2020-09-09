@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Tag, TagStyle, CategoryTag } from 'src/app/model/tag/tag.model';
+import { Tag, TagStyle, CategoryTag, TagFilterInfo } from 'src/app/model/tag/tag.model';
 
 @Component({
   selector: 'app-nav-tag-filter',
@@ -7,11 +7,11 @@ import { Tag, TagStyle, CategoryTag } from 'src/app/model/tag/tag.model';
   styleUrls: ['./nav-tag-filter.component.scss']
 })
 export class NavTagFilterComponent implements OnInit {
+  @Input('tagFilterInfo')  tagFilterInfo: TagFilterInfo;
   @Input('selectedKeyList') selectedKeyList: Array<number>;
-  selectedTagList: Array<Tag>;
   @Input('categoryTagList') categoryTagList: Array<CategoryTag>;
-  @Input('tagStyle') tagStyle: TagStyle;
   @Output('deleteSelectedTagBack') deleteSelectedTagBack = new EventEmitter<any>();
+  selectedTagList: Array<Tag>;
   tagMap = new Map<number, string>();
   tagBgcolorMap = new Map<number, string>();
 

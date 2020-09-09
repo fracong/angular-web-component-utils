@@ -7,10 +7,10 @@
 <ng-container>
     <div class="fc-util-nav-tag-filter"[ngStyle]="{'width':'600px'}">
         <div class="selected-tags tag-category">
-            <div class="selected-tags-title item-title">已选</div>
+            <div class="selected-tags-title item-title">{{tagFilterInfo.selectedTitle}}</div>
             <div class="fc-util-tag-list selected-tags-list">
                 <div class="tag-item" *ngFor="let tagItem of selectedTagList">
-                    <app-tag-minus [tag]="tagItem" [tagStyle]="tagStyle" [bgcolor]="tagBgcolorMap.get(tagItem.key)" (clickBack)="deleteSelectedTag($event)"></app-tag-minus>
+                    <app-tag-minus [tag]="tagItem" [tagStyle]="tagFilterInfo.tagStyle" [bgcolor]="tagBgcolorMap.get(tagItem.key)" (clickBack)="deleteSelectedTag($event)"></app-tag-minus>
                 </div>
             </div>
         </div>

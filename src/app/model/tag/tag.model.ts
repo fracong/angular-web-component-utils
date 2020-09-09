@@ -4,6 +4,12 @@
  * @LastEditors: fracong
  * @LastEditTime: 2020-09-09 15:57:49
  */
+export class TagFilterInfo{
+    selectedTitle: string;
+    width: string;
+    tagStyle: TagStyle;
+}
+
 export class CategoryTag{
     categoryKey: number;
     categoryTitle: string;
@@ -20,6 +26,4 @@ export class TagStyle{
     fontSize: string;
     fontWeight: string;
     tagSize: string; // px
-    color:string;
-    svgBgcolor: string;
 }
