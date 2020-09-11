@@ -93,6 +93,7 @@ export class NavTagFilterComponent implements OnInit {
   }
 
   clickAllTag(categoryKey: number) {
+    if (!this.categorySelectedTagCountMap.get(categoryKey)) return;
     let category = this.getCategoryByKey(categoryKey);
     category.tagList.forEach((element)=>{
       if(this.selectedKeyList.includes(element.key)){

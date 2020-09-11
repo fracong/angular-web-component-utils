@@ -679,6 +679,7 @@ export class IndexComponent implements OnInit {
 
     this.navTagFilterInfo = {
       selectedTitle:'已选',
+      selectedTitleBgcolor: 'red',
       categoryAllTitle: '全部',
       width:'600px',
       tagStyle: {
@@ -698,7 +699,7 @@ export class IndexComponent implements OnInit {
         type: 'up'
       }
     }
-    this.selectedKeyList = [1,2,10];
+    this.selectedKeyList = [1,2,7];
 
     this.categoryTagList=[
       {

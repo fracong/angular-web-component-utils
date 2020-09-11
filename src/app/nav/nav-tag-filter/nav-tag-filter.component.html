@@ -14,7 +14,7 @@
     <div class="fc-util-nav-tag-filter"[ngStyle]="{'width':tagFilterInfo.width}">
         <div class="selected-tags tag-category">
             <div class="selected-tags-title item-title">{{tagFilterInfo.selectedTitle}}</div>
-            <div class="fc-util-tag-list selected-tags-list active-black">
+            <div class="fc-util-tag-list selected-tags-list"[ngClass]="['active-'+(tagFilterInfo.selectedTitleBgcolor ? tagFilterInfo.selectedTitleBgcolor : 'black')]">
                 <div class="tag-item tag-normal active" 
                     *ngIf="tagFilterInfo.categoryAllTitle && (!selectedKeyList || selectedKeyList.length == 0)">
                     {{tagFilterInfo.categoryAllTitle}}
