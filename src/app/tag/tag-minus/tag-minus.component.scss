@@ -31,7 +31,7 @@
     &.color-gray{
         background-color: #abacb1;
         .path-other{
-            fill: #545457;
+            fill: #777777;
         }
     }
     &.color-yellow{
@@ -63,6 +63,13 @@
         color: #fff;
         .path-other{
             fill: #861186;
+        }
+    }
+    &.color-black{
+        background-color: #3e3e3e;
+        color: #fff;
+        .path-other{
+            fill: #000000;
         }
     }
 }

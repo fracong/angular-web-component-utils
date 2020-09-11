@@ -2,6 +2,7 @@
     .item-title{
         font: 700 12px/18px '-apple-system',Simsun;
         margin-bottom: 5px;
+        margin-top: 5px;
     }
     .selected-tags{
         .selected-tags-list{
@@ -11,7 +12,7 @@
     }
     .tag-category{
         border-bottom: 1px #ebebeb solid;
-        padding: 5px 0;
+        padding: 0 0 5px;
         margin-bottom: 5px;
     }
     .tag-normal{
@@ -37,7 +38,7 @@
     }
     .active-gray .tag-normal.active{
         color: #fff;
-        background-color: #545457;
+        background-color: #777777;
     }
     .active-green .tag-normal.active{
         color: #fff;
@@ -50,5 +51,9 @@
     .active-purple .tag-normal.active{
         color: #fff;
         background-color: #861186;
+    }
+    .active-black .tag-normal.active{
+        color: #fff;
+        background-color: #000000;
     }
 }

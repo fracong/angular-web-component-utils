@@ -1,0 +1,26 @@
+<!--
+ * @Author: fracong
+ * @Date: 2020-09-10 10:56:36
+ * @LastEditors: fracong
+ * @LastEditTime: 2020-09-11 09:19:33
+-->
+<ng-container>
+    <div class="tag-item show-hide-btn" [ngStyle]="{'color': isHover? (icon.hoverColor ? icon.hoverColor : '#ff0000') : (icon.color ? icon.color : '#000')}"
+        (mouseover)="isHover=true" (mouseleave)="isHover=false">
+        {{icon.title}}
+        <ng-container *ngIf="(icon.isShowIcon || icon.isShowIcon == undefined)? true : false">
+            <a class="icon-arrow arrow-down" *ngIf="icon.type =='down'">
+                <span [ngStyle]="{'border-top-color': isHover? (icon.hoverColor ? icon.hoverColor : '#ff0000') : (icon.color ? icon.color : '#000')}"><i></i></span>
+            </a>
+            <a class="icon-arrow arrow-up" *ngIf="icon.type =='up'">
+                <span [ngStyle]="{'border-bottom-color': isHover? (icon.hoverColor ? icon.hoverColor : '#ff0000') : (icon.color ? icon.color : '#000')}"><i></i></span>
+            </a>
+            <a class="icon-arrow arrow-left" *ngIf="icon.type =='left'">
+                <span [ngStyle]="{'border-right-color': isHover? (icon.hoverColor ? icon.hoverColor : '#ff0000') : (icon.color ? icon.color : '#000')}"><i></i></span>
+            </a>
+            <a class="icon-arrow arrow-right" *ngIf="icon.type =='right'">
+                <span [ngStyle]="{'border-left-color': isHover? (icon.hoverColor ? icon.hoverColor : '#ff0000') : (icon.color ? icon.color : '#000')}"><i></i></span>
+            </a>
+        </ng-container>
+    </div>
+</ng-container>

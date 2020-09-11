@@ -2,13 +2,23 @@
  * @Author: fracong
  * @Date: 2020-09-04 15:58:08
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-09 16:26:43
+ * @LastEditTime: 2020-09-11 10:22:38
+-->
+<!--
+ * @Author: fracong
+ * @Date: 2020-09-04 15:58:08
+ * @LastEditors: fracong
+ * @LastEditTime: 2020-09-10 10:25:53
 -->
 <ng-container>
-    <div class="fc-util-nav-tag-filter"[ngStyle]="{'width':'600px'}">
+    <div class="fc-util-nav-tag-filter"[ngStyle]="{'width':tagFilterInfo.width}">
         <div class="selected-tags tag-category">
             <div class="selected-tags-title item-title">{{tagFilterInfo.selectedTitle}}</div>
-            <div class="fc-util-tag-list selected-tags-list">
+            <div class="fc-util-tag-list selected-tags-list active-black">
+                <div class="tag-item tag-normal active" 
+                    *ngIf="tagFilterInfo.categoryAllTitle && (!selectedKeyList || selectedKeyList.length == 0)">
+                    {{tagFilterInfo.categoryAllTitle}}
+                </div>
                 <div class="tag-item" *ngFor="let tagItem of selectedTagList">
                     <app-tag-minus [tag]="tagItem" [tagStyle]="tagFilterInfo.tagStyle" [bgcolor]="tagBgcolorMap.get(tagItem.key)" (clickBack)="deleteSelectedTag($event)"></app-tag-minus>
                 </div>
@@ -18,7 +28,22 @@
             <div class="filter-type-item" *ngFor="let categoryTag of categoryTagList">
                 <div class="filter-type-title item-title">{{categoryTag.categoryTitle}}</div>
                 <div class="fc-util-tag-list filter-type-list" [ngClass]="['active-'+categoryTag.bgcolor]">
-                    <div class="tag-item tag-normal" [ngClass]="{'active': selectedKeyList.includes(tagItem.key)}" *ngFor="let tagItem of categoryTag.tagList" (click)="clickTag(tagItem.key);">{{tagItem.title}}</div>
+                    <div class="tag-item tag-normal " 
+                        *ngIf="tagFilterInfo.categoryAllTitle"
+                        [ngClass]="{'active':!categorySelectedTagCountMap.get(categoryTag.categoryKey)}"
+                        (click)="clickAllTag(categoryTag.categoryKey);"
+                        >
+                        {{tagFilterInfo.categoryAllTitle}}
+                    </div>
+                    <ng-container *ngFor="let tagItem of categoryTag.tagList; let itemIndex = index;">
+                        <div class="tag-item tag-normal" 
+                            *ngIf="!((itemIndex+1) > tagFilterInfo.maxDisplaySize && iconStatusMap.get(categoryTag.categoryKey))"
+                            [ngClass]="{'active': selectedKeyList.includes(tagItem.key)}" 
+                            (click)="clickTag(categoryTag.categoryKey, categoryTag.isSingle, tagItem.key);">
+                            {{tagItem.title}}
+                        </div>
+                    </ng-container>
+                    <app-icon-arrow *ngIf="categoryTag.tagList.length > tagFilterInfo.maxDisplaySize" [icon]="iconMap.get(categoryTag.categoryKey)"(click)="clickShowHide(categoryTag.categoryKey);"></app-icon-arrow>
                 </div>
             </div>
         </div>

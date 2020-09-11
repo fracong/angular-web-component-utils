@@ -24,6 +24,7 @@ import { IconTipComponent } from './tip/icon-tip/icon-tip.component';
 import { NormalLabelPageComponent } from './label-page/normal-label-page/normal-label-page.component';
 import { NavTagFilterComponent } from './nav/nav-tag-filter/nav-tag-filter.component';
 import { TagMinusComponent } from './tag/tag-minus/tag-minus.component';
+import { IconArrowComponent } from './style-comp/icon/icon-arrow/icon-arrow.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { TagMinusComponent } from './tag/tag-minus/tag-minus.component';
     IconTipComponent,
     NormalLabelPageComponent,
     NavTagFilterComponent,
-    TagMinusComponent
+    TagMinusComponent,
+    IconArrowComponent
   ],
   imports: [
     BrowserModule,

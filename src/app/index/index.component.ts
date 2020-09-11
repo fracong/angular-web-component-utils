@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-09 17:02:55
+ * @LastEditTime: 2020-09-11 10:21:43
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -679,17 +679,30 @@ export class IndexComponent implements OnInit {
 
     this.navTagFilterInfo = {
       selectedTitle:'已选',
-      width:'600',
+      categoryAllTitle: '全部',
+      width:'600px',
       tagStyle: {
         fontSize: '12px',
         fontWeight:'600',
         tagSize: '22px'
+      },
+      maxDisplaySize: 4,
+      switchIconArrow1: {
+        title: '展开',
+        color: 'blue',
+        type: 'down'
+      },
+      switchIconArrow2: {
+        title: '收起',
+        color: 'blue',
+        type: 'up'
       }
     }
-    this.selectedKeyList = [1,2];
+    this.selectedKeyList = [1,2,10];
 
     this.categoryTagList=[
       {
+        categoryKey:1,
         categoryTitle: '视频',
         bgcolor: 'red',
         tagList: [
@@ -705,11 +718,21 @@ export class IndexComponent implements OnInit {
             key: 3,
             title: '新闻'
           },
+          {
+            key: 8,
+            title: '记录'
+          },
+          {
+            key: 9,
+            title: '财经'
+          },
         ]
       },
       {
+        categoryKey: 2,
         categoryTitle: '图片',
-        bgcolor: 'purple',
+        bgcolor: 'black',
+        isSingle: true,
         tagList: [
           {
             key: 4,
@@ -722,6 +745,14 @@ export class IndexComponent implements OnInit {
           {
             key: 6,
             title: '广告'
+          },
+          {
+            key: 7,
+            title: '小说'
+          },
+          {
+            key: 10,
+            title: '农业'
           },
         ]
       }
