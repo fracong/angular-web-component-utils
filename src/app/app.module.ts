@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 09:22:50
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-27 17:41:36
+ * @LastEditTime: 2020-09-12 08:26:10
  */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -23,7 +23,7 @@ import { TransformHtmlPipe } from './pipe/transform-html.pipe';
 import { IconTipComponent } from './tip/icon-tip/icon-tip.component';
 import { NormalLabelPageComponent } from './label-page/normal-label-page/normal-label-page.component';
 import { NavTagFilterComponent } from './nav/nav-tag-filter/nav-tag-filter.component';
-import { TagMinusComponent } from './tag/tag-minus/tag-minus.component';
+import { TagAnnularComponent } from './tag/tag-annular/tag-annular.component';
 import { IconArrowComponent } from './style-comp/icon/icon-arrow/icon-arrow.component';
 
 @NgModule({
@@ -43,7 +43,7 @@ import { IconArrowComponent } from './style-comp/icon/icon-arrow/icon-arrow.comp
     IconTipComponent,
     NormalLabelPageComponent,
     NavTagFilterComponent,
-    TagMinusComponent,
+    TagAnnularComponent,
     IconArrowComponent
   ],
   imports: [

@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-11 10:21:43
+ * @LastEditTime: 2020-09-12 08:20:20
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -680,6 +680,7 @@ export class IndexComponent implements OnInit {
     this.navTagFilterInfo = {
       selectedTitle:'已选',
       selectedTitleBgcolor: 'red',
+      // deleteType: 'close',
       categoryAllTitle: '全部',
       width:'600px',
       tagStyle: {
@@ -732,7 +733,7 @@ export class IndexComponent implements OnInit {
       {
         categoryKey: 2,
         categoryTitle: '图片',
-        bgcolor: 'black',
+        bgcolor: 'yellow',
         isSingle: true,
         tagList: [
           {

@@ -9,6 +9,7 @@ import { IconArrow } from '../style-comp/icon-arrow.model';
 export class TagFilterInfo{
     selectedTitle: string;
     selectedTitleBgcolor: string; // the value can be empty,  and the value is black, purple, pink, green, gray, yellow, blue, red
+    deleteType: string; // type is minus or close, defualt is minus.
     categoryAllTitle: string; // the value can be empty
     width: string;
     tagStyle: TagStyle;

@@ -1,0 +1,28 @@
+<!--
+ * @Author: fracong
+ * @Date: 2020-09-09 09:41:10
+ * @LastEditors: fracong
+ * @LastEditTime: 2020-09-12 08:20:06
+-->
+<ng-container>
+    <div class="fc-tag"[ngClass]="['color-'+bgcolor]" 
+        [ngStyle]="{'font-size':tagStyle.fontSize, 'font-weight': tagStyle.fontWeight,'line-height': (tagStyle.tagSize ? (tagStyle.tagSize.replace('px','') - 4 + 'px' ): '')}">
+        {{tag.title}}
+        <div *ngIf="deleteType == undefined || deleteType == 'minus'" class="import-svg" (click)="deleteTag(tag.key)">
+            <svg t="1599612637000" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2940" xmlns:xlink="http://www.w3.org/1999/xlink"
+                [ngStyle]="{'height': tagStyle.tagSize, 'width': tagStyle.tagSize}"><defs>
+                <style type="text/css"></style></defs>
+                <path class="path-other" d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" p-id="2941"></path>
+                <path class="path-midle" d="M204.8 486.4m25.6 0l563.2 0q25.6 0 25.6 25.6l0 0q0 25.6-25.6 25.6l-563.2 0q-25.6 0-25.6-25.6l0 0q0-25.6 25.6-25.6Z" fill="#FFFFFF" p-id="2942"></path>
+            </svg>
+        </div>
+        <div *ngIf="deleteType == 'close'" class="import-svg" (click)="deleteTag(tag.key)">
+            <svg t="1599869047637" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2304" xmlns:xlink="http://www.w3.org/1999/xlink"
+                [ngStyle]="{'height': tagStyle.tagSize, 'width': tagStyle.tagSize}" >
+                <defs><style type="text/css"></style></defs>
+                <path  class="path-other" d="M1.401263 536.198737a486.184421 486.184421 0 0 0 486.4 486.4 486.184421 486.184421 0 0 0 486.453895-486.4A486.184421 486.184421 0 0 0 487.801263 49.744842 486.184421 486.184421 0 0 0 1.401263 536.252632z"p-id="2305"></path>
+                <path class="path-midle"  fill="#ffffff"d="M534.905263 535.713684l186.960842 186.960842a34.169263 34.169263 0 0 1 0 46.942316 34.169263 34.169263 0 0 1-46.99621 0l-186.960842-186.960842-187.014737 187.014737a34.169263 34.169263 0 0 1-46.888421 0 34.169263 34.169263 0 0 1 0-46.996211l186.906947-187.014737-186.314105-186.368a34.115368 34.115368 0 0 1 0-46.942315 34.115368 34.115368 0 0 1 46.888421 0l186.421895 186.368 186.368-186.368a34.223158 34.223158 0 0 1 46.99621 0 34.169263 34.169263 0 0 1 0 46.942315L534.905263 535.713684z" p-id="2306"></path>
+            </svg>
+        </div>
+    </div>
+</ng-container>

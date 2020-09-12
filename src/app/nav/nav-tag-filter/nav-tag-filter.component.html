@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-09-04 15:58:08
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-11 10:22:38
+ * @LastEditTime: 2020-09-12 08:26:39
 -->
 <!--
  * @Author: fracong
@@ -20,7 +20,7 @@
                     {{tagFilterInfo.categoryAllTitle}}
                 </div>
                 <div class="tag-item" *ngFor="let tagItem of selectedTagList">
-                    <app-tag-minus [tag]="tagItem" [tagStyle]="tagFilterInfo.tagStyle" [bgcolor]="tagBgcolorMap.get(tagItem.key)" (clickBack)="deleteSelectedTag($event)"></app-tag-minus>
+                    <app-tag-annular [tag]="tagItem" [deleteType]="tagFilterInfo.deleteType" [tagStyle]="tagFilterInfo.tagStyle" [bgcolor]="tagBgcolorMap.get(tagItem.key)" (clickBack)="deleteSelectedTag($event)"></app-tag-annular>
                 </div>
             </div>
         </div>
