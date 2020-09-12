@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-29 20:36:43
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-31 14:28:38
+ * @LastEditTime: 2020-09-12 18:10:51
  */
 export class TableInfo{
     isShowTableBorder: boolean;
@@ -36,4 +36,15 @@ export class ButtonItem{
     color: string;
     bgColor: string;
     fontSize: string;
+}
+
+export class Pagination{
+    type: string;
+    infoDisplay: boolean = true;
+    centerInfoType: string;
+    preBtnName: string;
+    nextBtnName: string;
+    limit: number;
+    totalNum: number;
+    displayNum: number;
 }

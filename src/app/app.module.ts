@@ -2,11 +2,12 @@
  * @Author: fracong
  * @Date: 2020-08-18 09:22:50
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-12 16:10:36
+ * @LastEditTime: 2020-09-12 21:58:15
  */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -59,6 +60,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({

@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-28 17:10:19
  * @LastEditors: fracong
- * @LastEditTime: 2020-08-31 15:19:03
+ * @LastEditTime: 2020-09-12 18:48:21
  */
 import { Component, OnInit, Output, Input, EventEmitter, ViewChild } from '@angular/core';
 import { NormalTableComponent } from 'src/app/table/normal-table/normal-table.component';
@@ -17,6 +17,8 @@ export class NormalListComponent implements OnInit {
   @Input('listInfo') listInfo: any;
   @Input('tableList') tableList: any;
   @Input('fieldList') fieldList: any;
+  @Input('pagination') pagination: any;
+  @Input('currentNum') currentNum: number;
   @Output('tableButtonClick') tableButtonClick = new EventEmitter<any>();
 
   constructor() { }
@@ -30,6 +32,10 @@ export class NormalListComponent implements OnInit {
 
   getCheckedKeyList() {
     return this.normalTable.getCheckedKeyList();
+  }
+
+  pageBtnClick(info: any) {
+    console.info(info);
   }
 
 }

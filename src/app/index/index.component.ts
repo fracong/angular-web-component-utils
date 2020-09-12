@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-12 08:20:20
+ * @LastEditTime: 2020-09-12 21:37:37
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -27,6 +27,8 @@ export class IndexComponent implements OnInit {
   normalListInfo: any;
   normalTableList: any;
   normalFieldList: any;
+  normalListPagination: any;
+  paginationCurrentNum: number;
   labelListInfo: any;
   navTagFilterInfo: any;
   selectedKeyList:any;
@@ -552,6 +554,21 @@ export class IndexComponent implements OnInit {
         ],
       }
     ];
+
+    this.normalListPagination = {
+      type: 'center',
+      // infoDisplay: true,
+      // numBtnDisplay: true,
+      goDisplay:true,
+      centerInfoType: 'left',
+      preBtnName: '上一页',
+      nextBtnName: '下一页',
+      limit: 10,
+      totalNum: 310,
+      displayNum: 10,
+    }
+
+    this.paginationCurrentNum = 10;
 
     this.normalTableList = [
       {

@@ -2,28 +2,36 @@
  * @Author: fracong
  * @Date: 2020-09-12 10:58:31
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-12 17:02:39
+ * @LastEditTime: 2020-09-12 21:59:44
 -->
 <ng-container>
     <div class="fc-util fc-util-pagination">
         <div class="page-info">
-            <ng-container *ngIf="infoDisplay">
-                {{ pageInfo | translatePageInfo: row: total }}
+            <ng-container *ngIf="pagination.infoDisplay==undefined || pagination.infoDisplay">
+                {{ pageInfo | translatePageInfo: (this.currentNum ? this.currentNum : 1): totalPage }}
             </ng-container>
         </div>
         <ng-container *ngIf="type == 'center' || type == 'right' || type == 'left'">
             <div class="page-btns" [ngClass]="['fc-flex-'+type]">
-                <div class="fc-inline page-btn pre-page disabled">
-                    {{ preBtnName }}
+                <div class="fc-inline page-btn pre-page" [ngClass]="{'disabled': this.currentNum == 1}"
+                    (click)="clickPreNextBtn(this.currentNum != 1 ? this.currentNum - 1 : 0)">
+                    {{ pagination.preBtnName }}
                 </div>
-                <div class="fc-inline page-btn page-num active">1</div>
-                <div class="fc-inline page-btn page-num">2</div>
-                <div class="fc-inline page-btn page-num">3</div>
-                <div class="fc-inline page-btn page-num">4</div>
-                <div class="fc-inline page-btn page-num">5</div>
-                <div class="fc-inline page-btn next-page">
-                    {{ nextBtnName }}
+                <ng-container *ngIf="pagination.numBtnDisplay == undefined || pagination.numBtnDisplay">
+                    <div class="fc-inline page-btn page-num"  *ngFor="let item of btnNumList"
+                        [ngClass]="{'active': this.currentNum == item}" (click)="clickNumBtn(item)">{{item}}</div>
+                </ng-container>
+                <div class="fc-inline page-btn next-page" [ngClass]="{'disabled': this.currentNum == this.totalPage}"
+                    (click)="clickPreNextBtn(this.totalPage != 1 ? currentNum + 1 : 0)">
+                    {{ pagination.nextBtnName }}
                 </div>
+                <ng-container *ngIf="pagination.goDisplay == undefined || pagination.goDisplay">
+                    <div class="page-go-vertical"></div>
+                    <div class="page-go-input">
+                        <input  name="goNum" [(ngModel)]="goNum">
+                    </div>
+                    <div class="page-btn page-go-btn" (click)="clickGo()">Go</div>
+                </ng-container>
             </div>
         </ng-container>
     </div>

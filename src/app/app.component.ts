@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'angular-component-util';
 
   constructor(public translate: TranslateService) {
-    translate.setDefaultLang('zh');
-    translate.use('zh');
+    translate.setDefaultLang('en');
+    translate.use('en');
   }
 }

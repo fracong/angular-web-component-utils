@@ -1,8 +1,9 @@
 :host::ng-deep .fc-util-pagination{
     font: 14px/24px '-apple-system',Simsun;
     margin: 5px 0;
-    .page-info .page-info-num{
-        font-weight: 600;
+    .page-info{
+        width: 115px;
+        text-align: center;
     }
     .page-btn{
         cursor: pointer;
@@ -32,11 +33,30 @@
     .page-btn.page-num{
         padding-left: 8px;
         padding-right: 8px;
+        width: 15px;
+        text-align: center;
     }
     .page-btn.page-num.active{
         cursor: auto;
         pointer-events: none;
         color: #5f5f5f;
         background-color: #d4d4d4;
+    }
+    .page-go{
+        &-vertical{
+        border-left: 2px #d1d3d4 solid;
+        margin-left: 5px;
+        }
+        &-input input{
+            height: 26px;
+            width: 25px;
+            border: 1px #d1d3d4 solid;
+            margin-left: 5px;
+            border-radius: 5px;
+            padding: 1px 5px;
+        }
+        &-btn{
+            border-radius: 5px;
+        }
     }
 }
