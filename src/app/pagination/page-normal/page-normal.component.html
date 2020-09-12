@@ -1,0 +1,30 @@
+<!--
+ * @Author: fracong
+ * @Date: 2020-09-12 10:58:31
+ * @LastEditors: fracong
+ * @LastEditTime: 2020-09-12 15:33:34
+-->
+<ng-container>
+    <div class="fc-util fc-util-pagination">
+        <div class="page-info">
+            <ng-container *ngIf="infoDisplay">
+                第 <span class="page-info-num">{{row}}</span> 页 共 <span class="page-info-num">{{total}}</span> 页
+            </ng-container>
+        </div>
+        <ng-container *ngIf="type == 'center' || type == 'right' || type == 'left'">
+            <div class="page-btns" [ngClass]="['fc-flex-'+type]">
+                <div class="fc-inline page-btn pre-page disabled">
+                    {{ preBtnName }}
+                </div>
+                <div class="fc-inline page-btn page-num active">1</div>
+                <div class="fc-inline page-btn page-num">2</div>
+                <div class="fc-inline page-btn page-num">3</div>
+                <div class="fc-inline page-btn page-num">4</div>
+                <div class="fc-inline page-btn page-num">5</div>
+                <div class="fc-inline page-btn next-page">
+                    {{ nextBtnName }}
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</ng-container>

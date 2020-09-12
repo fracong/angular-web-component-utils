@@ -1,0 +1,42 @@
+:host::ng-deep .fc-util-pagination{
+    font: 14px/24px '-apple-system',Simsun;
+    margin: 5px 0;
+    .page-info .page-info-num{
+        font-weight: 600;
+    }
+    .page-btn{
+        cursor: pointer;
+        padding: 2px 5px;
+        border: 1px #d1d3d4 solid;
+        margin-left: 2px;
+        color: #007bff;
+        background-color: #fff;
+    }
+    .page-btn:hover{
+        background-color: #f3f4f5;
+    }
+    .page-btn.disabled{
+        cursor: auto;
+        pointer-events: none;
+        color: #a8a6a6;
+        background-color: #fff;
+    }
+    .page-btn.pre-page{
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+    .page-btn.next-page{
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+    .page-btn.page-num{
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .page-btn.page-num.active{
+        cursor: auto;
+        pointer-events: none;
+        color: #5f5f5f;
+        background-color: #d4d4d4;
+    }
+}

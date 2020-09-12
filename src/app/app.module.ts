@@ -25,6 +25,7 @@ import { NormalLabelPageComponent } from './label-page/normal-label-page/normal-
 import { NavTagFilterComponent } from './nav/nav-tag-filter/nav-tag-filter.component';
 import { TagAnnularComponent } from './tag/tag-annular/tag-annular.component';
 import { IconArrowComponent } from './style-comp/icon/icon-arrow/icon-arrow.component';
+import { PageNormalComponent } from './pagination/page-normal/page-normal.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { IconArrowComponent } from './style-comp/icon/icon-arrow/icon-arrow.comp
     NormalLabelPageComponent,
     NavTagFilterComponent,
     TagAnnularComponent,
-    IconArrowComponent
+    IconArrowComponent,
+    PageNormalComponent
   ],
   imports: [
     BrowserModule,

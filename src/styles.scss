@@ -88,3 +88,33 @@
 .fc-util .fc-util-tag-list .tag-item{
     display: inline-block;
 }
+
+.fc-util .fc-inline{
+    display: inline-block;
+}
+
+.fc-flex-center{
+    display: flex;
+    flex-direction:row;
+    justify-content: center !important;
+}
+
+.fc-flex-right{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-end !important;
+}
+
+.fc-flex-left{
+    display: flex;
+    flex-direction:row;
+    justify-content: left !important;
+}
+
+.fc-float-left{
+    float: left;
+}
+
+.fc-float-right{
+    float: right;
+}
