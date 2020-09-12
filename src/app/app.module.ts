@@ -2,13 +2,16 @@
  * @Author: fracong
  * @Date: 2020-08-18 09:22:50
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-12 08:26:10
+ * @LastEditTime: 2020-09-12 16:10:36
  */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { IndexComponent } from './index/index.component';
 import { NavSingleButtonComponent } from './nav/nav-single-button/nav-single-button.component';
 import { RangkListComponent } from './list/ranking-list/ranking-list.component';
@@ -26,6 +29,11 @@ import { NavTagFilterComponent } from './nav/nav-tag-filter/nav-tag-filter.compo
 import { TagAnnularComponent } from './tag/tag-annular/tag-annular.component';
 import { IconArrowComponent } from './style-comp/icon/icon-arrow/icon-arrow.component';
 import { PageNormalComponent } from './pagination/page-normal/page-normal.component';
+import { TranslatePageInfoPipe } from './pagination/translate-page-info.pipe';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -46,11 +54,20 @@ import { PageNormalComponent } from './pagination/page-normal/page-normal.compon
     NavTagFilterComponent,
     TagAnnularComponent,
     IconArrowComponent,
-    PageNormalComponent
+    PageNormalComponent,
+    TranslatePageInfoPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: createTranslateLoader,
+          deps: [HttpClient]
+      }
+    })
   ],
   providers: [{ provide: 'Window', useValue: window }],
   bootstrap: [AppComponent]

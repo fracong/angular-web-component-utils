@@ -2,9 +2,10 @@
  * @Author: fracong
  * @Date: 2020-09-12 10:58:31
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-12 15:28:44
+ * @LastEditTime: 2020-09-12 17:00:27
  */
 import { Component, OnInit } from '@angular/core';
+import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-page-normal',
@@ -21,14 +22,19 @@ export class PageNormalComponent implements OnInit {
   row: number;
   total: number;
   firstPage = 1;
+  pageInfo: string;
 
-  constructor() { }
+  constructor(public translate: TranslateService) { }
 
   ngOnInit() {
     this.lang = 'cn';
     this.initPageType();
     this.row = 3;
     this.total = 30;
+    this.translate.onLangChange.subscribe((event: TranslationChangeEvent) => {
+      this.pageInfo = this.translate.instant('pagination.page-info');
+    });
+
   }
 
   initPageType() {

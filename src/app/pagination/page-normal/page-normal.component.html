@@ -2,13 +2,13 @@
  * @Author: fracong
  * @Date: 2020-09-12 10:58:31
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-12 15:33:34
+ * @LastEditTime: 2020-09-12 17:02:39
 -->
 <ng-container>
     <div class="fc-util fc-util-pagination">
         <div class="page-info">
             <ng-container *ngIf="infoDisplay">
-                第 <span class="page-info-num">{{row}}</span> 页 共 <span class="page-info-num">{{total}}</span> 页
+                {{ pageInfo | translatePageInfo: row: total }}
             </ng-container>
         </div>
         <ng-container *ngIf="type == 'center' || type == 'right' || type == 'left'">

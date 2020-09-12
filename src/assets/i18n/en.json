@@ -1,0 +1,5 @@
+{
+    "pagination":{
+        "page-info": "Page {{row}} of {{total}}"
+    }
+}
