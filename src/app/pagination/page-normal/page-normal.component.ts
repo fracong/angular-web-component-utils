@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-09-12 10:58:31
  * @LastEditors: fracong
- * @LastEditTime: 2020-09-12 22:08:02
+ * @LastEditTime: 2020-09-13 08:55:29
  */
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
@@ -38,7 +38,6 @@ export class PageNormalComponent implements OnInit {
     this.goNum = this.currentNum;
     this.totalPage = Math.ceil(this.pagination.totalNum / this.pagination.limit);
     this.initFirstPageNumBtn();
-    this.changePreAndNextBtn();
     this.initPageType();
   }
   
@@ -55,15 +54,6 @@ export class PageNormalComponent implements OnInit {
       }
     }
     this.btnNumList = array.sort((a, b) => a - b);
-  }
-
-  changePreAndNextBtn(){
-    if (this.currentNum != 1) {
-      this.prePageNum = this.currentNum - 1;
-    }
-    if (this.currentNum != this.totalPage) {
-      this.nextPageNum = this.currentNum +1;
-    }
   }
   
   initPageType() {
@@ -85,7 +75,7 @@ export class PageNormalComponent implements OnInit {
 
   clickNumBtn(pageNum: number) {
     this.currentNum = pageNum;
-    this.changePreAndNextBtn();
+    this.goNum = pageNum;
     this.clickBack.emit(pageNum);
   }
 
@@ -101,13 +91,15 @@ export class PageNormalComponent implements OnInit {
     }
     this.btnNumList = this.btnNumList.sort((a, b)=> a - b);
     this.currentNum = pageNum;
-    this.changePreAndNextBtn();
+    this.goNum = pageNum;
     this.clickBack.emit(pageNum);
   }
-
+  
   clickGo() {
+    if (!Number(this.goNum)) return;
+    if (this.goNum > this.totalPage) return;
     this.currentNum = Number(this.goNum);
-    if (!this.btnNumList.includes(this.goNum)) {
+    if (!this.btnNumList.includes(this.currentNum)) {
       this.initFirstPageNumBtn();
     }
     this.clickBack.emit(this.goNum);
