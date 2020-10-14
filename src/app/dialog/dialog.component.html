@@ -1,0 +1,21 @@
+<ng-container *ngIf="isDisplay">
+    <div class="fc-dialog">
+        <div class="dialog" [ngStyle]="{'width': dialog ? dialog.width : ''}">
+            <div class="dialog-main">
+                <div class="dialog-header">
+                    <div class="dialog-header-title">{{title}}</div>
+                    <div class="dialog-header-close" (click)="closeBtn()"></div>
+                </div>
+                <div class="dialog-content">
+                    <ng-content></ng-content>
+                </div>
+                <div class="dialog-footer" *ngIf="dialog.ifDisplayBtn" [ngStyle]="{'background-color':dialog.footerBgcolor}">
+                    <div class="dialong-btns">
+                        <div class="dialong-btn cancel-btn" (click)="clickBtn(1)">取消</div>
+                        <div class="dialong-btn save-btn" [ngClass]="{'saveBtnDisabled': saveBtnDisabled || (formGroup && formGroup.invalid)}" (click)="clickBtn(2)">保存</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

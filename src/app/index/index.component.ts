@@ -1,11 +1,12 @@
 /*
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
- * @LastEditors: fracong
- * @LastEditTime: 2020-09-12 21:37:37
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-10-14 16:52:10
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
+import { Dialog } from '../model/dialog/dialog.model';
 
 @Component({
   selector: 'app-index',
@@ -33,6 +34,9 @@ export class IndexComponent implements OnInit {
   navTagFilterInfo: any;
   selectedKeyList:any;
   categoryTagList: any;
+  isDialogDisplay: boolean;
+  dialog = new  Dialog();
+  dialogTitle: string;
 
   constructor() { }
 
@@ -776,7 +780,11 @@ export class IndexComponent implements OnInit {
         ]
       }
     ];
-
+    this.dialog.ifDisplayBtn = true;
+    this.dialog.width = '350px';
+    this.dialog.saveTitle = 'comp-util.dialog.confirm-btn';
+    this.dialog.footerBgcolor = '#dcdada';
+    this.dialogTitle = "提示";
   }
 
   
@@ -809,5 +817,13 @@ export class IndexComponent implements OnInit {
 
   deleteSelectedTagBack(e: any){
     console.info(e);
+  }
+
+  openDialog(){
+    this.isDialogDisplay = true;
+  }
+
+  closeDialog(){
+    this.isDialogDisplay = false;
   }
 }

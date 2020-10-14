@@ -1,8 +1,8 @@
 <!--
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
- * @LastEditors: fracong
- * @LastEditTime: 2020-09-12 17:45:34
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-10-14 16:55:28
 -->
 <div class="fc-util">
     <div class="fc-top">
@@ -10,6 +10,9 @@
         <app-nav-category [navItemList]="categoryNavList" [navInfo]="categoryNavInfo" (categoryNavNode)="changeCategoryNavList($event)"></app-nav-category>
     </div>
     <div class="fc-bottom">
+        <div class="dialog-test-btn open-dialog-btn" (click)="openDialog()">打开弹框</div>
+        <div class="dialog-test-btn close-dialog-btn" (click)="closeDialog()">关闭弹框</div>
+        <app-dialog [isDisplay]="isDialogDisplay" [dialog]="dialog" [title]="dialogTitle"></app-dialog>
         <app-nav-tag-filter [tagFilterInfo]="navTagFilterInfo" [selectedKeyList]="selectedKeyList" [categoryTagList]="categoryTagList" 
             (deleteSelectedTagBack)="deleteSelectedTagBack($event)"></app-nav-tag-filter>
         <app-normal-label-page [listInfo]="labelListInfo" (labelPageNode)="labelPageBack($event)">

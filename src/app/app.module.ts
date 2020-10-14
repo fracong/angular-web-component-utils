@@ -31,6 +31,7 @@ import { TagAnnularComponent } from './tag/tag-annular/tag-annular.component';
 import { IconArrowComponent } from './style-comp/icon/icon-arrow/icon-arrow.component';
 import { PageNormalComponent } from './pagination/page-normal/page-normal.component';
 import { TranslatePageInfoPipe } from './pagination/translate-page-info.pipe';
+import { DialogComponent } from './dialog/dialog.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -56,7 +57,8 @@ export function createTranslateLoader(http: HttpClient) {
     TagAnnularComponent,
     IconArrowComponent,
     PageNormalComponent,
-    TranslatePageInfoPipe
+    TranslatePageInfoPipe,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
