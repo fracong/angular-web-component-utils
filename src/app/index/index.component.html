@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-03-26 09:17:31
+ * @LastEditTime: 2020-10-14 16:55:28
 -->
 <div class="fc-util">
     <div class="fc-top">
@@ -29,26 +29,5 @@
             [ifMore]="true">
         </app-ranking-list>
         <app-nav-vertical [navInfo]="verticalNavInfo" [navItemList]="verticalNavList" (verticalNavNode)="changeVerticalNavList($event)"></app-nav-vertical>
-        <!-- test drag  vertical line or div-->
-        <div class="test-drag test-drag-index">
-            <div class="test-drag-bottom">
-              <div class="test-drag-bottom-left" style="flex: 1;">
-                <div class="left-content">
-                  123
-                </div>
-              </div>
-              <div class="test-drag-bottom-middel"
-                app-drag dragType="vertical" 
-                leftClass="test-drag-bottom-left"
-                rightClass="test-drag-bottom-right"
-                leftMin = "100"
-                leftMax = "1000"></div>
-              <div class="test-drag-bottom-right" style="flex: 5;">
-                <div class="right-content">
-                  456
-                </div>
-              </div>
-            </div>
-          </div>
     </div>
 </div>

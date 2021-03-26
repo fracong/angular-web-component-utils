@@ -32,7 +32,6 @@ import { IconArrowComponent } from './style-comp/icon/icon-arrow/icon-arrow.comp
 import { PageNormalComponent } from './pagination/page-normal/page-normal.component';
 import { TranslatePageInfoPipe } from './pagination/translate-page-info.pipe';
 import { DialogComponent } from './dialog/dialog.component';
-import { DragDirective } from './directive/drag.directive';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -59,8 +58,7 @@ export function createTranslateLoader(http: HttpClient) {
     IconArrowComponent,
     PageNormalComponent,
     TranslatePageInfoPipe,
-    DialogComponent,
-    DragDirective
+    DialogComponent
   ],
   imports: [
     BrowserModule,
