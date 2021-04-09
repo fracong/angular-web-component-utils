@@ -39,6 +39,7 @@
         flex-direction: row;
         &-left {
             overflow-y:auto;
+            overflow-x: hidden;
             .left-content {
                 color: red;
             }
@@ -46,7 +47,32 @@
         &-middel {
             height: 200px;
             cursor: col-resize;
-            border-left: 2px solid #aeaeae;
+            border-left: 1px solid #aeaeae;
+            border-right: 1px solid #aeaeae;
+            .middel-btn {
+                background-color: #ebebeb;
+                height: 200px;
+                width: 15px;
+                position: relative;
+                &-content {
+                    position: absolute;
+                    top: 20vh;
+                    background-image: url(src/assets/fonts/icons/right-arrow.svg);
+                    width:15px;
+                    height:24px;
+                    background-size: 15px 24px;
+                    cursor: pointer;
+                }
+                &-content:hover {
+                    background-image: url(src/assets/fonts/icons/right-arrow-white.svg);
+                }
+                &-content.no-show {
+                    background-image: url(src/assets/fonts/icons/left-arrow.svg);
+                }
+                &-content.no-show:hover {
+                    background-image: url(src/assets/fonts/icons/left-arrow-white.svg);
+                }
+            }
         }
         &-right {
             overflow-y:auto;

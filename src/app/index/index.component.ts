@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-10-14 16:52:10
+ * @LastEditTime: 2021-04-09 11:09:52
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -38,9 +38,16 @@ export class IndexComponent implements OnInit {
   dialog = new  Dialog();
   dialogTitle: string;
 
+  showLeft: boolean = true;
+  leftFlex = 1;
+  rightFlex = 5;
+  key = 'util';
+
   constructor() { }
 
   ngOnInit() {
+    this.initLeftRightFlex();
+    
     this.navInfo = {
       navType: 'index',
       navBgc: '#3e3d43',
@@ -825,5 +832,38 @@ export class IndexComponent implements OnInit {
 
   closeDialog(){
     this.isDialogDisplay = false;
+  }
+
+  initLeftRightFlex() {
+    let storage = window.localStorage;
+    let left_flex = storage.getItem(this.key+'_left_flex');
+    if (left_flex){
+      this.leftFlex = Number(left_flex);
+    }
+    let right_flex = storage.getItem(this.key+'_right_flex');
+    if (right_flex){
+      this.rightFlex = Number(right_flex);
+    }
+    let show_left = storage.getItem(this.key+'_show_left');
+    if (show_left) {
+      this.showLeft =( show_left == 'true') ? true : false;
+    }
+    if (this.showLeft == undefined) {
+      this.showLeft = true;
+    }
+  }
+  
+  changeShow(){
+    this.showLeft = !this.showLeft;
+    let storage = window.localStorage;
+    storage.setItem(this.key+'_show_left', String(this.showLeft));
+  }
+
+  afterMove(e: any) {
+    this.leftFlex = e.leftFlex;
+    this.rightFlex = e.rightFlex;
+    let storage = window.localStorage;
+    storage.setItem(this.key+'_left_flex', String(this.leftFlex));
+    storage.setItem(this.key+'_right_flex', String(this.rightFlex));
   }
 }

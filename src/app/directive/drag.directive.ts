@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 @Directive({
   selector: '[app-drag]'
@@ -8,14 +8,32 @@ export class DragDirective {
   private disX = 0;
   private disY = 0;
   private dom: any;
-  @Input('dragDlassName') className: string;
+  @Input('dragClassName') className: string;
   @Input('dragType') type: string;
-  @Input('leftClass') leftClass: string;
+  remarkDivLeft: string;
+  _showLeft: boolean;
+  @Input('showLeft')
+  set showLeft(showLeft: boolean) {
+    this._showLeft = showLeft;
+    if (!showLeft) {
+      this.dom = this.getParentRecurse(this.el.nativeElement, this.className);
+      if (this.dom && this.dom.style && this.dom.style.left) {
+        this.remarkDivLeft = this.dom.style.left;
+        this.dom.style.left = '0px';
+      }
+    } else {
+      if (this.remarkDivLeft) {
+        this.dom = this.getParentRecurse(this.el.nativeElement, this.className);
+        this.dom.style.left = this.remarkDivLeft;
+      }
+    }
+  }
+  get showLeft(): boolean {
+    return this._showLeft;
+  }
   @Input('leftMin') leftMin: number;
   @Input('leftMax') leftMax: number;
-  @Input('rightClass') rightClass: string;
-  @Input('topClass') topClass: string;
-  @Input('bottomClass') bottomClass: string;
+  @Output('afterMove') afterMove = new EventEmitter<any>();
 
   constructor(private el: ElementRef) { }
 
@@ -36,7 +54,7 @@ export class DragDirective {
       this.disY = event.clientY - this.dom.offsetTop;
     }
   }
- 
+
   getParentRecurse(dom: any, className: string) {
     if (!className) {
       return dom;
@@ -46,13 +64,13 @@ export class DragDirective {
     } else if (dom.parentNode) {
       return this.getParentRecurse(dom.parentNode, className);
     } else {
-      console.log('cannot found the class Name(' + className + ')');
+      console.log(`cannot found the className of node is ${className}, return`);
       return dom;
     }
   }
  
   @HostListener('document:mousemove', ['$event']) onMousemove(event) {
-    if (this.isDown) {
+    if (this.isDown && this._showLeft) {
       const cw = document.documentElement.clientWidth;
       const cy = document.documentElement.clientHeight;
       const dw = this.dom.offsetWidth;
@@ -76,17 +94,28 @@ export class DragDirective {
       if (this.type == 'all') {
         this.dom.style.left = oLeft + 'px';
         this.dom.style.top = oTop + 'px';
-        this.dom.style.position = 'absolute';
       } else if (this.type == 'vertical' 
         && (!this.leftMin || (this.leftMin && oLeft > this.leftMin))
         && (!this.leftMax || (this.leftMax && oLeft < this.leftMax))){
         this.dom.style.left = oLeft + 'px';
-        this.dom.style.position = 'absolute';
       }
-      this.changeOtherDiv();
+      this.backMoveInfo();
     }
   }
- 
+
+  backMoveInfo() {
+    let element = this.el.nativeElement as HTMLElement;
+    let leftFlex =  Number.parseInt(element.style.left.replace('px', ''));
+    let parentElement = element.parentElement;
+    let allWidth = parentElement.clientWidth;
+    let rightFlex = allWidth - leftFlex;
+    let json = {
+      leftFlex: leftFlex,
+      rightFlex: rightFlex,
+    }
+    this.afterMove.emit(json);
+  }
+
   @HostListener('document:mouseup', ['$event']) onMouseup() {
     if (this.isDown) {
       document.onmousemove = null;
@@ -94,30 +123,4 @@ export class DragDirective {
       this.isDown = false;
     }
   }
-
-  changeOtherDiv() {
-    let element = this.el.nativeElement as HTMLElement;
-    if (element) {
-      let parentElement = element.parentElement;
-      parentElement.childNodes.forEach(e => {
-        let eh = e as HTMLElement;
-        if (this.type == 'vertical') {
-          if (!this.leftClass || !this.rightClass) {
-            console.info('leftClass | rightClass is null.')
-            return;
-          }
-          if (element.style.left) {
-            let left =  Number.parseInt(element.style.left.replace('px', ''));
-            let allWidth = parentElement.clientWidth;
-            if (eh.classList && eh.classList.contains(this.leftClass)) {
-              eh.style.flex = String(left);
-            } else if (eh.classList && eh.classList.contains(this.rightClass)) {
-              eh.style.flex = String(allWidth - left);
-            }
-          }
-        }
-      });
-    }
-  }
-
 }

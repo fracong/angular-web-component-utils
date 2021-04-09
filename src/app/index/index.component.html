@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-03-26 09:17:31
+ * @LastEditTime: 2021-04-09 10:57:31
 -->
 <div class="fc-util">
     <div class="fc-top">
@@ -32,18 +32,22 @@
         <!-- test drag  vertical line or div-->
         <div class="test-drag test-drag-index">
             <div class="test-drag-bottom">
-              <div class="test-drag-bottom-left" style="flex: 1;">
+              <div class="test-drag-bottom-left" [ngStyle]="{'flex': leftFlex}"  *ngIf="showLeft">
                 <div class="left-content">
                   123
                 </div>
               </div>
               <div class="test-drag-bottom-middel"
                 app-drag dragType="vertical" 
-                leftClass="test-drag-bottom-left"
-                rightClass="test-drag-bottom-right"
                 leftMin = "100"
-                leftMax = "1000"></div>
-              <div class="test-drag-bottom-right" style="flex: 5;">
+                leftMax = "500"
+                [showLeft] = "showLeft"
+                (afterMove)="afterMove($event)">
+                <div class="middel-btn">
+                  <div class="middel-btn-content" (click)="changeShow()" [ngClass]="{'no-show': showLeft}"></div>
+                </div>
+              </div>
+              <div class="test-drag-bottom-right"  [ngStyle]="{'flex':rightFlex}">
                 <div class="right-content">
                   456
                 </div>
