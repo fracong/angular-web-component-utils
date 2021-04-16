@@ -17,9 +17,18 @@
     .item-icon-arrow.item-down{
         background-image: url(src/assets/fonts/icons/down-arrow-7d.svg);
     }
-    .menu-name {
+    .item-icon-tag{
         position:absolute;
         left:10px;
+        top: -1px;
+        width: 16px;
+        height: 26px;
+        background-size: 16px 26px;
+        background-image: url(src/assets/fonts/icons/file.svg);
+    }
+    .menu-name {
+        position:absolute;
+        left:30px;
         white-space:nowrap;
         overflow:hidden;
         text-overflow:ellipsis;
@@ -33,7 +42,7 @@
     a {
         cursor: pointer;
     }
-    .item-url{
+    .icon-url{
         cursor: pointer;
     }
 }

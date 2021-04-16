@@ -2,21 +2,15 @@
  * @Author: 
  * @Date: 2021-03-31 14:11:40
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-04-09 09:08:03
+ * @LastEditTime: 2021-04-16 15:49:30
 -->
 <div class="menu-item" *ngIf="item.show" [ngClass]="{'menu-item-selected':item.showSelected}">
-    <div class="item-icon-arrow"  [ngStyle]="{'left': arrowLeft}" [ngClass]="{'item-down':item.childShow, 'item-up': !item.childShow}" (click)="upDownFunc(item)"></div>
-    <div class="menu-name" [ngStyle]="{'left':nameLeft}">
-        <ng-container *ngIf="item.hasChild; else noChild">
+    <div class="item-icon-arrow"  (click)="upDownFunc(item)" [ngStyle]="{'left': arrowLeft}"
+        [ngClass]="{'item-down':item.childShow, 'item-up': !item.childShow}"></div>
+    <div [ngClass]="{'icon-url': !item.hasChild}" (click)="changeUrl(item)">
+        <div #iconTag class="item-icon-tag" [ngStyle]="{'left':iconLeft}"></div>
+        <div class="menu-name" [ngStyle]="{'left':nameLeft}">
             {{item.name}}
-        </ng-container>
-        <ng-template #noChild>
-            <ng-container *ngIf="item.url; else noUrl">
-                <div class="item-url" (click)="changeUrl(item)"> {{item.name}}</div>
-            </ng-container>
-            <ng-template #noUrl>
-                {{item.name}}
-            </ng-template>
-        </ng-template>
+        </div>
     </div>
 </div>

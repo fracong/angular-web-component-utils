@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-04-14 17:09:01
+ * @LastEditTime: 2021-04-16 16:32:44
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -59,30 +59,30 @@ export class IndexComponent implements OnInit {
       },
       {
         "id": '1',
-        "name":"用户管理2",
-        "icon":"",
+        "name":"系统管理2",
+        "icon":"system",
         "hasChild": true,
         "childs":[
           {
-            "id": '8',
-            "name":"用户管理2-1",
-            "icon":"",
+            "id": '2',
+            "name":"角色管理2-1",
+            "icon":"role",
             "hasChild": true,
             "childs":[
               {
-                "id": '9',
+                "id": '3',
                 "url":"/",
-                "name":"用户管理2-1-1",
-                "icon":"",
+                "name":"角色管理2-1-1",
+                "icon":"role",
                 "hasChild": false,
               }
             ]
           },
           {
-            "id": '3',
+            "id": '4',
             "url":"/",
             "name":"用户管理2-2",
-            "icon":"",
+            "icon":"person",
             "hasChild": true,
             "childs":[
               {
@@ -95,34 +95,40 @@ export class IndexComponent implements OnInit {
             ]
           },
           {
-            "id": '4',
-            "url":"/",
-            "name":"用户管理2-3",
-            "icon":"",
-            "hasChild": false,
-          },
-          {
             "id": '6',
-            "name":"用户管理2-4",
-            "icon":"",
-            "hasChild": true,
-            "childs":[
-              {
-                "id": '7',
-                "url":"/",
-                "name":"用户管理2-4-1",
-                "icon":"",
-                "hasChild": false,
-              }
-            ]
+            "url":"/",
+            "name":"组管理2-3",
+            "icon":"group",
+            "hasChild": false,
           },
         ]
       },
       {
-        "id": '2',
-        "name":"用户管理3",
+        "id": '7',
+        "name":"消息中心",
         "url":"/",
-        "icon":"",
+        "iconUrl":"assets/fonts/icons/message.svg",
+        "hasChild": false,
+      },
+      {
+        "id": '8',
+        "name":"日志管理",
+        "url":"/",
+        "icon":"log",
+        "hasChild": false,
+      },
+      {
+        "id": '9',
+        "name":"系统监控",
+        "url":"/",
+        "icon":"monitor",
+        "hasChild": false,
+      },
+      {
+        "id": '10',
+        "name":"POI报表",
+        "url":"/",
+        "icon":"poi",
         "hasChild": false,
       }
     ];
