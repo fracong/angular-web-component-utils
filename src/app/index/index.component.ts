@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-04-09 11:09:52
+ * @LastEditTime: 2021-04-14 17:09:01
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -41,12 +41,91 @@ export class IndexComponent implements OnInit {
   showLeft: boolean = true;
   leftFlex = 1;
   rightFlex = 5;
-  key = 'util';
+  menuKey = 'util';
+  menuData: any;
 
   constructor() { }
 
   ngOnInit() {
     this.initLeftRightFlex();
+
+    this.menuData = [
+      {
+        "id":'0',
+        "name":"首页1",
+        "url":"/",
+        "icon":"",
+        "hasChild":false
+      },
+      {
+        "id": '1',
+        "name":"用户管理2",
+        "icon":"",
+        "hasChild": true,
+        "childs":[
+          {
+            "id": '8',
+            "name":"用户管理2-1",
+            "icon":"",
+            "hasChild": true,
+            "childs":[
+              {
+                "id": '9',
+                "url":"/",
+                "name":"用户管理2-1-1",
+                "icon":"",
+                "hasChild": false,
+              }
+            ]
+          },
+          {
+            "id": '3',
+            "url":"/",
+            "name":"用户管理2-2",
+            "icon":"",
+            "hasChild": true,
+            "childs":[
+              {
+                "id": '5',
+                "url":"/",
+                "name":"用户管理2-2-1",
+                "icon":"",
+                "hasChild": false,
+              }
+            ]
+          },
+          {
+            "id": '4',
+            "url":"/",
+            "name":"用户管理2-3",
+            "icon":"",
+            "hasChild": false,
+          },
+          {
+            "id": '6',
+            "name":"用户管理2-4",
+            "icon":"",
+            "hasChild": true,
+            "childs":[
+              {
+                "id": '7',
+                "url":"/",
+                "name":"用户管理2-4-1",
+                "icon":"",
+                "hasChild": false,
+              }
+            ]
+          },
+        ]
+      },
+      {
+        "id": '2',
+        "name":"用户管理3",
+        "url":"/",
+        "icon":"",
+        "hasChild": false,
+      }
+    ];
     
     this.navInfo = {
       navType: 'index',
@@ -836,15 +915,15 @@ export class IndexComponent implements OnInit {
 
   initLeftRightFlex() {
     let storage = window.localStorage;
-    let left_flex = storage.getItem(this.key+'_left_flex');
+    let left_flex = storage.getItem(this.menuKey+'_left_flex');
     if (left_flex){
       this.leftFlex = Number(left_flex);
     }
-    let right_flex = storage.getItem(this.key+'_right_flex');
+    let right_flex = storage.getItem(this.menuKey+'_right_flex');
     if (right_flex){
       this.rightFlex = Number(right_flex);
     }
-    let show_left = storage.getItem(this.key+'_show_left');
+    let show_left = storage.getItem(this.menuKey+'_show_left');
     if (show_left) {
       this.showLeft =( show_left == 'true') ? true : false;
     }
@@ -856,14 +935,14 @@ export class IndexComponent implements OnInit {
   changeShow(){
     this.showLeft = !this.showLeft;
     let storage = window.localStorage;
-    storage.setItem(this.key+'_show_left', String(this.showLeft));
+    storage.setItem(this.menuKey+'_show_left', String(this.showLeft));
   }
 
   afterMove(e: any) {
     this.leftFlex = e.leftFlex;
     this.rightFlex = e.rightFlex;
     let storage = window.localStorage;
-    storage.setItem(this.key+'_left_flex', String(this.leftFlex));
-    storage.setItem(this.key+'_right_flex', String(this.rightFlex));
+    storage.setItem(this.menuKey+'_left_flex', String(this.leftFlex));
+    storage.setItem(this.menuKey+'_right_flex', String(this.rightFlex));
   }
 }

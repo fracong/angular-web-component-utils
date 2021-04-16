@@ -1,8 +1,8 @@
 /*
  * @Author: fracong
  * @Date: 2020-08-18 09:22:50
- * @LastEditors: fracong
- * @LastEditTime: 2020-09-12 21:58:15
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-04-14 17:02:20
  */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -33,6 +33,8 @@ import { PageNormalComponent } from './pagination/page-normal/page-normal.compon
 import { TranslatePageInfoPipe } from './pagination/translate-page-info.pipe';
 import { DialogComponent } from './dialog/dialog.component';
 import { DragDirective } from './directive/drag.directive';
+import { MenuItemComponent } from './menu-item/menu-item.component';
+import { MenuItemNameComponent } from './menu-item/menu-item-name/menu-item-name.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -60,7 +62,9 @@ export function createTranslateLoader(http: HttpClient) {
     PageNormalComponent,
     TranslatePageInfoPipe,
     DialogComponent,
-    DragDirective
+    DragDirective,
+    MenuItemComponent,
+    MenuItemNameComponent
   ],
   imports: [
     BrowserModule,
