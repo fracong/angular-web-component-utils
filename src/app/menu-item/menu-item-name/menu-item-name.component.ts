@@ -2,7 +2,7 @@
  * @Author: 
  * @Date: 2021-03-31 14:11:40
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-04-22 09:05:46
+ * @LastEditTime: 2021-04-22 10:13:39
  */
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
@@ -48,7 +48,7 @@ export class MenuItemNameComponent implements OnInit {
   }
 
   changeUrl() {
-    if (!this.item.url) return;
+    if (!this.item.url || this.item.hasChild) return;
     let storage = window.localStorage;
     storage.setItem(this.menuKey+'_menu_selected_id', this.item.id);
     window.location = this.item.url;
