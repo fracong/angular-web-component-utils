@@ -2,9 +2,10 @@
  * @Author: 
  * @Date: 2021-03-31 08:14:39
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-04-09 09:01:30
+ * @LastEditTime: 2021-04-19 09:13:29
  */
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MenuItemNameComponent } from './menu-item-name/menu-item-name.component';
 
 @Component({
   selector: 'menu-item',
@@ -24,6 +25,8 @@ export class MenuItemComponent implements OnInit {
   }
   @Input('initItemId') initItemId: string;
   @Input('menuKey') menuKey: string;
+  @Input('defultIcon') defultIcon: string;
+  @Input('defultIconUrl') defultIconUrl: string;
   selectedId: string;
 
   constructor() { }
@@ -148,6 +151,16 @@ export class MenuItemComponent implements OnInit {
         }
       } else {
         e.childShow = !e.childShow;
+      }
+    }
+  }
+
+  getAllItemChild(item: any) {
+    let list = new Array();
+    for (let index = 0; index < this._data.length; index++) {
+      let indexItem = this._data[index];
+      if (indexItem.currentIndex.startsWith(item.currentIndex)) {
+        list.push(indexItem);
       }
     }
   }
