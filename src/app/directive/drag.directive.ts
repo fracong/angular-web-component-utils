@@ -37,8 +37,8 @@ export class DragDirective {
 
   constructor(private el: ElementRef) { }
 
-  @HostListener('drag', ['event'])
-  dragEvent() {
+  @HostListener('drag', ['$event'])
+  dragEvent(event) {
     console.log('drag');
   }
  
@@ -116,7 +116,7 @@ export class DragDirective {
     this.afterMove.emit(json);
   }
 
-  @HostListener('document:mouseup', ['$event']) onMouseup() {
+  @HostListener('document:mouseup', ['$event']) onMouseup(event) {
     if (this.isDown) {
       document.onmousemove = null;
       document.onmouseup = null;

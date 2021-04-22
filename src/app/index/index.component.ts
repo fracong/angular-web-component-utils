@@ -2,7 +2,7 @@
  * @Author: fracong
  * @Date: 2020-08-18 10:36:47
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-04-16 16:32:44
+ * @LastEditTime: 2021-04-22 09:40:29
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NormalListComponent } from '../list/normal-list/normal-list.component';
@@ -944,9 +944,9 @@ export class IndexComponent implements OnInit {
     storage.setItem(this.menuKey+'_show_left', String(this.showLeft));
   }
 
-  afterMove(e: any) {
-    this.leftFlex = e.leftFlex;
-    this.rightFlex = e.rightFlex;
+  afterMove(event: any) {
+    this.leftFlex = event.leftFlex;
+    this.rightFlex = event.rightFlex;
     let storage = window.localStorage;
     storage.setItem(this.menuKey+'_left_flex', String(this.leftFlex));
     storage.setItem(this.menuKey+'_right_flex', String(this.rightFlex));

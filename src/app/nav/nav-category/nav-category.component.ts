@@ -1,8 +1,8 @@
 /*
  * @Author: fracong
  * @Date: 2020-08-20 13:45:45
- * @LastEditors: fracong
- * @LastEditTime: 2020-09-02 17:51:47
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-04-22 09:19:53
  */
 import { Component, OnInit, Input, Output, EventEmitter, HostListener, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { NavCategoryItem, NavCategoryInfo, NavDropDownItem } from 'src/app/model/nav-style/nav-style.model';
@@ -45,6 +45,9 @@ export class NavCategoryComponent implements OnInit {
     }
   }
 
+  getTitleIconFont() {
+    return this.navInfo.fontSzie+'/'+(Number(this.navInfo.height.replace('px',''))/2-1+'px')+' '+this.navInfo.fontFamily;
+  }
   changeNav(navKeyNum: number, itemNavType: string) {
     let isDownPre = this.remarkIsUpDownMap.get(navKeyNum);
     if (itemNavType == 'up-down') {

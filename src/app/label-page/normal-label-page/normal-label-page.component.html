@@ -1,8 +1,8 @@
 <!--
  * @Author: fracong
  * @Date: 2020-09-03 10:47:11
- * @LastEditors: fracong
- * @LastEditTime: 2020-09-04 14:01:35
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-04-22 09:38:51
 -->
 <ng-container>
     <div class="fc-util-label-page">
@@ -13,9 +13,9 @@
                 (click)="changeLabel(item.key);">
                 <div class="item-font" (mouseover)="isHover=true;remarkKey=item.key;" (mouseleave)="isHover=false;remarkKey=item.key;"
                     [ngStyle]="{'width': item.width,'font-size':listInfo.fontSize?listInfo.fontSize:'',
-                        'height': listInfo.labelHeight ?listInfo.labelHeight.replace('px','')-((listInfo.styleType == undefined || listInfo.styleType == 'top')?1:(listInfo.styleType == 'bottom')?3:'') +'px' :'',
+                        'height': getTitleHeight(),
                         'color': (listInfo.activeItemKey == item.key)? listInfo.activeColor: (isHover&& remarkKey == item.key? listInfo.activeColor:''),
-                        'line-height':listInfo.labelHeight.replace('px','')-5+'px'}">
+                        'line-height':getTitleLineHeight()}">
                     {{item.title}}
                 </div>
             </div>

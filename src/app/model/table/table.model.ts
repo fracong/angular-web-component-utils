@@ -1,8 +1,8 @@
 /*
  * @Author: fracong
  * @Date: 2020-08-29 20:36:43
- * @LastEditors: fracong
- * @LastEditTime: 2020-09-12 18:10:51
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-04-22 09:26:31
  */
 export class TableInfo{
     isShowTableBorder: boolean;
@@ -47,4 +47,6 @@ export class Pagination{
     limit: number;
     totalNum: number;
     displayNum: number;
+    numBtnDisplay: boolean;
+    goDisplay: boolean;
 }

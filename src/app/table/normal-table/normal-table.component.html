@@ -1,8 +1,8 @@
 <!--
  * @Author: fracong
  * @Date: 2020-08-28 17:46:40
- * @LastEditors: fracong
- * @LastEditTime: 2020-08-31 15:33:02
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-04-22 09:28:29
 -->
 <ng-container>
     <table class="table-list" width="100%">
@@ -41,18 +41,18 @@
                     </div>
                     <div *ngIf="field.type == 'aLabel'">
                         <a  href="{{ item[field.key].url }}" [ngStyle]="{'color':(index == hoverIndex && field.key == hoverFieldKey &&  isHover) ? field.aHoverColor: field.aColor}"
-                            (mouseover)="isHoverFunc(true, index, field.key)" (mouseleave)="isHoverFunc(false, index, field.key)">
+                            (mouseover)="isHoverFunc(true, index, field.key, undefined)" (mouseleave)="isHoverFunc(false, index, field.key, undefined)">
                             {{ substringValue(field.maxLength, item[field.key].value) }}
                         </a>
                     </div>
                     <div *ngIf="field.type == 'html'"
                         [ngStyle]="{'color':(index == hoverIndex && field.key == hoverFieldKey &&  isHover) ? field.aHoverColor: field.aColor}"
-                        (mouseover)="isHoverFunc(true, index, field.key)" (mouseleave)="isHoverFunc(false, index, field.key)"
+                        (mouseover)="isHoverFunc(true, index, field.key, undefined)" (mouseleave)="isHoverFunc(false, index, field.key, undefined)"
                         [innerHTML]="item[field.key] | transformHtml">
                     </div>
                     <div *ngIf="field.type == 'tagList'"
                         [ngStyle]="{'color':(index == hoverIndex && field.key == hoverFieldKey &&  isHover) ? field.aHoverColor: field.aColor}"
-                        (mouseover)="isHoverFunc(true, index, field.key)" (mouseleave)="isHoverFunc(false, index, field.key)">
+                        (mouseover)="isHoverFunc(true, index, field.key, undefined)" (mouseleave)="isHoverFunc(false, index, field.key, undefined)">
                         <span *ngFor="let tagItem of item[field.key];let tagIndex = index" class="item-tag" [ngStyle]="{'color': field.tagColor,'background-color': tableInfo.tagBgcolorList[field.tagBgColorList[tagIndex]]}">
                             {{ substringValue(5, tagItem) }}
                         </span>
@@ -66,7 +66,7 @@
                     </div>
                     <div *ngIf="field.type == undefined || field.type == 'font'"
                         [ngStyle]="{'color':(index == hoverIndex && field.key == hoverFieldKey &&  isHover) ? field.aHoverColor: field.aColor}"
-                        (mouseover)="isHoverFunc(true, index, field.key)" (mouseleave)="isHoverFunc(false, index, field.key)">
+                        (mouseover)="isHoverFunc(true, index, field.key, undefined)" (mouseleave)="isHoverFunc(false, index, field.key, undefined)">
                         {{ substringValue(field.maxLength, item[field.key]) }}
                     </div>
                 </td>

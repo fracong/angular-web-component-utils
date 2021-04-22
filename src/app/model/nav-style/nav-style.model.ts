@@ -1,8 +1,8 @@
 /*
  * @Author: fracong
  * @Date: 2020-08-18 11:43:03
- * @LastEditors: fracong
- * @LastEditTime: 2020-09-04 13:45:22
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-04-22 09:22:00
  */
 export class NavInfo{
     navType:string;
@@ -40,6 +40,7 @@ export class NavCategoryInfo{
     splitSymbol: string;
     rightIconActiveKey: number;
     rightInfoList: any;
+    isShowRight: any;
 }
 
 export class RightItem{
@@ -82,6 +83,8 @@ export class NavVerticalInfo{
     hoverColor:string;
     activeKey: number;
     itemFontSize: string;
+    itemMargin: any;
+    titleColor: any;
 }
 
 export class NavVerticalItem{

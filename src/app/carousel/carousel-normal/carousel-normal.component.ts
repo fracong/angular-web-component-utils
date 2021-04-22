@@ -1,8 +1,8 @@
 /*
  * @Author: fracong
  * @Date: 2020-08-21 16:26:40
- * @LastEditors: fracong
- * @LastEditTime: 2020-08-27 17:47:14
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-04-22 09:25:23
  */
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { CarouselItem, CarouselInfo } from 'src/app/model/carousel/carousel.model';

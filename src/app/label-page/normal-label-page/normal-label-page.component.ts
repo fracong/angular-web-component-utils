@@ -1,8 +1,8 @@
 /*
  * @Author: fracong
  * @Date: 2020-09-03 10:47:11
- * @LastEditors: fracong
- * @LastEditTime: 2020-09-03 14:34:56
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-04-22 09:39:49
  */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { LabelPageInfo } from 'src/app/model/label-page/normal-label-page.model';
@@ -37,4 +37,16 @@ export class NormalLabelPageComponent implements OnInit {
     this.labelPageNode.emit(backInfo);
   }
 
+  getTitleHeight(){
+    let ifTop = this.listInfo.styleType == undefined || this.listInfo.styleType == 'top';
+    let ifBottom = this.listInfo.styleType == 'bottom';
+    let a = ifBottom ? '3' : '';
+    let b = ifTop ? 1 : Number(a);
+    let c = Number(this.listInfo.labelHeight.replace('px','')) - b;
+    return this.listInfo.labelHeight ? c +'px' :'';
+  }
+
+  getTitleLineHeight() {
+    return Number(this.listInfo.labelHeight.replace('px',''))-5+'px';
+  }
 }

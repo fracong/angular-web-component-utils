@@ -1,8 +1,8 @@
 /*
  * @Author: fracong
  * @Date: 2020-08-25 15:19:04
- * @LastEditors: fracong
- * @LastEditTime: 2020-08-27 17:36:32
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-04-22 09:23:09
  */
 export class CarouselInfo{
     beginAuto: boolean; // true is auto, false is unauto
@@ -29,6 +29,8 @@ export class ImgButton{
     rightButtonName: string;
     rightIconStyle: {};
     leftIconStyle: {};
+    buttonLeftName: string;
+    buttonRightName: string;
 }
 
 export class CarouselImg{

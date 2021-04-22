@@ -1,12 +1,12 @@
 <!--
  * @Author: fracong
  * @Date: 2020-09-09 09:41:10
- * @LastEditors: fracong
- * @LastEditTime: 2020-09-12 08:20:06
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-04-22 09:43:08
 -->
 <ng-container>
     <div class="fc-tag"[ngClass]="['color-'+bgcolor]" 
-        [ngStyle]="{'font-size':tagStyle.fontSize, 'font-weight': tagStyle.fontWeight,'line-height': (tagStyle.tagSize ? (tagStyle.tagSize.replace('px','') - 4 + 'px' ): '')}">
+        [ngStyle]="{'font-size':tagStyle.fontSize, 'font-weight': tagStyle.fontWeight,'line-height': getTagTitleLineHeight()}">
         {{tag.title}}
         <div *ngIf="deleteType == undefined || deleteType == 'minus'" class="import-svg" (click)="deleteTag(tag.key)">
             <svg t="1599612637000" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2940" xmlns:xlink="http://www.w3.org/1999/xlink"
